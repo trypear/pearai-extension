@@ -19,13 +19,13 @@ export class DiffEditor {
     conversationId: string;
   }) {
     const panel = vscode.window.createWebviewPanel(
-      `rubberduck.diff.${conversationId}`,
+      `pearai.diff.${conversationId}`,
       title,
       editorColumn
     );
 
     const useVisualStudioCodeColors: boolean = vscode.workspace
-      .getConfiguration("rubberduck.syntaxHighlighting")
+      .getConfiguration("pearai.syntaxHighlighting")
       .get("useVisualStudioCodeColors", false);
 
     this.container = new WebviewContainer({

@@ -1,6 +1,6 @@
 ---
 name: 🐛 Bug report
-about: When Rubberduck crashes or has undesired side-effects, it's a bug
+about: When PearAI crashes or has undesired side-effects, it's a bug
 title: ""
 labels: "bug"
 assignees: ""

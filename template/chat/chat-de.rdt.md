@@ -1,6 +1,6 @@
 # AI Chat in German
 
-This template lets you chat with Rubberduck in German.
+This template lets you chat with PearAI in German.
 
 ## Template
 
@@ -11,7 +11,7 @@ This template lets you chat with Rubberduck in German.
   "id": "chat-de",
   "engineVersion": 0,
   "label": "Starte eine Unterhaltung",
-  "description": "Starte eine Unterhaltung mit Rubberduck.",
+  "description": "Starte eine Unterhaltung mit PearAI.",
   "header": {
     "title": "Neue Unterhaltung",
     "useFirstMessageAsTitle": true,

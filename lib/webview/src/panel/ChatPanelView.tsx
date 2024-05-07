@@ -1,4 +1,4 @@
-import { webviewApi } from "@rubberduck/common";
+import { webviewApi } from "@pearai/common";
 import React from "react";
 import { CollapsedConversationView } from "../component/CollapsedConversationView";
 import { ExpandedConversationView } from "../component/ExpandedConversationView";
@@ -35,7 +35,7 @@ export const ChatPanelView: React.FC<{
           Enter your OpenAI API key
         </button>
         <p>
-          Rubberduck uses the OpenAI API and requires an API key to work. You
+          PearAI uses the OpenAI API and requires an API key to work. You
           can get an API key from{" "}
           <a href="https://platform.openai.com/account/api-keys">
             platform.openai.com/account/api-keys

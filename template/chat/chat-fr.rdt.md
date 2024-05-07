@@ -1,6 +1,6 @@
 # AI Chat in French
 
-This template lets you chat with Rubberduck in French.
+This template lets you chat with PearAI in French.
 
 ## Template
 
@@ -11,7 +11,7 @@ This template lets you chat with Rubberduck in French.
   "id": "chat-fr",
   "engineVersion": 0,
   "label": "Commencer une discussion",
-  "description": "Commencer une discussion avec Rubberduck.",
+  "description": "Commencer une discussion avec PearAI.",
   "header": {
     "title": "Nouvelle discussion",
     "useFirstMessageAsTitle": true,

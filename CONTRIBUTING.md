@@ -1,4 +1,4 @@
-# Contributing to Rubberduck
+# Contributing to PearAI
 
 First of all, thank you for taking some of your time to contribute to the project. You're awesome 🦆👍
 
@@ -14,8 +14,8 @@ First of all, thank you for taking some of your time to contribute to the projec
 
 > Pre-requisite: you have installed [git][install-git], [node][install-node] and [pnpm][install-pnpm].
 
-1. Clone the repo: `git clone git@github.com:rubberduck-ai/rubberduck-vscode.git`
-1. Go into the cloned repository: `cd rubberduck-vscode`
+1. Clone the repo: `git clone git@github.com:pearai-ai/pearai-vscode.git`
+1. Go into the cloned repository: `cd pearai-vscode`
 1. Install dependencies: `pnpm install`
 1. Build the extension: `pnpm build-all`
 
@@ -36,7 +36,7 @@ To build the project, press `F5`. It should run the `run - app/vscode` task.
 This will:
 
 1. Build the project
-2. Open a new "Extension Development Host" VS Code window, with your local code overriding your "Rubberduck" extension
+2. Open a new "Extension Development Host" VS Code window, with your local code overriding your "PearAI" extension
 
 It's handy to test your changes in integration with VS Code API.
 
@@ -82,5 +82,5 @@ Whether it's code, design, typo or documentation, every contribution is welcomed
 [openai-docs]: https://platform.openai.com/docs/introduction
 [vscode-debug-extension]: https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension
 [all-contributors-bot-command]: https://allcontributors.org/docs/en/bot/usage#all-contributors-add
-[architecture-doc]: https://github.com/rubberduck-ai/rubberduck-vscode/blob/main/doc/architecture.md
-[template-doc]: https://github.com/rubberduck-ai/rubberduck-vscode/blob/main/doc/rubberduck-templates.md
+[architecture-doc]: https://github.com/pearai-ai/pearai-vscode/blob/main/doc/architecture.md
+[template-doc]: https://github.com/pearai-ai/pearai-vscode/blob/main/doc/pearai-templates.md

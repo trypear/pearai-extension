@@ -1,4 +1,4 @@
-import { webviewApi } from "@rubberduck/common";
+import { webviewApi } from "@pearai/common";
 import Handlebars from "handlebars";
 import * as vscode from "vscode";
 import { AIClient } from "../ai/AIClient";
@@ -7,7 +7,7 @@ import { DiffEditorManager } from "../diff/DiffEditorManager";
 import { DiffData } from "./DiffData";
 import { resolveVariables } from "./input/resolveVariables";
 import { executeRetrievalAugmentation } from "./retrieval-augmentation/executeRetrievalAugmentation";
-import { Prompt, RubberduckTemplate } from "./template/RubberduckTemplate";
+import { Prompt, PearAITemplate } from "./template/PearAITemplate";
 
 Handlebars.registerHelper({
   eq: (v1, v2) => v1 === v2,
@@ -28,7 +28,7 @@ export class Conversation {
 
   protected readonly initVariables: Record<string, unknown>;
 
-  private readonly template: RubberduckTemplate;
+  private readonly template: PearAITemplate;
 
   private temporaryEditorContent: string | undefined;
   private temporaryEditorDocument: vscode.TextDocument | undefined;
@@ -52,7 +52,7 @@ export class Conversation {
     initVariables: Record<string, unknown>;
     ai: AIClient;
     updateChatPanel: () => Promise<void>;
-    template: RubberduckTemplate;
+    template: PearAITemplate;
     diffEditorManager: DiffEditorManager;
     diffData: DiffData | undefined;
   }) {
@@ -70,9 +70,9 @@ export class Conversation {
       template.initialMessage == null
         ? { type: "userCanReply" }
         : {
-            type: "waitingForBotAnswer",
-            botAction: template.initialMessage.placeholder ?? "Answering",
-          };
+          type: "waitingForBotAnswer",
+          botAction: template.initialMessage.placeholder ?? "Answering",
+        };
   }
 
   async getTitle() {
@@ -428,7 +428,7 @@ export class Conversation {
       const tab = allTabs.find((tab) => {
         return (
           (tab.input as any).viewType ===
-          `mainThreadWebview-rubberduck.diff.${this.id}`
+          `mainThreadWebview-pearai.diff.${this.id}`
         );
       });
 
@@ -513,19 +513,19 @@ export class Conversation {
       content:
         chatInterface === "message-exchange"
           ? {
-              type: "messageExchange",
-              messages: this.isTitleMessage()
-                ? this.messages.slice(1)
-                : this.messages,
-              state: this.state,
-              error: this.error,
-            }
+            type: "messageExchange",
+            messages: this.isTitleMessage()
+              ? this.messages.slice(1)
+              : this.messages,
+            state: this.state,
+            error: this.error,
+          }
           : {
-              type: "instructionRefinement",
-              instruction: "", // TODO last user message?
-              state: this.refinementInstructionState(),
-              error: this.error,
-            },
+            type: "instructionRefinement",
+            instruction: "", // TODO last user message?
+            state: this.refinementInstructionState(),
+            error: this.error,
+          },
     };
   }
 

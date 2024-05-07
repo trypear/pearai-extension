@@ -15,7 +15,7 @@ import { ApiKeyManager } from "./ApiKeyManager";
 function getOpenAIBaseUrl(): string {
   return (
     vscode.workspace
-      .getConfiguration("rubberduck.openAI")
+      .getConfiguration("pearai.openAI")
       .get("baseUrl", "https://api.openai.com/v1/")
       // Ensure that the base URL doesn't have a trailing slash:
       .replace(/\/$/, "")
@@ -36,7 +36,7 @@ function getModel() {
       "gpt-3.5-turbo-0125",
       "llama.cpp",
     ])
-    .parse(vscode.workspace.getConfiguration("rubberduck").get("model"));
+    .parse(vscode.workspace.getConfiguration("pearai").get("model"));
 }
 
 export class AIClient {
@@ -60,7 +60,7 @@ export class AIClient {
     if (apiKey == undefined) {
       throw new Error(
         "No OpenAI API key found. " +
-          "Please enter your OpenAI API key with the 'Rubberduck: Enter OpenAI API key' command."
+        "Please enter your OpenAI API key with the 'PearAI: Enter OpenAI API key' command."
       );
     }
 
@@ -83,25 +83,25 @@ export class AIClient {
 
     return modelConfiguration === "llama.cpp"
       ? llamacpp
-          .CompletionTextGenerator({
-            // TODO the prompt format needs to be configurable for non-Llama2 models
-            promptTemplate: llamacpp.prompt.Llama2,
-            maxGenerationTokens: maxTokens,
-            stopSequences: stop,
-            temperature,
-          })
-          .withInstructionPrompt()
+        .CompletionTextGenerator({
+          // TODO the prompt format needs to be configurable for non-Llama2 models
+          promptTemplate: llamacpp.prompt.Llama2,
+          maxGenerationTokens: maxTokens,
+          stopSequences: stop,
+          temperature,
+        })
+        .withInstructionPrompt()
       : openai
-          .ChatTextGenerator({
-            api: await this.getOpenAIApiConfiguration(),
-            model: modelConfiguration,
-            maxGenerationTokens: maxTokens,
-            stopSequences: stop,
-            temperature,
-            frequencyPenalty: 0,
-            presencePenalty: 0,
-          })
-          .withInstructionPrompt();
+        .ChatTextGenerator({
+          api: await this.getOpenAIApiConfiguration(),
+          model: modelConfiguration,
+          maxGenerationTokens: maxTokens,
+          stopSequences: stop,
+          temperature,
+          frequencyPenalty: 0,
+          presencePenalty: 0,
+        })
+        .withInstructionPrompt();
   }
 
   async streamText({

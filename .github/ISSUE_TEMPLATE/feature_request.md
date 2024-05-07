@@ -1,6 +1,6 @@
 ---
 name: ✨ Feature request
-about: Suggest a new idea of what Rubberduck could do
+about: Suggest a new idea of what PearAI could do
 title: ""
 labels: "enhancement"
 assignees: ""

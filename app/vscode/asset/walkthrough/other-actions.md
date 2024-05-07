@@ -1,6 +1,6 @@
 # Other Actions
 
-Rubberduck supports many commands that can be accessed from the command palette, the custom chat command, and from the editor context menu:
+PearAI supports many commands that can be accessed from the command palette, the custom chat command, and from the editor context menu:
 
 - 🪄 **Generate Unit Tests** _(requires editor selection)_
 - 💬 **Explain Code** _(requires editor selection)_
@@ -9,4 +9,4 @@ Rubberduck supports many commands that can be accessed from the command palette,
 - 📝 **Document Code** _(requires editor selection)_
 - 👓 **Improve Readability** _(requires editor selection)_
 
-![Diagnose Errors](https://raw.githubusercontent.com/rubberduck-ai/rubberduck-vscode/main/app/vscode/asset/media/screenshot-diagnose-errors.gif)
+![Diagnose Errors](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-diagnose-errors.gif)

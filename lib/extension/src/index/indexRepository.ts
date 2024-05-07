@@ -15,7 +15,7 @@ export async function indexRepository({
   const repositoryPath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
 
   if (repositoryPath == undefined) {
-    vscode.window.showErrorMessage("Rubberduck: No workspace folder is open.");
+    vscode.window.showErrorMessage("PearAI: No workspace folder is open.");
     return;
   }
 
@@ -111,10 +111,10 @@ export async function indexRepository({
 
   if (!cancelled) {
     // TODO potential bug on windows
-    const filename = `${repositoryPath}/.rubberduck/embedding/repository.json`;
+    const filename = `${repositoryPath}/.pearai/embedding/repository.json`;
 
     // TODO potential bug on windows
-    await fs.mkdir(`${repositoryPath}/.rubberduck/embedding`, {
+    await fs.mkdir(`${repositoryPath}/.pearai/embedding`, {
       recursive: true,
     });
 

@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
 import { ConversationType } from "./ConversationType";
-import { loadConversationFromFile } from "./template/loadRubberduckTemplateFromFile";
-import { loadRubberduckTemplatesFromWorkspace } from "./template/loadRubberduckTemplatesFromWorkspace";
-import { parseRubberduckTemplate } from "./template/parseRubberduckTemplate";
+import { loadConversationFromFile } from "./template/loadPearAITemplateFromFile";
+import { loadPearAITemplatesFromWorkspace } from "./template/loadPearAITemplatesFromWorkspace";
+import { parsePearAITemplate } from "./template/parsePearAITemplate";
 
 export class ConversationTypesProvider {
   private readonly extensionUri: vscode.Uri;
@@ -36,8 +36,6 @@ export class ConversationTypesProvider {
   private async loadBuiltInTemplates() {
     const builtInConversationTypes = [
       await this.loadBuiltinTemplate("chat", "chat-en.rdt.md"),
-      await this.loadBuiltinTemplate("fun", "code-sonnet.rdt.md"),
-      await this.loadBuiltinTemplate("fun", "drunken-pirate.rdt.md"),
       await this.loadBuiltinTemplate("task", "diagnose-errors.rdt.md"),
       await this.loadBuiltinTemplate("task", "document-code.rdt.md"),
       await this.loadBuiltinTemplate("task", "edit-code.rdt.md"),
@@ -73,7 +71,7 @@ export class ConversationTypesProvider {
   private loadExtensionTemplates() {
     for (const templateText of this.extensionTemplates) {
       try {
-        const result = parseRubberduckTemplate(templateText);
+        const result = parsePearAITemplate(templateText);
 
         if (result.type === "error") {
           vscode.window.showErrorMessage("Could not load extension template");
@@ -96,7 +94,7 @@ export class ConversationTypesProvider {
 
   private async loadWorkspaceTemplates() {
     const workspaceTemplateLoadingResults =
-      await loadRubberduckTemplatesFromWorkspace();
+      await loadPearAITemplatesFromWorkspace();
     for (const loadingResult of workspaceTemplateLoadingResults) {
       if (loadingResult.type === "error") {
         vscode.window.showErrorMessage(

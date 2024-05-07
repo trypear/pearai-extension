@@ -1,4 +1,4 @@
-import { webviewApi } from "@rubberduck/common";
+import { webviewApi } from "@pearai/common";
 import * as vscode from "vscode";
 import { generateNonce } from "./generateNonce";
 

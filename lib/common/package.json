@@ -1,5 +1,5 @@
 {
-  "name": "@rubberduck/common",
+  "name": "@pearai/common",
   "version": "0.0.0",
   "private": true,
   "main": "build/index.js",

@@ -1,6 +1,6 @@
 # AI Chat in English
 
-This template lets you chat with Rubberduck in English.
+This template lets you chat with PearAI in English.
 
 ## Template
 
@@ -11,7 +11,7 @@ This template lets you chat with Rubberduck in English.
   "id": "chat-en",
   "engineVersion": 0,
   "label": "Start chat",
-  "description": "Start a basic chat with Rubberduck.",
+  "description": "Start a basic chat with PearAI.",
   "header": {
     "title": "New chat",
     "useFirstMessageAsTitle": true,

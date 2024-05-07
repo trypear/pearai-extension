@@ -1,5 +1,5 @@
 {
-  "name": "@rubberduck/webview",
+  "name": "@pearai/webview",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -12,7 +12,7 @@
     "eslint-plugin-react": "^7.32.1"
   },
   "dependencies": {
-    "@rubberduck/common": "*",
+    "@pearai/common": "*",
     "prismjs": "1.29.0",
     "react": "18.2.0",
     "react-diff-viewer-continued": "3.2.5",

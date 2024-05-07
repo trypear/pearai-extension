@@ -1,4 +1,4 @@
-import { webviewApi } from "@rubberduck/common";
+import { webviewApi } from "@pearai/common";
 import * as vscode from "vscode";
 import { ApiKeyManager } from "../ai/ApiKeyManager";
 import { WebviewContainer } from "../webview/WebviewContainer";
@@ -6,12 +6,12 @@ import { ChatModel } from "./ChatModel";
 
 function getConfigSurfacePromptForOpenAIPlus(): boolean {
   return vscode.workspace
-    .getConfiguration("rubberduck.openAI")
+    .getConfiguration("pearai.openAI")
     .get<boolean>("surfacePromptForPlus", false);
 }
 
 export class ChatPanel implements vscode.WebviewViewProvider {
-  public static readonly id = "rubberduck.chat";
+  public static readonly id = "pearai.chat";
 
   private readonly disposables: vscode.Disposable[] = [];
 

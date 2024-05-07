@@ -1,11 +1,11 @@
 {
-  "name": "@rubberduck/vscode",
+  "name": "@pearai/vscode",
   "version": "0.0.0",
   "private": true,
   "scripts": {},
   "devDependencies": {},
   "dependencies": {
-    "@rubberduck/extension": "*",
-    "@rubberduck/webview": "*"
+    "@pearai/extension": "*",
+    "@pearai/webview": "*"
   }
 }

@@ -1,7 +1,7 @@
 import { getFilename } from "./getFilename";
 import { getLanguage } from "./getLanguage";
 import { getSelectedText } from "./getSelectedText";
-import { Variable } from "../template/RubberduckTemplate";
+import { Variable } from "../template/PearAITemplate";
 import { Message } from "../Message";
 import { getSelectedLocationText } from "./getSelectedLocationText";
 import { getSelectedTextWithDiagnostics } from "./getSelectionWithDiagnostics";

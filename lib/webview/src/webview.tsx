@@ -1,4 +1,4 @@
-import { webviewApi } from "@rubberduck/common";
+import { webviewApi } from "@pearai/common";
 import * as React from "react";
 import { createRoot } from "react-dom/client";
 import { ChatPanelView } from "./panel/ChatPanelView";

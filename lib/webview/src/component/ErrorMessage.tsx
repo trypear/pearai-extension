@@ -1,4 +1,4 @@
-import { webviewApi } from "@rubberduck/common";
+import { webviewApi } from "@pearai/common";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 

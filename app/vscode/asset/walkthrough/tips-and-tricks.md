@@ -1,6 +1,6 @@
 # Tips and Tricks
 
-Understanding these concepts will help you get the most out of Rubberduck.
+Understanding these concepts will help you get the most out of PearAI.
 
 - **Be specific**.
   When you ask for, e.g., code changes, include concrete names and describe the desired outcome. Avoid vague references.
@@ -12,4 +12,4 @@ Understanding these concepts will help you get the most out of Rubberduck.
   It might respond with inaccurate answers, especially when talking about
   less well-known topics or when the conversation gets too detailed.
 - **Use different chat threads for different topics**.
-  Shorter threads with specific topics will help Rubberduck respond more accurately.
+  Shorter threads with specific topics will help PearAI respond more accurately.

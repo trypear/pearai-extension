@@ -1,5 +1,5 @@
 :root {
-  --rubberduck-container-padding: calc(var(--container-padding) / 2);
+  --pearai-container-padding: calc(var(--container-padding) / 2);
 }
 
 body {
@@ -14,26 +14,26 @@ body {
 
 .start-chat,
 .enter-api-key {
-  padding: var(--rubberduck-container-padding);
+  padding: var(--pearai-container-padding);
   padding-top: 0;
   padding-bottom: 0;
 }
 
-.start-chat > button {
+.start-chat>button {
   background-color: var(--vscode-button-secondaryBackground);
   color: var(--vscode-button-secondaryForeground);
 }
 
-.start-chat > button:hover {
+.start-chat>button:hover {
   background-color: var(--vscode-button-secondaryHoverBackground);
 }
 
-.enter-api-key > button {
+.enter-api-key>button {
   background-color: var(--vscode-button-background);
   color: var(--vscode-button-foreground);
 }
 
-.enter-api-key > button:hover {
+.enter-api-key>button:hover {
   background-color: var(--vscode-button-hoverBackground);
 }
 
@@ -41,18 +41,19 @@ body {
   cursor: default;
 }
 
-.conversation > .header > i {
+.conversation>.header>i {
   margin-right: 5px;
 }
 
-.conversation > .message-exchange {
+.conversation>.message-exchange {
   min-height: 25px;
 }
 
-.conversation > .instruction-refinement {
-  margin: var(--rubberduck-container-padding);
+.conversation>.instruction-refinement {
+  margin: var(--pearai-container-padding);
 }
-.conversation > .instruction-refinement > .chat-input {
+
+.conversation>.instruction-refinement>.chat-input {
   margin: 0;
 }
 
@@ -61,10 +62,10 @@ body {
   cursor: default;
 }
 
-.conversation > .footer {
+.conversation>.footer {
   color: var(--vscode-disabledForeground);
 
-  padding: var(--rubberduck-container-padding);
+  padding: var(--pearai-container-padding);
   padding-top: 0;
   width: 100%;
 
@@ -73,7 +74,7 @@ body {
 }
 
 .conversation.collapsed {
-  padding: var(--rubberduck-container-padding);
+  padding: var(--pearai-container-padding);
   color: var(--vscode-disabledForeground);
   cursor: pointer;
 }
@@ -88,13 +89,13 @@ body {
   background-color: var(--vscode-list-inactiveSelectionBackground);
 }
 
-.conversation.expanded > .header {
+.conversation.expanded>.header {
   margin-bottom: 10px;
   padding: 10px;
   background-color: var(--vscode-inputValidation-infoBackground);
 }
 
-.conversation > .header > .message.user {
+.conversation>.header>.message.user {
   margin: 0;
   padding: 0;
   background-color: inherit;
@@ -106,7 +107,8 @@ body {
   vertical-align: bottom;
   -webkit-animation: ellipsis steps(4, end) 1500ms infinite;
   animation: ellipsis steps(4, end) 1500ms infinite;
-  content: "\2026"; /* ascii code for the ellipsis character */
+  content: "\2026";
+  /* ascii code for the ellipsis character */
   width: 0px;
 }
 
@@ -125,7 +127,7 @@ body {
 .chat-input {
   display: grid;
   margin-top: 20px;
-  margin: var(--rubberduck-container-padding);
+  margin: var(--pearai-container-padding);
 
   border: 1px solid var(--vscode-input-border);
   border-radius: 5px;
@@ -147,13 +149,13 @@ body {
   visibility: hidden;
 }
 
-.chat-input > textarea {
+.chat-input>textarea {
   resize: none;
   overflow: hidden;
 }
 
 /* Use same visual style */
-.chat-input > textarea,
+.chat-input>textarea,
 .chat-input::after {
   display: block;
   width: 100%;
@@ -169,21 +171,21 @@ body {
   grid-area: 1 / 1 / 2 / 2;
 }
 
-.chat-input > textarea:focus {
+.chat-input>textarea:focus {
   outline: none;
 }
 
-.chat-input > textarea:disabled {
+.chat-input>textarea:disabled {
   color: var(--vscode-disabledForeground);
 }
 
 .message {
-  margin-left: var(--rubberduck-container-padding);
-  margin-right: var(--rubberduck-container-padding);
+  margin-left: var(--pearai-container-padding);
+  margin-right: var(--pearai-container-padding);
   margin-bottom: 10px;
 }
 
-.message > p {
+.message>p {
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -195,8 +197,8 @@ body {
 }
 
 .message pre {
-  border-radius: var(--rubberduck-container-padding);
-  padding: var(--rubberduck-container-padding);
+  border-radius: var(--pearai-container-padding);
+  padding: var(--pearai-container-padding);
   background-color: var(--vscode-editor-wordHighlightStrongBackground);
 
   color: var(--vscode-editor-foreground);
@@ -210,7 +212,7 @@ body {
   background-color: var(--vscode-inputValidation-infoBackground);
 }
 
-.message > p {
+.message>p {
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -224,8 +226,8 @@ body {
 }
 
 .message.error {
-  margin: var(--rubberduck-container-padding);
-  padding: var(--rubberduck-container-padding);
+  margin: var(--pearai-container-padding);
+  padding: var(--pearai-container-padding);
   border: 1px solid;
   border-color: var(--vscode-errorForeground);
   color: var(--vscode-errorForeground);
@@ -241,7 +243,7 @@ body {
   justify-content: space-between;
 }
 
-.error-body > .error-retry {
+.error-body>.error-retry {
   display: flex;
   text-align: left;
   margin-top: auto;
@@ -251,14 +253,14 @@ body {
 
 .error-title {
   display: block;
-  padding-bottom: var(--rubberduck-container-padding);
+  padding-bottom: var(--pearai-container-padding);
   font-size: 110%;
   text-decoration: underline;
 }
 
 .error-buttons {
   display: flex;
-  gap: var(--rubberduck-container-padding);
+  gap: var(--pearai-container-padding);
 }
 
 .error-retry,
@@ -266,25 +268,30 @@ body {
   display: block;
   cursor: pointer;
   text-align: center;
-  margin-top: var(--rubberduck-container-padding);
+  margin-top: var(--pearai-container-padding);
 }
 
 button.error-retry,
 button.error-dismiss {
   margin-bottom: 0;
 }
+
 button.error-retry {
   background: var(--vscode-inputValidation-errorBorder);
 }
+
 .level-warning button.error-retry {
   background: var(--vscode-inputValidation-warningBorder);
 }
+
 button.error-dismiss {
   background: var(--vscode-button-secondaryBackground);
 }
+
 button.error-retry:hover {
   opacity: 70%;
 }
+
 button.error-dismiss:hover {
   background: var(--vscode-button-secondaryHoverBackground);
 }

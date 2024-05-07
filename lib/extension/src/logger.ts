@@ -6,7 +6,7 @@ type LogLevel = (typeof logLevels)[number];
 
 export function getVSCodeLogLevel(): LogLevel {
   const setting: string = vscode.workspace
-    .getConfiguration("rubberduck.logger")
+    .getConfiguration("pearai.logger")
     .get("level", "");
 
   return logLevels.find((l) => setting == l) ?? "info";
