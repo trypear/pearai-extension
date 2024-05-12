@@ -19,60 +19,63 @@ export const ExpandedConversationView: React.FC<{
   onClickRetry,
   onClickDelete,
   onClickExport,
-  onClickInsertPrompt
+  onClickInsertPrompt,
 }) => {
-    const content = conversation.content;
+  const content = conversation.content;
 
-    return (
-      <div className={`conversation expanded`}>
-        {
-          onClickInsertPrompt ?
-            (<ConversationHeader conversation={conversation} onIconClick={onClickInsertPrompt} />)
-            : (<ConversationHeader conversation={conversation} />)
-        }
+  return (
+    <div className={`conversation expanded`}>
+      {onClickInsertPrompt ? (
+        <ConversationHeader
+          conversation={conversation}
+          onIconClick={onClickInsertPrompt}
+        />
+      ) : (
+        <ConversationHeader conversation={conversation} />
+      )}
 
-        {(() => {
-          const type = content.type;
-          switch (type) {
-            case "messageExchange":
-              return (
-                <MessageExchangeView
-                  content={content}
-                  onSendMessage={onSendMessage}
-                  onClickDismissError={onClickDismissError}
-                  onClickRetry={onClickRetry}
-                />
-              );
-            case "instructionRefinement":
-              return (
-                <InstructionRefinementView
-                  content={content}
-                  onSendMessage={onSendMessage}
-                  onClickDismissError={onClickDismissError}
-                  onClickRetry={onClickRetry}
-                />
-              );
-            default: {
-              const exhaustiveCheck: never = type;
-              throw new Error(`unsupported type: ${exhaustiveCheck}`);
-            }
+      {(() => {
+        const type = content.type;
+        switch (type) {
+          case "messageExchange":
+            return (
+              <MessageExchangeView
+                content={content}
+                onSendMessage={onSendMessage}
+                onClickDismissError={onClickDismissError}
+                onClickRetry={onClickRetry}
+              />
+            );
+          case "instructionRefinement":
+            return (
+              <InstructionRefinementView
+                content={content}
+                onSendMessage={onSendMessage}
+                onClickDismissError={onClickDismissError}
+                onClickRetry={onClickRetry}
+              />
+            );
+          default: {
+            const exhaustiveCheck: never = type;
+            throw new Error(`unsupported type: ${exhaustiveCheck}`);
           }
-        })()}
+        }
+      })()}
 
-        <div className="footer">
-          <span className="action-panel">
-            <i
-              className="codicon codicon-save inline action-export"
-              title="Export conversation"
-              onClick={onClickExport}
-            />
-            <i
-              className="codicon codicon-trash inline action-delete"
-              title="Delete conversation"
-              onClick={onClickDelete}
-            />
-          </span>
-        </div>
+      <div className="footer">
+        <span className="action-panel">
+          <i
+            className="codicon codicon-save inline action-export"
+            title="Export conversation"
+            onClick={onClickExport}
+          />
+          <i
+            className="codicon codicon-trash inline action-delete"
+            title="Delete conversation"
+            onClick={onClickDelete}
+          />
+        </span>
       </div>
-    );
-  };
+    </div>
+  );
+};

@@ -17,7 +17,7 @@ export const ConversationHeader: React.FC<{
       {onIconClick && (
         <span>
           &nbsp;
-          < i className="codicon codicon-eye inline" onClick={onIconClick} />
+          <i className="codicon codicon-eye inline" onClick={onIconClick} />
         </span>
       )}
     </div>
