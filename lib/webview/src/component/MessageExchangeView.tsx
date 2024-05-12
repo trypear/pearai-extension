@@ -51,7 +51,7 @@ export function MessageExchangeView({
               <ChatInput
                 placeholder={
                   content.state.responsePlaceholder ??
-                    content.messages.length > 0
+                  content.messages.length > 0
                     ? "Reply…"
                     : "Ask…"
                 }
