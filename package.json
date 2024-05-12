@@ -22,7 +22,7 @@
     "Education",
     "Testing"
   ],
-  "icon": "media/extension-icon.png",
+  "icon": "./app/vscode/asset/media/extension-icon.png",
   "galleryBanner": {
     "color": "#000000",
     "theme": "dark"
@@ -352,7 +352,7 @@
         {
           "id": "pearai",
           "title": "PearAI",
-          "icon": "media/sidebar-icon.svg"
+          "icon": "./app/vscode/asset/media/sidebar-icon.svg"
         }
       ]
     },
@@ -376,7 +376,7 @@
             "title": "Setup PearAI",
             "description": "[Enter your OpenAI API key](command:pearai.enterOpenAIApiKey) to get started.",
             "media": {
-              "markdown": "walkthrough/setup.md"
+              "markdown": "./app/vscode/dev/walkthrough/setup.md"
             }
           },
           {
@@ -384,7 +384,7 @@
             "title": "AI Chat",
             "description": "Chat with PearAI about your code and software development topics.",
             "media": {
-              "markdown": "walkthrough/chat.md"
+              "markdown": "./app/vscode/dev/walkthrough/chat.md"
             }
           },
           {
@@ -392,7 +392,7 @@
             "title": "Generate Code",
             "description": "Generate code by instructing PearAI.",
             "media": {
-              "markdown": "walkthrough/generate-code.md"
+              "markdown": "./app/vscode/dev/walkthrough/generate-code.md"
             }
           },
           {
@@ -400,7 +400,7 @@
             "title": "Edit Code",
             "description": "Change the selected code by instructing PearAI to create an edit.",
             "media": {
-              "markdown": "walkthrough/edit-code.md"
+              "markdown": "./app/vscode/dev/walkthrough/edit-code.md"
             }
           },
           {
@@ -408,7 +408,7 @@
             "title": "Other Actions",
             "description": "Generate unit tests, explain code, find bugs, and more.",
             "media": {
-              "markdown": "walkthrough/other-actions.md"
+              "markdown": "./app/vscode/dev/walkthrough/other-actions.md"
             }
           },
           {
@@ -416,7 +416,7 @@
             "title": "PearAI Templates",
             "description": "Craft your own chat templates!",
             "media": {
-              "markdown": "walkthrough/pearai-templates.md"
+              "markdown": "./app/vscode/dev/walkthrough/pearai-templates.md"
             }
           },
           {
@@ -424,7 +424,7 @@
             "title": "Tips and Tricks",
             "description": "How to get the most out of PearAI.",
             "media": {
-              "markdown": "walkthrough/tips-and-tricks.md"
+              "markdown": "./app/vscode/dev/walkthrough/tips-and-tricks.md"
             }
           },
           {
@@ -432,7 +432,7 @@
             "title": "Project",
             "description": "Learn more about the PearAI open source project.",
             "media": {
-              "markdown": "walkthrough/project.md"
+              "markdown": "./app/vscode/dev/walkthrough/project.md"
             }
           }
         ]
