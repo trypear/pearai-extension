@@ -1,19 +1,12 @@
 ![PearAI AI Chat](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/asset/pearai-header-2.gif)
 
-# PearAI: ChatGPT for Visual Studio Code
+# PearAI: AI-Powered Code Editor (Extension)
 
-> &nbsp;
->
-> #### AI chat in the Visual Studio Code side bar. PearAI can [generate code](#generate-code), [edit code](#edit-code), [explain code](#explain-code), [generate tests](#generate-tests), [find bugs](#find-bugs), [diagnose errors](#diagnose-errors), and more. You can even add [your own conversation templates](#custom-conversations).
->
-> &nbsp;
+Run by: Nang (https://www.youtube.com/nang88) and FryingPan (https://www.youtube.com/@FryingPan)
 
 <!-- prettier-ignore-start -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/pearaiai.svg?style=social&label=%20%40pearaiai)](https://twitter.com/pearaiai)
 [![Discord](https://discordapp.com/api/guilds/1061938502327091271/widget.png?style=shield)](https://discord.gg/8KN2HmyZmn)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors)
-<!-- ALL-CONTRIBUTORS-BADGE:END --> 
 
 <!-- prettier-ignore-end -->
 
