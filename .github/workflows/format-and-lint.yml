@@ -10,11 +10,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          cache: 'pnpm'
+          node-version: '18'
 
       - name: Install dependencies
         run: pnpm install
@@ -23,4 +25,4 @@ jobs:
         run: pnpm prettier --check './**/src/**/*.{ts,tsx}'
 
       - name: Run ESLint
-        run: pnpm eslint './**/src/**/*.{ts,tsx}'
+        run: pnpm eslint './**/src/**/*.{ts,tsx}' --quiet
