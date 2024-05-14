@@ -6,7 +6,7 @@
 
 ```json conversation-template
 {
-  "id": "find-code-rubberduck",
+  "id": "find-code-pearai",
   "engineVersion": 0,
   "label": "Find code",
   "description": "Find code in the PearAI codebase.",
@@ -33,7 +33,7 @@
       "variableName": "searchResults",
       "query": "{{lastMessage}}",
       "source": "embedding-file",
-      "file": "rubberduck-repository.json",
+      "file": "pearai-repository.json",
       "threshold": 0.7,
       "maxResults": 5
     },
