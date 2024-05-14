@@ -47,8 +47,12 @@ export class WebviewContainer {
   }
 
   private getUri(...paths: string[]) {
+    const baseUri = this.extensionUri.fsPath.endsWith("dev")
+      ? this.extensionUri
+      : vscode.Uri.joinPath(this.extensionUri, "lib");
+
     return this.webview.asWebviewUri(
-      vscode.Uri.joinPath(this.extensionUri, "webview", ...paths)
+      vscode.Uri.joinPath(baseUri, "webview", ...paths)
     );
   }
 
