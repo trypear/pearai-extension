@@ -6,6 +6,6 @@
    1. Use the keyboard shortcut: `Ctrl + Cmd + G` (Mac) or `Ctrl + Alt + G` (Windows / Linux).
 2. Describe what you want to generate in the new conversation thread in the PearAI sidebar panel. PearAI will generate code for you based on your description. Further messages can be used to refine the generated code.
 
-![Generate Code](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-generate-code.gif)
+![Generate Code](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/screenshot-generate-code.gif)
 
-> 💡&nbsp;&nbsp;You can create your own customized code generators with [PearAI Templates](https://github.com/pearai-ai/pearai-vscode/blob/main/doc/pearai-templates.md).
+> 💡&nbsp;&nbsp;You can create your own customized code generators with [PearAI Templates](https://github.com/trypear/pearai-extension/blob/main/doc/pearai-templates.md).

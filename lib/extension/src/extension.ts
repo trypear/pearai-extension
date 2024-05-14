@@ -100,34 +100,6 @@ export const activate = async (context: vscode.ExtensionContext) => {
     vscode.commands.registerCommand("pearai.editCode", () => {
       chatController.createConversation("edit-code");
     }),
-    vscode.commands.registerCommand("pearai.startCustomChat", async () => {
-      const items = conversationTypesProvider
-        .getConversationTypes()
-        .map((conversationType) => ({
-          id: conversationType.id,
-          label: conversationType.label,
-          description: (() => {
-            const tags = conversationType.tags;
-            return tags == null
-              ? conversationType.source
-              : `${conversationType.source}, ${tags.join(", ")}`;
-          })(),
-          detail: conversationType.description,
-        }));
-
-      const result = await vscode.window.showQuickPick(items, {
-        title: `Start Custom Chat…`,
-        matchOnDescription: true,
-        matchOnDetail: true,
-        placeHolder: "Select conversation type…",
-      });
-
-      if (result == undefined) {
-        return; // user cancelled
-      }
-
-      await chatController.createConversation(result.id);
-    }),
     vscode.commands.registerCommand("pearai.touchBar.startChat", () => {
       chatController.createConversation("chat-en");
     }),
@@ -136,7 +108,7 @@ export const activate = async (context: vscode.ExtensionContext) => {
     }),
     vscode.commands.registerCommand("pearai.getStarted", async () => {
       await vscode.commands.executeCommand("workbench.action.openWalkthrough", {
-        category: `pearai.pearai-vscode#pearai`,
+        category: `pearai.pearai-extension#pearai`,
       });
     }),
     vscode.commands.registerCommand("pearai.reloadTemplates", async () => {

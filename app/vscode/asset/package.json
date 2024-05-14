@@ -1,6 +1,6 @@
 {
   "publisher": "pearai",
-  "name": "pearai-vscode",
+  "name": "pearai-extension",
   "version": "1.21.0",
   "displayName": "PearAI - ChatGPT for Visual Studio Code",
   "description": "Generate code, edit code, explain code, generate tests, find bugs, diagnose errors, and even create your own conversation templates.",
@@ -32,9 +32,9 @@
     "node": ">=18",
     "vscode": "^1.72.0"
   },
-  "homepage": "https://github.com/pearai-ai/pearai-vscode",
-  "repository": "https://github.com/pearai-ai/pearai-vscode",
-  "bugs": "https://github.com/pearai-ai/pearai-vscode/issues",
+  "homepage": "https://github.com/trypear/pearai-extension",
+  "repository": "https://github.com/trypear/pearai-extension",
+  "bugs": "https://github.com/trypear/pearai-extension/issues",
   "extensionKind": [
     "workspace"
   ],

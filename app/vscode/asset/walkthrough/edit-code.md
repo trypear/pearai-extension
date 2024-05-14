@@ -10,4 +10,4 @@
 4. Provide additional instructions to PearAI in the chat thread.
 5. When you are happy with the changes, apply them using the "Apply" button in the diff view.
 
-![Edit Code](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-edit-code.gif)
+![Edit Code](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/screenshot-edit-code.gif)

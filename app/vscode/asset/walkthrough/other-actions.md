@@ -9,4 +9,4 @@ PearAI supports many commands that can be accessed from the command palette, the
 - 📝 **Document Code** _(requires editor selection)_
 - 👓 **Improve Readability** _(requires editor selection)_
 
-![Diagnose Errors](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-diagnose-errors.gif)
+![Diagnose Errors](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/screenshot-diagnose-errors.gif)

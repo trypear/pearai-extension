@@ -8,4 +8,4 @@
    1. Press 💬 on the MacOS touch bar (if available).
 2. Ask a question in the new conversation thread in the PearAI sidebar panel. PearAI knows the editor selection at the time of conversation start.
 
-![AI Chat](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-start-chat.png)
+![AI Chat](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/screenshot-start-chat.png)
