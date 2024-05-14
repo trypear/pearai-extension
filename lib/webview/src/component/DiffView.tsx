@@ -390,7 +390,7 @@ function toPrismHighlightOptions(
         type: "reportError",
         error: {
           title: `Unable to highlight syntax for language ${languageId}`,
-          message: `We could not find a matching Prism grammar for language ${languageId}. We used the default one (${DEFAULT_PRISM_OPTIONS.language}). Please [open an issue](https://github.com/pearai-ai/pearai-vscode/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=Add%20syntax%20highlight%20for%20language%20%22${languageId}%22) to ask for supporting this language.`,
+          message: `We could not find a matching Prism grammar for language ${languageId}. We used the default one (${DEFAULT_PRISM_OPTIONS.language}). Please [open an issue](https://github.com/trypear/pearai-extension/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=Add%20syntax%20highlight%20for%20language%20%22${languageId}%22) to ask for supporting this language.`,
           level: "warning",
           disableRetry: true,
         },

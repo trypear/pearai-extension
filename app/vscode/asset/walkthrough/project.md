@@ -2,7 +2,7 @@
 
 PearAI for Visual Studio Code is an open source project.
 
-- [GitHub repository](https://github.com/pearai-ai/pearai-vscode)
+- [GitHub repository](https://github.com/trypear/pearai-extension)
 - [Discord](https://discord.gg/8KN2HmyZmn)
 
 ### Additional Extensions
