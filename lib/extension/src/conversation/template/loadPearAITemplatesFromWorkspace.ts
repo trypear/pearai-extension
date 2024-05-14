@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { loadConversationFromFile } from "./loadPearAITemplateFromFile";
 import { PearAITemplateLoadResult } from "./PearAITemplateLoadResult";
 
-const TEMPLATE_GLOB = ".pearai/template/**/*.rdt.md";
+const TEMPLATE_GLOB = ".rubberduck/template/**/*.rdt.md";
 
 export async function loadPearAITemplatesFromWorkspace(): Promise<
   Array<PearAITemplateLoadResult>

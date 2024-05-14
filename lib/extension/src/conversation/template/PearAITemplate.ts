@@ -101,7 +101,7 @@ const variableSchema = zod.discriminatedUnion("type", [
 
 export type Variable = zod.infer<typeof variableSchema>;
 
-export const pearaiTemplateSchema = zod.object({
+export const rubberduckTemplateSchema = zod.object({
   id: zod.string(),
   engineVersion: zod.literal(0),
   label: zod.string(),
@@ -124,7 +124,7 @@ export const pearaiTemplateSchema = zod.object({
   response: promptSchema,
 });
 
-export type PearAITemplate = zod.infer<typeof pearaiTemplateSchema> & {
+export type PearAITemplate = zod.infer<typeof rubberduckTemplateSchema> & {
   initialMessage?: Prompt;
   response: Prompt;
 };

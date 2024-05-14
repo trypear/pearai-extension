@@ -1,6 +1,10 @@
 import { marked } from "marked";
 import secureJSON from "secure-json-parse";
-import { PearAITemplate, pearaiTemplateSchema, Prompt } from "./PearAITemplate";
+import {
+  PearAITemplate,
+  rubberduckTemplateSchema,
+  Prompt,
+} from "./PearAITemplate";
 
 export type PearAITemplateParseResult =
   | {
@@ -76,7 +80,9 @@ export function parsePearAITemplate(
 
     const templateText = namedCodeSnippets.get("json conversation-template");
 
-    const template = pearaiTemplateSchema.parse(secureJSON.parse(templateText));
+    const template = rubberduckTemplateSchema.parse(
+      secureJSON.parse(templateText)
+    );
 
     if (template.initialMessage != null) {
       namedCodeSnippets.resolveTemplate(

@@ -9,7 +9,7 @@
   "id": "find-code-rubberduck",
   "engineVersion": 0,
   "label": "Find code",
-  "description": "Find code in the Rubberduck codebase.",
+  "description": "Find code in the PearAI codebase.",
   "header": {
     "title": "Find code",
     "useFirstMessageAsTitle": true,
