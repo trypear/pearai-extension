@@ -16,6 +16,8 @@ This is the source code for the bulk of PearAI's functionality.
 
 1. Clone the repo: `git clone git@github.com:trypear/pearai-extension.git`
 1. Go into the cloned repository: `cd pearai-extension`
+1. Clone the repo: `git clone git@github.com:trypear/pearai-extension.git`
+1. Go into the cloned repository: `cd pearai-extension`
 1. Install dependencies: `pnpm install`
 1. Build the extension: `pnpm build-all`
 
