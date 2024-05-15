@@ -3,7 +3,7 @@
   "name": "pearai-extension",
   "version": "0.0.1",
   "displayName": "PearAI - ChatGPT for Visual Studio Code",
-  "description": "Generate code, edit code, explain code, generate tests, find bugs, diagnose errors, and even create your own conversation templates.",
+  "description": "Generate code, edit code, explain code, generate tests, find bugs, diagnose errors",
   "keywords": [
     "ai",
     "chatgpt",
@@ -172,12 +172,6 @@
           "scope": "application"
         },
         "pearai.action.diagnoseErrors.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application"
-        },
-        "pearai.action.startCustomChat.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
