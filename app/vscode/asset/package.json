@@ -1,7 +1,7 @@
 {
   "publisher": "pearai",
   "name": "pearai-extension",
-  "version": "1.21.0",
+  "version": "0.0.1",
   "displayName": "PearAI - ChatGPT for Visual Studio Code",
   "description": "Generate code, edit code, explain code, generate tests, find bugs, diagnose errors, and even create your own conversation templates.",
   "keywords": [
@@ -97,12 +97,6 @@
         "icon": "$(bug)"
       },
       {
-        "command": "pearai.startCustomChat",
-        "title": "Start Custom Chat… 💬",
-        "category": "PearAI",
-        "icon": "$(comment-draft)"
-      },
-      {
         "command": "pearai.touchBar.startChat",
         "category": "PearAI",
         "title": "💬"
@@ -184,12 +178,6 @@
           "scope": "application"
         },
         "pearai.action.diagnoseErrors.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application"
-        },
-        "pearai.action.startCustomChat.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
@@ -339,11 +327,6 @@
           "command": "pearai.diagnoseErrors",
           "group": "pearai",
           "when": "config.pearai.action.diagnoseErrors.showInEditorContextMenu && editorHasSelection"
-        },
-        {
-          "command": "pearai.startCustomChat",
-          "group": "pearai",
-          "when": "config.pearai.action.startCustomChat.showInEditorContextMenu && editorHasSelection"
         }
       ]
     },

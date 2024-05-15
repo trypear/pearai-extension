@@ -17,7 +17,6 @@ You can use PearAI with local models, e.g. [CodeLlama-7B-Instruct](https://huggi
 - **pearai.logger.level**: Specify the verbosity of logs that will appear in 'PearAI: Show Logs'.
 
 - **pearai.action.startChat.showInEditorContextMenu**: Show the "Start chat" action in the editor context menu, when you right-click on the code.
-- **pearai.action.startCustomChat.showInEditorContextMenu**: Show the "Start custom chat" action in the editor context menu, when you right-click on the code.
 - **pearai.action.editCode.showInEditorContextMenu**: Show the "Edit Code action in the editor context menu, when you right-click on the code.
 - **pearai.action.explainCode.showInEditorContextMenu**: Show the "Explain code" action in the editor context menu, when you right-click on the code.
 - **pearai.action.findBugs.showInEditorContextMenu**: Show the "Find bugs" action in the editor context menu, when you right-click on the code.
