@@ -1,9 +1,9 @@
 {
   "publisher": "pearai",
-  "name": "pearai-vscode",
-  "version": "1.21.0",
+  "name": "pearai-extension",
+  "version": "0.0.1",
   "displayName": "PearAI - ChatGPT for Visual Studio Code",
-  "description": "Generate code, edit code, explain code, generate tests, find bugs, diagnose errors, and even create your own conversation templates.",
+  "description": "Generate code, edit code, explain code, generate tests, find bugs, diagnose errors",
   "keywords": [
     "ai",
     "chatgpt",
@@ -32,9 +32,9 @@
     "node": ">=18",
     "vscode": "^1.72.0"
   },
-  "homepage": "https://github.com/pearai-ai/pearai-vscode",
-  "repository": "https://github.com/pearai-ai/pearai-vscode",
-  "bugs": "https://github.com/pearai-ai/pearai-vscode/issues",
+  "homepage": "https://github.com/trypear/pearai-extension",
+  "repository": "https://github.com/trypear/pearai-extension",
+  "bugs": "https://github.com/trypear/pearai-extension/issues",
   "extensionKind": [
     "workspace"
   ],
@@ -97,12 +97,6 @@
         "icon": "$(bug)"
       },
       {
-        "command": "pearai.startCustomChat",
-        "title": "Start Custom Chat… 💬",
-        "category": "PearAI",
-        "icon": "$(comment-draft)"
-      },
-      {
         "command": "pearai.touchBar.startChat",
         "category": "PearAI",
         "title": "💬"
@@ -118,12 +112,6 @@
         "title": "Get Started",
         "category": "PearAI",
         "icon": "$(question)"
-      },
-      {
-        "command": "pearai.reloadTemplates",
-        "title": "Reload Templates",
-        "category": "PearAI",
-        "icon": "$(sync)"
       },
       {
         "command": "pearai.showLogs",
@@ -184,12 +172,6 @@
           "scope": "application"
         },
         "pearai.action.diagnoseErrors.showInEditorContextMenu": {
-          "type": "boolean",
-          "default": true,
-          "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
-          "scope": "application"
-        },
-        "pearai.action.startCustomChat.showInEditorContextMenu": {
           "type": "boolean",
           "default": true,
           "markdownDescription": "Show this action in the editor context menu, when you right-click on the code.",
@@ -339,11 +321,6 @@
           "command": "pearai.diagnoseErrors",
           "group": "pearai",
           "when": "config.pearai.action.diagnoseErrors.showInEditorContextMenu && editorHasSelection"
-        },
-        {
-          "command": "pearai.startCustomChat",
-          "group": "pearai",
-          "when": "config.pearai.action.startCustomChat.showInEditorContextMenu && editorHasSelection"
         }
       ]
     },
@@ -369,7 +346,7 @@
       {
         "id": "pearai",
         "title": "PearAI",
-        "description": "Your AI Chat Assistant in Visual Studio Code",
+        "description": "The Best AI-Powered Code Editor",
         "steps": [
           {
             "id": "setup",
@@ -409,14 +386,6 @@
             "description": "Generate unit tests, explain code, find bugs, and more.",
             "media": {
               "markdown": "./app/vscode/dev/walkthrough/other-actions.md"
-            }
-          },
-          {
-            "id": "pearai-templates",
-            "title": "PearAI Templates",
-            "description": "Craft your own chat templates!",
-            "media": {
-              "markdown": "./app/vscode/dev/walkthrough/pearai-templates.md"
             }
           },
           {
@@ -465,9 +434,5 @@
     "prettier": "2.8.3",
     "typescript": "4.9.4",
     "vitest": "0.28.3"
-  },
-  "workspaces": [
-    "app/*",
-    "lib/*"
-  ]
+  }
 }
