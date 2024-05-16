@@ -1,6 +1,6 @@
-![PearAI AI Chat](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/asset/pearai-header-2.gif)
+![PearAI AI Chat](https://raw.githubusercontent.com/trypear/pearai-extension/main/asset/pearai-header-2.gif)
 
-> #### AI chat in the Visual Studio Code side bar. PearAI can [generate code](#generate-code), [edit code](#edit-code), [explain code](#explain-code), [generate tests](#generate-tests), [find bugs](#find-bugs), [diagnose errors](#diagnose-errors), and more. You can even add [your own conversation templates](https://github.com/pearai-ai/pearai-vscode/blob/main/doc/pearai-templates.md).
+> #### AI chat in the Visual Studio Code side bar. PearAI can [generate code](#generate-code), [edit code](#edit-code), [explain code](#explain-code), [generate tests](#generate-tests), [find bugs](#find-bugs), [diagnose errors](#diagnose-errors), and more. You can even add [your own conversation templates](https://github.com/trypear/pearai-extension/blob/main/doc/pearai-templates.md).
 
 # Setup
 
@@ -33,7 +33,7 @@ Chat with PearAI about your code and software development topics. PearAI knows t
    1. Press 💬 on the MacOS touch bar (if available).
 1. Ask a question in the new conversation thread in the PearAI sidebar panel.
 
-![AI Chat](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-start-chat.png)
+![AI Chat](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/screenshot-start-chat.png)
 
 # Generate Code
 
@@ -45,7 +45,7 @@ Instruct PearAI to generate code for you.
    1. Use the keyboard shortcut: `Ctrl + Cmd + G` (Mac) or `Ctrl + Alt + G` (Windows / Linux).
 2. Describe what you want to generate in the new conversation thread in the PearAI sidebar panel. PearAI will generate code for you based on your description. Further messages can be used to refine the generated code.
 
-![Generate Code](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-generate-code.gif)
+![Generate Code](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/screenshot-generate-code.gif)
 
 ## Edit Code
 
@@ -62,7 +62,7 @@ Change the selected code by instructing PearAI to create an edit.
 1. Provide additional instructions to PearAI in the chat thread.
 1. When you are happy with the changes, apply them using the "Apply" button in the diff view.
 
-![Edit Code](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-edit-code.gif)
+![Edit Code](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/screenshot-edit-code.gif)
 
 ## Explain Code
 
@@ -74,7 +74,7 @@ Ask PearAI to explain the selected code.
    1. Select the `Explain Code 💬` entry in the editor context menu (right-click).
 1. The explanations shows up in the PearAI sidebar panel.
 
-![Explain Code](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-code-explanation.png)
+![Explain Code](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/screenshot-code-explanation.png)
 
 ## Generate Unit Test
 
@@ -86,7 +86,7 @@ Generate a unit test for the selected code.
    1. Select the `Generate Unit Test 💬` entry in the editor context menu (right-click).
 3. The test case shows up in a new editor tab. You can refine it in the conversation panel.
 
-![Generate Test](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-generate-test.gif)
+![Generate Test](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/screenshot-generate-test.gif)
 
 ## Find Bugs
 
@@ -98,7 +98,7 @@ Identify potential defects in your code.
    1. Select the `Find Bugs 💬` entry in the editor context menu (right-click).
 3. PearAI will show you a list of potential bugs in the chat window. You can refine it in the conversation panel.
 
-![Find Bugs](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-find-bugs.png)
+![Find Bugs](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/screenshot-find-bugs.png)
 
 ## Diagnose Errors
 
@@ -110,22 +110,22 @@ Let PearAI identify error causes and suggest fixes to fix compiler and linter er
    1. Select the `Diagnose Errors 💬` entry in the editor context menu (right-click).
 3. A potential solution will be shown in the chat window. You can refine it in the conversation panel.
 
-![Diagnose Errors](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/screenshot-diagnose-errors.gif)
+![Diagnose Errors](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/screenshot-diagnose-errors.gif)
 
 # Custom Conversations
 
 What if you want to craft an AI Chat that knows _specifically_ about your conventions?
 How cool would it be to have the answers in your own language?
 
-You can craft your own conversation templates by adding `.rdt.md` files to the `.pearai/template` folder in your workspace. See the [PearAI Template docs](https://github.com/pearai-ai/pearai-vscode/blob/main/doc/pearai-templates.md) for more information.
+You can craft your own conversation templates by adding `.rdt.md` files to the `.pearai/template` folder in your workspace. See the [PearAI Template docs](https://github.com/trypear/pearai-extension/blob/main/doc/pearai-templates.md) for more information.
 
 To use custom conversations, run the "PearAI: Start Custom Chat… 💬" command.
 
-Here is an example of a [drunken pirate describing your code](https://github.com/pearai-ai/pearai-vscode/blob/main/template/fun/drunken-pirate.rdt.md):
+Here is an example of a [drunken pirate describing your code](https://github.com/trypear/pearai-extension/blob/main/template/fun/drunken-pirate.rdt.md):
 
-![Describe code as a drunken pirate](https://raw.githubusercontent.com/pearai-ai/pearai-vscode/main/app/vscode/asset/media/drunken-pirate.gif)
+![Describe code as a drunken pirate](https://raw.githubusercontent.com/trypear/pearai-extension/main/app/vscode/asset/media/drunken-pirate.gif)
 
-[Learn how to craft your own PearAI template](https://github.com/pearai-ai/pearai-vscode/blob/main/doc/pearai-templates.md)!
+[Learn how to craft your own PearAI template](https://github.com/trypear/pearai-extension/blob/main/doc/pearai-templates.md)!
 
 # Tips and Tricks
 

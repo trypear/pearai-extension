@@ -39,17 +39,17 @@ PearAI for Visual Studio Code is written in [TypeScript](https://www.typescriptl
 
 The project is structured as follows:
 
-- [`app/vscode`](https://github.com/pearai-ai/pearai-vscode/tree/main/app/vscode): Extension assets (e.g. icons, `package.json`, `README.md`, walkthrough pages) and packaging scripts.
-- [`doc`](https://github.com/pearai-ai/pearai-vscode/tree/main/doc): documentation (e.g. architecture)
-- [`lib/common`](https://github.com/pearai-ai/pearai-vscode/tree/main/lib/common): API definitions for the message and state protocol between the extension and the webview. Also contains shared types and utilities.
-- [`lib/extension`](https://github.com/pearai-ai/pearai-vscode/tree/main/lib/extension): The main extension logic.
-- [`lib/webview`](https://github.com/pearai-ai/pearai-vscode/tree/main/lib/webview): The webview. It is written using [React](https://reactjs.org/).
-- [`template`](https://github.com/pearai-ai/pearai-vscode/tree/main/template): PearAI Conversation Templates. Some are used in the extension, others are meant as examples for users.
+- [`app/vscode`](https://github.com/trypear/pearai-extension/tree/main/app/vscode): Extension assets (e.g. icons, `package.json`, `README.md`, walkthrough pages) and packaging scripts.
+- [`doc`](https://github.com/trypear/pearai-extension/tree/main/doc): documentation (e.g. architecture)
+- [`lib/common`](https://github.com/trypear/pearai-extension/tree/main/lib/common): API definitions for the message and state protocol between the extension and the webview. Also contains shared types and utilities.
+- [`lib/extension`](https://github.com/trypear/pearai-extension/tree/main/lib/extension): The main extension logic.
+- [`lib/webview`](https://github.com/trypear/pearai-extension/tree/main/lib/webview): The webview. It is written using [React](https://reactjs.org/).
+- [`template`](https://github.com/trypear/pearai-extension/tree/main/template): PearAI Conversation Templates. Some are used in the extension, others are meant as examples for users.
 
 ## Extension Module: `lib/extension`
 
-The entrypoint for the extension is [`extension.ts`](https://github.com/pearai-ai/pearai-vscode/blob/main/lib/extension/src/extension.ts). It registers the commands and the webview panel. It also creates the chat model, panel and controller, which execute the main logic of the extension:
+The entrypoint for the extension is [`extension.ts`](https://github.com/trypear/pearai-extension/blob/main/lib/extension/src/extension.ts). It registers the commands and the webview panel. It also creates the chat model, panel and controller, which execute the main logic of the extension:
 
-- [`ChatModel.ts`](https://github.com/pearai-ai/pearai-vscode/blob/main/lib/extension/src/chat/ChatModel.ts): The chat model contains the different conversations and the currently active conversation.
-- [`ChatPanel.ts`](https://github.com/pearai-ai/pearai-vscode/blob/main/lib/extension/src/chat/ChatPanel.ts): The chat panel adds an abstraction layout over the webview panel o make it easier to use.
-- [`ChatController.ts`](https://github.com/pearai-ai/pearai-vscode/blob/main/lib/extension/src/chat/ChatController.ts): The chat controller handlers the different user actions, both from commands and from the webview. It executes logic, including chat creation, OpenAI API calls and updating the chat panel.
+- [`ChatModel.ts`](https://github.com/trypear/pearai-extension/blob/main/lib/extension/src/chat/ChatModel.ts): The chat model contains the different conversations and the currently active conversation.
+- [`ChatPanel.ts`](https://github.com/trypear/pearai-extension/blob/main/lib/extension/src/chat/ChatPanel.ts): The chat panel adds an abstraction layout over the webview panel o make it easier to use.
+- [`ChatController.ts`](https://github.com/trypear/pearai-extension/blob/main/lib/extension/src/chat/ChatController.ts): The chat controller handlers the different user actions, both from commands and from the webview. It executes logic, including chat creation, OpenAI API calls and updating the chat panel.
