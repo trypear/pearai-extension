@@ -1,9 +1,9 @@
 ---
 name: ✨ Feature request
-about: Suggest a new idea of what PearAI could do
+about: "Suggest a new idea of what PearAI could do (e.g.: add new shortcut, add new payment processor, etc.)"
 title: ""
 labels: "enhancement"
-assignees: ""
+assignees: "nang-dev,fryingpannn"
 ---
 
 ## Is this request related to a problem? Please describe.

@@ -35,8 +35,8 @@ export const ChatPanelView: React.FC<{
           Enter your OpenAI API key
         </button>
         <p>
-          PearAI uses the OpenAI API and requires an API key to work. You
-          can get an API key from{" "}
+          PearAI uses the OpenAI API and requires an API key to work. You can
+          get an API key from{" "}
           <a href="https://platform.openai.com/account/api-keys">
             platform.openai.com/account/api-keys
           </a>
@@ -88,12 +88,16 @@ export const ChatPanelView: React.FC<{
                 data: { id: conversation.id },
               });
             }}
-            onClickInsertPrompt={panelState.surfacePromptForOpenAIPlus ? () => {
-              sendMessage({
-                type: "insertPromptIntoEditor",
-                data: { id: conversation.id },
-              })
-            } : undefined}
+            onClickInsertPrompt={
+              panelState.surfacePromptForOpenAIPlus
+                ? () => {
+                    sendMessage({
+                      type: "insertPromptIntoEditor",
+                      data: { id: conversation.id },
+                    });
+                  }
+                : undefined
+            }
           />
         ) : (
           <CollapsedConversationView

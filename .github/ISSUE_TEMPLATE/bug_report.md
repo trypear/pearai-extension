@@ -3,7 +3,7 @@ name: 🐛 Bug report
 about: When PearAI crashes or has undesired side-effects, it's a bug
 title: ""
 labels: "bug"
-assignees: ""
+assignees: "nang-dev,fryingpannn"
 ---
 
 ## Describe the bug
