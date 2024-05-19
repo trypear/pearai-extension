@@ -241,6 +241,9 @@ body {
 .error-body {
   display: flex;
   justify-content: space-between;
+  overflow-wrap: anywhere;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .error-body>.error-retry {
@@ -269,6 +272,11 @@ body {
   cursor: pointer;
   text-align: center;
   margin-top: var(--pearai-container-padding);
+}
+
+.error-retry { 
+  min-width: fit-content;
+  align-self: end;
 }
 
 button.error-retry,
