@@ -14,12 +14,10 @@ This is the source code for the bulk of PearAI's functionality.
 
 > Pre-requisite: you have installed [git][install-git], [node][install-node] and [pnpm][install-pnpm].
 
-1. Clone the repo: `git clone git@github.com:trypear/pearai-extension.git`
-1. Go into the cloned repository: `cd pearai-extension`
-1. Clone the repo: `git clone git@github.com:trypear/pearai-extension.git`
-1. Go into the cloned repository: `cd pearai-extension`
-1. Install dependencies: `pnpm install`
-1. Build the extension: `pnpm build-all`
+1. Fork the repository and create your branch from main.
+1. Clone your fork.
+1. Install dependencies in repository root: `pnpm install`
+1. Build the extension in repository root: `pnpm build-all`
 
 The project uses [TypeScript][typescript], [Vitest][vitest] for the tests and [Prettier][prettier] for the formatting.
 
@@ -67,10 +65,6 @@ You can open a Pull-Request at any time. It can even be a draft if you need to a
 
 Once everything is ready, open a Pull-Request (if it's not already done) and ask for a review. We'll do our best to review it asap.
 
-Finally, [use all-contributors bot command][all-contributors-bot-command] to add yourself to the list of contributors. It's very easy to do, you basically need to mention the bot in a comment of your PR.
-
-Whether it's code, design, typo or documentation, every contribution is welcomed! Thank you!
-
 ## More documentation
 
 - You can find a brief introduction to the architecture of this extension [here][architecture-doc].
@@ -79,17 +73,3 @@ Whether it's code, design, typo or documentation, every contribution is welcomed
 
 - **Lint**: `pnpm nx lint --skip-nx-cache`
 - **Package**: `pnpm nx run vscode:package`‍
-
-<!-- Links -->
-
-[install-git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-[install-node]: https://nodejs.org/en/download/
-[install-pnpm]: https://pnpm.io/installation
-[typescript]: https://www.typescriptlang.org/
-[vitest]: https://vitest.dev/
-[prettier]: https://prettier.io
-[vscode-extension-docs]: https://code.visualstudio.com/api
-[openai-docs]: https://platform.openai.com/docs/introduction
-[vscode-debug-extension]: https://code.visualstudio.com/api/get-started/your-first-extension#debugging-the-extension
-[all-contributors-bot-command]: https://allcontributors.org/docs/en/bot/usage#all-contributors-add
-[architecture-doc]: https://github.com/trypear/pearai-extension/blob/main/doc/architecture.md
