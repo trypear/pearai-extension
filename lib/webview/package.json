@@ -12,7 +12,7 @@
     "eslint-plugin-react": "^7.32.1"
   },
   "dependencies": {
-    "@pearai/common": "*",
+    "@pearai/common": "workspace:*",
     "prismjs": "1.29.0",
     "react": "18.2.0",
     "react-diff-viewer-continued": "3.2.5",
