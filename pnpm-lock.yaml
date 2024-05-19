@@ -13,13 +13,16 @@ importers:
         version: 18.11.18
       '@typescript-eslint/eslint-plugin':
         specifier: ^5.49.0
-        version: 5.49.0(@typescript-eslint/parser@5.49.0)(eslint@8.32.0)(typescript@4.9.4)
+        version: 5.49.0(@typescript-eslint/parser@5.49.0(eslint@8.32.0)(typescript@4.9.4))(eslint@8.32.0)(typescript@4.9.4)
       '@typescript-eslint/parser':
         specifier: ^5.49.0
         version: 5.49.0(eslint@8.32.0)(typescript@4.9.4)
       '@vscode/vsce':
         specifier: 2.16.0
         version: 2.16.0
+      cross-env:
+        specifier: ^7.0.3
+        version: 7.0.3
       esbuild:
         specifier: 0.16.10
         version: 0.16.10
@@ -34,7 +37,7 @@ importers:
         version: 8.0.3
       lint-staged:
         specifier: 13.1.0
-        version: 13.1.0
+        version: 13.1.0(enquirer@2.3.6)
       nx:
         specifier: 15.4.1
         version: 15.4.1
@@ -54,10 +57,10 @@ importers:
   app/vscode:
     dependencies:
       '@pearai/extension':
-        specifier: '*'
+        specifier: workspace:*
         version: link:../../lib/extension
       '@pearai/webview':
-        specifier: '*'
+        specifier: workspace:*
         version: link:../../lib/webview
 
   lib/common:
@@ -69,7 +72,7 @@ importers:
   lib/extension:
     dependencies:
       '@pearai/common':
-        specifier: '*'
+        specifier: workspace:*
         version: link:../common
       handlebars:
         specifier: 4.7.8
@@ -103,7 +106,7 @@ importers:
   lib/webview:
     dependencies:
       '@pearai/common':
-        specifier: '*'
+        specifier: workspace:*
         version: link:../common
       prismjs:
         specifier: 1.29.0
@@ -113,7 +116,7 @@ importers:
         version: 18.2.0
       react-diff-viewer-continued:
         specifier: 3.2.5
-        version: 3.2.5(react-dom@18.2.0)(react@18.2.0)
+        version: 3.2.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
@@ -784,6 +787,11 @@ packages:
 
   create-emotion@10.0.27:
     resolution: {integrity: sha512-fIK73w82HPPn/RsAij7+Zt8eCE8SptcJ3WoRMfxMtjteYxud8GDTKKld7MYwAX2TVhrw29uR1N/bVGxeStHILg==}
+
+  cross-env@7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
 
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
@@ -2746,7 +2754,7 @@ snapshots:
 
   '@types/vscode@1.72.0': {}
 
-  '@typescript-eslint/eslint-plugin@5.49.0(@typescript-eslint/parser@5.49.0)(eslint@8.32.0)(typescript@4.9.4)':
+  '@typescript-eslint/eslint-plugin@5.49.0(@typescript-eslint/parser@5.49.0(eslint@8.32.0)(typescript@4.9.4))(eslint@8.32.0)(typescript@4.9.4)':
     dependencies:
       '@typescript-eslint/parser': 5.49.0(eslint@8.32.0)(typescript@4.9.4)
       '@typescript-eslint/scope-manager': 5.49.0
@@ -2759,6 +2767,7 @@ snapshots:
       regexpp: 3.2.0
       semver: 7.3.8
       tsutils: 3.21.0(typescript@4.9.4)
+    optionalDependencies:
       typescript: 4.9.4
     transitivePeerDependencies:
       - supports-color
@@ -2770,6 +2779,7 @@ snapshots:
       '@typescript-eslint/typescript-estree': 5.49.0(typescript@4.9.4)
       debug: 4.3.4
       eslint: 8.32.0
+    optionalDependencies:
       typescript: 4.9.4
     transitivePeerDependencies:
       - supports-color
@@ -2786,6 +2796,7 @@ snapshots:
       debug: 4.3.4
       eslint: 8.32.0
       tsutils: 3.21.0(typescript@4.9.4)
+    optionalDependencies:
       typescript: 4.9.4
     transitivePeerDependencies:
       - supports-color
@@ -2801,6 +2812,7 @@ snapshots:
       is-glob: 4.0.3
       semver: 7.3.8
       tsutils: 3.21.0(typescript@4.9.4)
+    optionalDependencies:
       typescript: 4.9.4
     transitivePeerDependencies:
       - supports-color
@@ -3182,6 +3194,10 @@ snapshots:
       '@emotion/serialize': 0.11.16
       '@emotion/sheet': 0.9.4
       '@emotion/utils': 0.11.3
+
+  cross-env@7.0.3:
+    dependencies:
+      cross-spawn: 7.0.3
 
   cross-spawn@7.0.3:
     dependencies:
@@ -3927,7 +3943,7 @@ snapshots:
     dependencies:
       uc.micro: 1.0.6
 
-  lint-staged@13.1.0:
+  lint-staged@13.1.0(enquirer@2.3.6):
     dependencies:
       cli-truncate: 3.1.0
       colorette: 2.0.19
@@ -3935,7 +3951,7 @@ snapshots:
       debug: 4.3.4
       execa: 6.1.0
       lilconfig: 2.0.6
-      listr2: 5.0.7
+      listr2: 5.0.7(enquirer@2.3.6)
       micromatch: 4.0.5
       normalize-path: 3.0.0
       object-inspect: 1.12.3
@@ -3946,7 +3962,7 @@ snapshots:
       - enquirer
       - supports-color
 
-  listr2@5.0.7:
+  listr2@5.0.7(enquirer@2.3.6):
     dependencies:
       cli-truncate: 2.1.0
       colorette: 2.0.19
@@ -3956,6 +3972,8 @@ snapshots:
       rxjs: 7.8.0
       through: 2.3.8
       wrap-ansi: 7.0.0
+    optionalDependencies:
+      enquirer: 2.3.6
 
   local-pkg@0.4.3: {}
 
@@ -4522,7 +4540,7 @@ snapshots:
       strip-json-comments: 2.0.1
     optional: true
 
-  react-diff-viewer-continued@3.2.5(react-dom@18.2.0)(react@18.2.0):
+  react-diff-viewer-continued@3.2.5(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
     dependencies:
       classnames: 2.3.2
       diff: 5.1.0
@@ -5042,12 +5060,12 @@ snapshots:
 
   vite@4.0.4(@types/node@18.11.18):
     dependencies:
-      '@types/node': 18.11.18
       esbuild: 0.16.10
       postcss: 8.4.21
       resolve: 1.22.1
       rollup: 3.12.1
     optionalDependencies:
+      '@types/node': 18.11.18
       fsevents: 2.3.2
 
   vitest@0.28.3:

@@ -410,7 +410,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "build-all": "pnpm nx run-many --target=build",
+    "build-all": "cross-env NODE_ENV=production pnpm nx run-many --target=build",
     "build-extension": "pnpm nx run vscode:build",
     "test": "pnpm nx run extension:test",
     "test-watch": "pnpm nx run extension:test-watch",
@@ -424,6 +424,7 @@
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
     "@vscode/vsce": "2.16.0",
+    "cross-env": "^7.0.3",
     "esbuild": "0.16.10",
     "eslint": "^8.32.0",
     "eslint-config-prettier": "8.6.0",
