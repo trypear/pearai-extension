@@ -1,4 +1,4 @@
-name: Check Format and Lint 
+name: Check Format and Lint
 
 on: [push, pull_request]
 
@@ -17,12 +17,16 @@ jobs:
 
       - name: Install yarn
         run: npm install -g yarn
+        working-directory: ./extensions/pearai-extension
 
       - name: Install dependencies
         run: yarn
+        working-directory: ./extensions/pearai-extension
 
       - name: Run Prettier
         run: yarn prettier --check './**/src/**/*.{ts,tsx}'
+        working-directory: ./extensions/pearai-extension
 
       - name: Run ESLint
         run: yarn eslint './**/src/**/*.{ts,tsx}' --quiet
+        working-directory: ./extensions/pearai-extension
