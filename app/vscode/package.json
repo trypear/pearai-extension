@@ -5,7 +5,7 @@
   "scripts": {},
   "devDependencies": {},
   "dependencies": {
-    "@pearai/extension": "workspace:*",
-    "@pearai/webview": "workspace:*"
+    "@pearai/extension": "*",
+    "@pearai/webview": "*"
   }
 }

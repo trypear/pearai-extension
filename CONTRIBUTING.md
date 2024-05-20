@@ -12,12 +12,14 @@ This is the source code for the bulk of PearAI's functionality.
 
 ## Get started
 
-> Pre-requisite: you have installed [git][install-git], [node][install-node] and [pnpm][install-pnpm].
+> Pre-requisite: you have installed [git][install-git], [node][install-node] and [yarn][install-yarn].
+>
+> _Windows users need use [wsl][install-wsl] for local development, otherwise you should have no issues._
 
 1. Fork the repository and create your branch from main.
 1. Clone your fork.
-1. Install dependencies in repository root: `pnpm install`
-1. Build the extension in repository root: `pnpm build-all`
+1. Install dependencies in repository root: `yarn`
+1. Build the extension in repository root: `yarn build-all`
 
 The project uses [TypeScript][typescript], [Vitest][vitest] for the tests and [Prettier][prettier] for the formatting.
 

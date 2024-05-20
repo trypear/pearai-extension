@@ -24,4 +24,4 @@ cp dev/webview/dist/webview.js dist/webview/dist/webview.js
 
 echo "Packaging extension..."
 cd dist
-pnpm vsce package --no-dependencies --no-rewrite-relative-links
+yarn vsce package --no-dependencies --no-rewrite-relative-links
