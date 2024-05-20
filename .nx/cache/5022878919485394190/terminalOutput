@@ -1,5 +1,0 @@
-[2m> [22mnpx esbuild build/webview.js --external:vscode --bundle --platform=browser --outfile=dist/webview.js
-
-
-  dist/webview.js  1.6mb ⚠️
-

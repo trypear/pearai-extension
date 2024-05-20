@@ -1,3 +1,0 @@
-[2m> [22mtsc --filter=common
-
-error TS5023: Unknown compiler option '--filter=common'.

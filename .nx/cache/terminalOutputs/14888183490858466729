@@ -1,5 +1,0 @@
-[2m> [22mnpx esbuild build/extension.js --external:vscode --bundle --platform=node --outfile=dist/extension.js
-
-
-  dist/extension.js  2.4mb ⚠️
-

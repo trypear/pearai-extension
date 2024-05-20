@@ -1,4 +1,0 @@
-[2m> [22mtsc
-
-../../node_modules/react-markdown/lib/ast-to-react.d.ts(17,44): error TS2344: Type 'T' does not satisfy the constraint 'ElementType<any, keyof IntrinsicElements>'.
-  Type 'T' is not assignable to type 'FunctionComponent<any>'.

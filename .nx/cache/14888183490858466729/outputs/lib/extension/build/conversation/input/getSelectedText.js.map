@@ -1,1 +1,0 @@
-{"version":3,"file":"getSelectedText.js","sourceRoot":"","sources":["../../../src/conversation/input/getSelectedText.ts"],"names":[],"mappings":";;;AAAA,kEAA+D;AAExD,MAAM,eAAe,GAAG,KAAK,IAAI,EAAE;IACxC,MAAM,YAAY,GAAG,IAAA,iCAAe,GAAE,CAAC;IACvC,OAAO,YAAY,EAAE,QAAQ,EAAE,OAAO,CAAC,YAAY,EAAE,SAAS,CAAC,CAAC;AAClE,CAAC,CAAC;AAHW,QAAA,eAAe,mBAG1B"}
