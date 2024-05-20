@@ -17,16 +17,14 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
+      - name: Install yarn
+        run: npm install -g yarn
 
       - name: Install dependencies
-        run: pnpm install
+        run: yarn
 
       - name: Build & deploy to VS Code
-        run: pnpm deploy:vscode
+        run: yarn deploy:vscode
         env:
           NODE_OPTIONS: "--max_old_space_size=8192"
           VSCE_PAT: ${{ secrets.VSCODE_ACCESS_TOKEN }}
