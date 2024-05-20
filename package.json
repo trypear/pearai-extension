@@ -243,12 +243,12 @@
       {
         "command": "pearai.startChat",
         "when": "isMac",
-        "key": "Ctrl+Cmd+c"
+        "key": "Cmd+l"
       },
       {
         "command": "pearai.startChat",
         "when": "!isMac",
-        "key": "Ctrl+Alt+c"
+        "key": "Alt+l"
       },
       {
         "command": "pearai.editCode",
