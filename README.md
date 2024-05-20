@@ -2,8 +2,8 @@
 
 This is the source code for the bulk of PearAI's functionality. Founded by [nang](https://youtube.com/nang88) and [FryingPan](https://youtube.com/@FryingPan)
 
-To download the full product: visit https://trypear.ai
-To see the parent repository: visit https://github.com/trypear/pearai
+To download the full product, visit https://trypear.ai
+To see the parent repository, visit https://github.com/trypear/pearai
 
 <!-- prettier-ignore-start -->
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -19,27 +19,27 @@ PearAI currently only supports OpenAI (more to come soon). It requires an OpenAI
 
 ### AI Chat
 
-Chat with PearAI about your code and software development topics. PearAI knows the editor selection at the time of conversation start.
+Chat with PearAI about your code and software development topics. PearAI knows the editor selection at the time the conversation starts.
 
 # Generate Code
 
-Instruct PearAI to generate code for you.
+You can tell PearAI to generate code for you.
 
 ## Edit Code
 
 Change the selected code by instructing PearAI to create an edit.
 
-### Explain Code
+### ExplCodeCode
 
-Ask PearAI to explain the selected code.
+Ask PearAI to explain the selecCodecode.
 
 ### Generate Tests
 
-Generate test cases for the selected code.
+Generate test cases for the selecCodecode.
 
 ## Find Bugs
 
-Find potential defects in your code.
+Find potential defects in yCodecode.
 
 ### Diagnose Errors
 
@@ -49,7 +49,7 @@ Let PearAI identify error causes and suggest fixes to fix compiler and linter er
 
 ### [Contributing Guide](CONTRIBUTING.md)
 
-Read our [contributing guide](CONTRIBUTING.md) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes.
+Read our [contributing guide](CONTRIBUTING.md) to learn about our development process, how to propose bug fixes and improvements, and how to build and test your changes.
 
 To help you get your feet wet and become familiar with our contribution process, we have a list of [good first issues](https://github.com/trypear/pearai-extension/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) that contains things with a relatively limited scope. This is a great place to get started!
 
