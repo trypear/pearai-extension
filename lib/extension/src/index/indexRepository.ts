@@ -157,7 +157,7 @@ function isSupportedFile(file: string) {
     !(
       file.endsWith(".min.js") ||
       file.endsWith(".min.css") ||
-      file.endsWith("pnpm-lock.yaml")
+      file.endsWith("yarn-lock.yaml")
     )
   );
 }
