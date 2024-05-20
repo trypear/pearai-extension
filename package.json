@@ -418,6 +418,10 @@
     "deploy:vscode": "yarn nx run vscode:publish-vscode",
     "deploy:ovsx": "yarn nx run vscode:publish-ovsx"
   },
+  "workspaces": [
+    "app/*",
+    "lib/*"
+  ],
   "private": true,
   "devDependencies": {
     "@types/node": "^18.11.18",
