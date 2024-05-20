@@ -1,0 +1,1 @@
+{"version":3,"file":"IncomingMessage.js","sourceRoot":"","sources":["../../src/webview-api/IncomingMessage.ts"],"names":[],"mappings":";;;;;;AAAA,8CAAsB;AACtB,6CAAgD;AAEnC,QAAA,qBAAqB,GAAG,aAAG,CAAC,MAAM,CAAC;IAC9C,IAAI,EAAE,aAAG,CAAC,MAAM,CAAC;QACf,IAAI,EAAE,aAAG,CAAC,OAAO,CAAC,aAAa,CAAC;QAChC,KAAK,EAAE,6BAAgB;KACxB,CAAC;CACH,CAAC,CAAC"}

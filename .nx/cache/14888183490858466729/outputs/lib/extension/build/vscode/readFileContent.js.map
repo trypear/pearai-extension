@@ -1,0 +1,1 @@
+{"version":3,"file":"readFileContent.js","sourceRoot":"","sources":["../../src/vscode/readFileContent.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,+CAAiC;AAE1B,KAAK,UAAU,eAAe,CAAC,IAAgB;IACpD,MAAM,IAAI,GAAG,MAAM,MAAM,CAAC,SAAS,CAAC,EAAE,CAAC,QAAQ,CAAC,IAAI,CAAC,CAAC;IACtD,OAAO,MAAM,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC,QAAQ,CAAC,MAAM,CAAC,CAAC;AAC5C,CAAC;AAHD,0CAGC"}

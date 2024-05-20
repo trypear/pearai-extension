@@ -1,0 +1,1 @@
+{"version":3,"file":"getActiveEditor.js","sourceRoot":"","sources":["../../src/vscode/getActiveEditor.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,+CAAiC;AAEjC,SAAgB,eAAe;IAC7B,OAAO,MAAM,CAAC,MAAM,CAAC,gBAAgB,IAAI,MAAM,CAAC,MAAM,CAAC,kBAAkB,CAAC,CAAC,CAAC,CAAC;AAC/E,CAAC;AAFD,0CAEC"}

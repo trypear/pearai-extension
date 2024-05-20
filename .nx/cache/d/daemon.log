@@ -1,0 +1,418 @@
+[NX Daemon Server] - 2024-05-20T07:06:53.190Z - Started listening on: /tmp/1712c1a44888372fcfb7/d.sock
+[NX Daemon Server] - 2024-05-20T07:06:53.191Z - [WATCHER]: Subscribed to changes within: /home/ender/code/pearai-extension (native)
+[NX Daemon Server] - 2024-05-20T07:06:53.199Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:06:53.200Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-05-20T07:06:53.201Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:06:53.208Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-05-20T07:06:53.208Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:06:53.208Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:06:53.331Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:06:53.332Z - Time taken for 'total for creating and serializing project graph' 129.88807100057602ms
+[NX Daemon Server] - 2024-05-20T07:06:53.332Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:06:53.333Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:06:53.333Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 130. Response time: 2.
+[NX Daemon Server] - 2024-05-20T07:06:53.357Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:06:53.357Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:06:53.357Z - Handled HASH_TASKS. Handling time: 10. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:06:53.358Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.32038099970668554ms
+[NX Daemon Server] - 2024-05-20T07:06:53.493Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:06:53.493Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:06:53.493Z - Handled RECORD_OUTPUTS_HASH. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:06:53.503Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:07:25.074Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:07:25.074Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:07:25.075Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:07:25.076Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:07:25.077Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:07:25.077Z - Time taken for 'total for creating and serializing project graph' 0.645987999625504ms
+[NX Daemon Server] - 2024-05-20T07:07:25.078Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:07:25.078Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:07:25.081Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:07:57.084Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:07:57.084Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:07:57.084Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:07:57.085Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:07:57.086Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:07:57.088Z - Time taken for 'total for creating and serializing project graph' 0.7997909998521209ms
+[NX Daemon Server] - 2024-05-20T07:07:57.088Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:07:57.088Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-05-20T07:07:57.091Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:08:11.592Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:08:11.592Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:08:11.593Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:08:11.594Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:08:11.594Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:08:11.595Z - Time taken for 'total for creating and serializing project graph' 0.5611630007624626ms
+[NX Daemon Server] - 2024-05-20T07:08:11.596Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:08:11.596Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-05-20T07:08:11.601Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:08:16.311Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:08:16.312Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:08:16.312Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:08:16.313Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:08:16.314Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:08:16.315Z - Time taken for 'total for creating and serializing project graph' 0.6189759997650981ms
+[NX Daemon Server] - 2024-05-20T07:08:16.315Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:08:16.315Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:08:16.330Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:08:16.331Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:08:16.331Z - Handled HASH_TASKS. Handling time: 2. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:08:16.331Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.27094299998134375ms
+[NX Daemon Server] - 2024-05-20T07:08:17.941Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:08:17.977Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:17.977Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:17.978Z - Handled RECORD_OUTPUTS_HASH. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:08:17.995Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:08:17.999Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:08:26.157Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:08:26.157Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:08:26.158Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:08:26.158Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:08:26.159Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:08:26.160Z - Time taken for 'total for creating and serializing project graph' 0.6277200002223253ms
+[NX Daemon Server] - 2024-05-20T07:08:26.161Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:08:26.161Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2024-05-20T07:08:26.175Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:08:26.175Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:08:26.175Z - Handled HASH_TASKS. Handling time: 3. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:08:26.175Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.20409900043159723ms
+[NX Daemon Server] - 2024-05-20T07:08:26.206Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:08:26.206Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:08:26.206Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:08:26.208Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:26.208Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:26.208Z - Handled RECORD_OUTPUTS_HASH. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:08:29.713Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:08:29.786Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:08:29.839Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:08:29.852Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:29.852Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:29.852Z - Handled RECORD_OUTPUTS_HASH. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:08:29.891Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:08:30.385Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:30.385Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:30.385Z - Handled RECORD_OUTPUTS_HASH. Handling time: 2. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:08:30.408Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:08:30.420Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:08:44.497Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:08:44.497Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:08:44.498Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:08:44.499Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:08:44.499Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:08:44.501Z - Time taken for 'total for creating and serializing project graph' 0.6692779995501041ms
+[NX Daemon Server] - 2024-05-20T07:08:44.501Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:08:44.501Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2024-05-20T07:08:44.519Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:08:44.519Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:08:44.519Z - Handled HASH_TASKS. Handling time: 5. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:08:44.519Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.2852870002388954ms
+[NX Daemon Server] - 2024-05-20T07:08:44.546Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:08:44.546Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:08:44.547Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:08:44.549Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:44.549Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:44.549Z - Handled RECORD_OUTPUTS_HASH. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:08:48.545Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:08:48.566Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:48.566Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:48.566Z - Handled RECORD_OUTPUTS_HASH. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:08:48.597Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:08:49.059Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:49.060Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:08:49.060Z - Handled RECORD_OUTPUTS_HASH. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:08:49.079Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:08:49.092Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:12:07.309Z - [WATCHER]: package.json was modified
+[NX Daemon Server] - 2024-05-20T07:12:07.310Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:12:07.414Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-05-20T07:12:07.414Z - [REQUEST]: package.json
+[NX Daemon Server] - 2024-05-20T07:12:07.414Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:12:07.445Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 1.0398249998688698ms
+[NX Daemon Server] - 2024-05-20T07:12:13.346Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:12:13.347Z - [WATCHER]: Stopping the watcher for /home/ender/code/pearai-extension (sources)
+[NX Daemon Server] - 2024-05-20T07:12:13.347Z - [WATCHER]: Stopping the watcher for /home/ender/code/pearai-extension (outputs)
+[NX Daemon Server] - 2024-05-20T07:12:13.347Z - Server stopped because: "Lock file changed"
+[NX Daemon Server] - 2024-05-20T07:13:28.336Z - Started listening on: /tmp/1712c1a44888372fcfb7/d.sock
+[NX Daemon Server] - 2024-05-20T07:13:28.337Z - [WATCHER]: Subscribed to changes within: /home/ender/code/pearai-extension (native)
+[NX Daemon Server] - 2024-05-20T07:13:28.341Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:13:28.341Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-05-20T07:13:28.343Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:13:28.351Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-05-20T07:13:28.351Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:13:28.351Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:13:28.489Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:13:28.490Z - Time taken for 'total for creating and serializing project graph' 146.23648700024933ms
+[NX Daemon Server] - 2024-05-20T07:13:28.490Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:13:28.491Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:13:28.491Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 146. Response time: 2.
+[NX Daemon Server] - 2024-05-20T07:13:28.516Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:13:28.516Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:13:28.516Z - Handled HASH_TASKS. Handling time: 10. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:13:28.517Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.397597000002861ms
+[NX Daemon Server] - 2024-05-20T07:13:30.030Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:30.069Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:13:30.069Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:13:30.069Z - Handled RECORD_OUTPUTS_HASH. Handling time: 2. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:13:30.086Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:35.298Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:35.359Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:35.423Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:35.443Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:13:35.443Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:13:35.443Z - Handled RECORD_OUTPUTS_HASH. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:13:36.800Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:36.856Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:36.911Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:36.988Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:37.044Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:37.098Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:37.153Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:37.173Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:13:37.173Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:13:37.173Z - Handled RECORD_OUTPUTS_HASH. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:13:37.186Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:13:44.882Z - [WATCHER]: package.json was modified
+[NX Daemon Server] - 2024-05-20T07:13:44.882Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:44.985Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-05-20T07:13:44.985Z - [REQUEST]: package.json
+[NX Daemon Server] - 2024-05-20T07:13:44.985Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:13:45.019Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.7915670005604625ms
+[NX Daemon Server] - 2024-05-20T07:13:47.924Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:13:47.925Z - [WATCHER]: Stopping the watcher for /home/ender/code/pearai-extension (sources)
+[NX Daemon Server] - 2024-05-20T07:13:47.925Z - [WATCHER]: Stopping the watcher for /home/ender/code/pearai-extension (outputs)
+[NX Daemon Server] - 2024-05-20T07:13:47.925Z - Server stopped because: "Lock file changed"
+[NX Daemon Server] - 2024-05-20T07:14:06.311Z - Started listening on: /tmp/1712c1a44888372fcfb7/d.sock
+[NX Daemon Server] - 2024-05-20T07:14:06.313Z - [WATCHER]: Subscribed to changes within: /home/ender/code/pearai-extension (native)
+[NX Daemon Server] - 2024-05-20T07:14:06.319Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:14:06.319Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-05-20T07:14:06.321Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:14:06.329Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-05-20T07:14:06.329Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:14:06.329Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:14:06.478Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:14:06.479Z - Time taken for 'total for creating and serializing project graph' 156.71070700045675ms
+[NX Daemon Server] - 2024-05-20T07:14:06.479Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:14:06.480Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:14:06.480Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 157. Response time: 2.
+[NX Daemon Server] - 2024-05-20T07:14:06.507Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:14:06.507Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:14:06.507Z - Handled HASH_TASKS. Handling time: 9. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:14:06.507Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.3594140000641346ms
+[NX Daemon Server] - 2024-05-20T07:14:06.533Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:14:06.533Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:14:06.533Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:14:06.542Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:06.542Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:06.542Z - Handled RECORD_OUTPUTS_HASH. Handling time: 2. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:14:06.590Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:15.689Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:15.749Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:15.804Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:15.910Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:15.963Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:16.017Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:16.070Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:16.124Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:16.181Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:16.202Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:16.202Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:16.202Z - Handled RECORD_OUTPUTS_HASH. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:14:16.213Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:14:16.213Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:14:16.213Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 3. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:14:16.215Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:16.215Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:16.215Z - Handled RECORD_OUTPUTS_HASH. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:14:16.235Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:16.251Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:16.252Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:16.252Z - Handled RECORD_OUTPUTS_HASH. Handling time: 3. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:14:16.257Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:14:16.257Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:14:16.257Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 3. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:14:16.277Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:16.277Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:16.277Z - Handled RECORD_OUTPUTS_HASH. Handling time: 3. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:14:16.293Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:16.533Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:16.533Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:16.533Z - Handled RECORD_OUTPUTS_HASH. Handling time: 2. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:14:16.549Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:14:20.140Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:20.141Z - [WATCHER]: package.json was modified
+[NX Daemon Server] - 2024-05-20T07:14:20.244Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-05-20T07:14:20.244Z - [REQUEST]: package.json
+[NX Daemon Server] - 2024-05-20T07:14:20.244Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:14:20.274Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.5544210001826286ms
+[NX Daemon Server] - 2024-05-20T07:14:24.107Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:24.107Z - [WATCHER]: Stopping the watcher for /home/ender/code/pearai-extension (sources)
+[NX Daemon Server] - 2024-05-20T07:14:24.108Z - [WATCHER]: Stopping the watcher for /home/ender/code/pearai-extension (outputs)
+[NX Daemon Server] - 2024-05-20T07:14:24.108Z - Server stopped because: "Lock file changed"
+[NX Daemon Server] - 2024-05-20T07:14:37.584Z - Started listening on: /tmp/1712c1a44888372fcfb7/d.sock
+[NX Daemon Server] - 2024-05-20T07:14:37.585Z - [WATCHER]: Subscribed to changes within: /home/ender/code/pearai-extension (native)
+[NX Daemon Server] - 2024-05-20T07:14:37.587Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:14:37.587Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-05-20T07:14:37.590Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:14:37.602Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-05-20T07:14:37.603Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:14:37.603Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:14:37.811Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:14:37.814Z - Time taken for 'total for creating and serializing project graph' 221.35661500040442ms
+[NX Daemon Server] - 2024-05-20T07:14:37.814Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:14:37.815Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:14:37.815Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 221. Response time: 4.
+[NX Daemon Server] - 2024-05-20T07:14:37.852Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:14:37.852Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:14:37.853Z - Handled HASH_TASKS. Handling time: 14. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:14:37.853Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.5566859999671578ms
+[NX Daemon Server] - 2024-05-20T07:14:40.814Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:40.876Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:40.932Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:40.933Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:40.933Z - Handled RECORD_OUTPUTS_HASH. Handling time: 2. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:14:40.933Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:51.271Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:51.336Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:51.393Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:51.457Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:51.514Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:51.591Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:51.645Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:51.700Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:51.708Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:51.708Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:51.708Z - Handled RECORD_OUTPUTS_HASH. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:14:51.759Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:51.772Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:51.772Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:51.773Z - Handled RECORD_OUTPUTS_HASH. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:14:52.836Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:52.836Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:52.837Z - Handled RECORD_OUTPUTS_HASH. Handling time: 2. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:14:52.841Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:52.841Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:52.841Z - Handled RECORD_OUTPUTS_HASH. Handling time: 3. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:14:52.857Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:14:53.228Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:53.228Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:14:53.228Z - Handled RECORD_OUTPUTS_HASH. Handling time: 2. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:14:53.247Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:16:16.157Z - [WATCHER]: package.json was modified
+[NX Daemon Server] - 2024-05-20T07:16:16.157Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:16.259Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-05-20T07:16:16.259Z - [REQUEST]: package.json
+[NX Daemon Server] - 2024-05-20T07:16:16.259Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:16:16.293Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.2951570004224777ms
+[NX Daemon Server] - 2024-05-20T07:16:17.892Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:17.893Z - [WATCHER]: Stopping the watcher for /home/ender/code/pearai-extension (sources)
+[NX Daemon Server] - 2024-05-20T07:16:17.893Z - [WATCHER]: Stopping the watcher for /home/ender/code/pearai-extension (outputs)
+[NX Daemon Server] - 2024-05-20T07:16:17.893Z - Server stopped because: "Lock file changed"
+[NX Daemon Server] - 2024-05-20T07:16:30.997Z - Started listening on: /tmp/1712c1a44888372fcfb7/d.sock
+[NX Daemon Server] - 2024-05-20T07:16:30.999Z - [WATCHER]: Subscribed to changes within: /home/ender/code/pearai-extension (native)
+[NX Daemon Server] - 2024-05-20T07:16:31.002Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:16:31.003Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2024-05-20T07:16:31.004Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:16:31.012Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2024-05-20T07:16:31.012Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:16:31.012Z - [REQUEST]: 
+[NX Daemon Server] - 2024-05-20T07:16:31.141Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:16:31.142Z - Time taken for 'total for creating and serializing project graph' 136.37743799947202ms
+[NX Daemon Server] - 2024-05-20T07:16:31.142Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:16:31.143Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:16:31.143Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 137. Response time: 2.
+[NX Daemon Server] - 2024-05-20T07:16:31.167Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:16:31.167Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:16:31.167Z - Handled HASH_TASKS. Handling time: 9. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:31.167Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.3052369998767972ms
+[NX Daemon Server] - 2024-05-20T07:16:31.187Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:31.187Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:31.187Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 2. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:31.194Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:31.194Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:31.194Z - Handled RECORD_OUTPUTS_HASH. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:31.243Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:39.836Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:39.894Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:40.001Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:40.056Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:40.113Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:40.167Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:40.212Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:40.212Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:40.213Z - Handled RECORD_OUTPUTS_HASH. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:16:40.222Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:40.223Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:40.223Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 3. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:16:40.223Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:40.239Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:40.240Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:40.240Z - Handled RECORD_OUTPUTS_HASH. Handling time: 2. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:16:40.241Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:40.241Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:40.241Z - Handled RECORD_OUTPUTS_HASH. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:40.251Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:40.252Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:40.252Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 3. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:16:40.283Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:40.295Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:40.295Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:40.296Z - Handled RECORD_OUTPUTS_HASH. Handling time: 4. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:16:40.305Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:40.305Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:40.305Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 2. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:40.308Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:40.308Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:40.308Z - Handled RECORD_OUTPUTS_HASH. Handling time: 2. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:40.319Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:16:40.339Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:46.953Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:16:46.953Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:16:46.954Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2024-05-20T07:16:46.956Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2024-05-20T07:16:46.957Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2024-05-20T07:16:46.958Z - Time taken for 'total for creating and serializing project graph' 0.8313710000365973ms
+[NX Daemon Server] - 2024-05-20T07:16:46.958Z - Done responding to the client project-graph
+[NX Daemon Server] - 2024-05-20T07:16:46.958Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:16:46.978Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:16:46.979Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2024-05-20T07:16:46.979Z - Handled HASH_TASKS. Handling time: 6. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:16:46.979Z - Time taken for 'Load Nx Plugin: /home/ender/code/pearai-extension/node_modules/nx/src/plugins/project-json/build-nodes/package-json-next-to-project-json' 0.21875599958002567ms
+[NX Daemon Server] - 2024-05-20T07:16:47.008Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:47.008Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:47.008Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:47.010Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:47.010Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:47.010Z - Handled RECORD_OUTPUTS_HASH. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:53.822Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:53.884Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:53.988Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:54.044Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:54.108Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:54.125Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:54.126Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:54.126Z - Handled RECORD_OUTPUTS_HASH. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:16:54.134Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:54.135Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:54.135Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 3. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:16:54.158Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:54.159Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:54.159Z - Handled RECORD_OUTPUTS_HASH. Handling time: 4. Response time: 1.
+[NX Daemon Server] - 2024-05-20T07:16:54.170Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:54.210Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:54.210Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:54.210Z - Handled RECORD_OUTPUTS_HASH. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:54.220Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:54.220Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:54.220Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 4. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:54.222Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2024-05-20T07:16:54.251Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:54.251Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:54.251Z - Handled RECORD_OUTPUTS_HASH. Handling time: 3. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:54.259Z - [REQUEST]: Responding to the client. outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:54.259Z - Done responding to the client outputsHashesMatch
+[NX Daemon Server] - 2024-05-20T07:16:54.259Z - Handled OUTPUTS_HASHES_MATCH. Handling time: 2. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:54.262Z - [REQUEST]: Responding to the client. recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:54.262Z - Done responding to the client recordOutputsHash
+[NX Daemon Server] - 2024-05-20T07:16:54.262Z - Handled RECORD_OUTPUTS_HASH. Handling time: 2. Response time: 0.
+[NX Daemon Server] - 2024-05-20T07:16:54.272Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2024-05-20T07:16:54.282Z - [WATCHER]: Processing file changes in outputs

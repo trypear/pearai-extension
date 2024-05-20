@@ -1,0 +1,1 @@
+{"version":3,"file":"SendMessage.js","sourceRoot":"","sources":["../../src/vscode/SendMessage.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,aAAa,CAAC;AAKxC,MAAM,CAAC,MAAM,WAAW,GAAgB,CAAC,OAAO,EAAE,EAAE;IAClD,SAAS,CAAC,WAAW,CAAC,OAAO,CAAC,CAAC;AACjC,CAAC,CAAC"}
