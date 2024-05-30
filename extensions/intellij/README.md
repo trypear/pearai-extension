@@ -6,7 +6,7 @@
 
 <div align="center">
 
-**[Continue](https://continue.dev/docs) keeps developers in flow. Our open-source [VS Code](https://marketplace.visualstudio.com/items?itemName=Continue.continue) and [JetBrains](https://plugins.jetbrains.com/plugin/22707-continue-extension) extensions enable you to easily create your own modular AI software development system that you can improve.**
+**[Continue](https://trypear.ai/docs) keeps developers in flow. Our open-source [VS Code](https://marketplace.visualstudio.com/items?itemName=Continue.continue) and [JetBrains](https://plugins.jetbrains.com/plugin/22707-continue-extension) extensions enable you to easily create your own modular AI software development system that you can improve.**
 
 </div>
 
@@ -42,7 +42,7 @@
 
 You can try out Continue with our free trial models before configuring your setup.
 
-Learn more about the models and providers [here](https://continue.dev/docs/setup/overview).
+Learn more about the models and providers [here](https://trypear.ai/docs/setup/overview).
 
 ## License
 

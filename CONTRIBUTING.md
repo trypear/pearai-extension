@@ -1,4 +1,4 @@
-# Contributing to Continue
+# Contributing to PearAI
 
 ## Table of Contents
 
@@ -26,7 +26,7 @@
 
 ## 🐛 Report Bugs
 
-If you find a bug, please [create an issue](https://github.com/continuedev/continue/issues) to report it! A great bug report includes:
+If you find a bug, please [create an issue](https://github.com/trypear/pearai-submodule/issues) to report it! A great bug report includes:
 
 - A description of the bug
 - Steps to reproduce
@@ -41,7 +41,7 @@ Continue is quickly adding features, and we'd love to hear which are the most im
 - Create an issue
 
   - First, check whether a similar proposal has already been made
-  - If not, [create an issue](https://github.com/continuedev/continue/issues)
+  - If not, [create an issue](https://github.com/trypear/pearai-submodule/issues)
   - Please describe the enhancement in as much detail as you can, and why it would be useful
 
 - Join the [Continue Discord](https://discord.gg/NWtdYexhMs) and tell us about your idea in the `#feedback` channel
@@ -66,7 +66,7 @@ nvm use
 
 #### VS Code
 
-1. Clone and open in VS Code the Continue repo `https://github.com/continuedev/continue`
+1. Clone and open in VS Code the Continue repo `https://github.com/trypear/pearai-submodule`
 
 2. Open the VS Code command pallet (`cmd/ctrl+shift+p`) and select `Tasks: Run Task` and then select `install-all-dependencies`
 
@@ -79,7 +79,7 @@ nvm use
       1. The new VS Code window with the extension is referred to as the _Host VS Code_
       2. The window you started debugging from is referred to as the _Main VS Code_
 
-4. To package the extension, run `npm package` in the `extensions/vscode` directory. This will generate `extensions/vscode/build/continue-patch.vsix`, which you can install by right-clicking and selecting "Install Extension VSIX".
+4. To package the extension, run `npm package` in the `extensions/vscode` directory. This will generate `extensions/vscode/build/pearai-patch.vsix`, which you can install by right-clicking and selecting "Install Extension VSIX".
 
 ##### Debugging
 
@@ -88,36 +88,6 @@ nvm use
 **Hot-reloading** is enabled with Vite, so if you make any changes to the `gui`, they should be automatically reflected without rebuilding. In some cases, you may need to refresh the _Host VS Code_ window to see the changes.
 
 Similarly, any changes to `core` or `extensions/vscode` will be automatically included by just reloading the _Host VS Code_ window with cmd/ctrl+shift+p "Reload Window".
-
-#### JetBrains
-
-Pre-requisite: You should use the Intellij IDE, which can be downloaded [here](https://www.jetbrains.com/idea/download). Either Ultimate or Community (free) will work. Continue is built with JDK version 17, as specified in `extensions/intellij/build.gradle.kts`. You should also ensure that you have the Gradle plugin installed.
-
-1. Clone the repository
-2. Run `scripts/install-dependencies.sh` or `scripts/install-dependencies.ps1` on Windows. This will install and build all of the necessary dependencies.
-3. To test the plugin, select the "Run Plugin" Gradle configuration and click the "Run" or "Debug" button as shown in this screenshot:
-   ![img](./media/IntelliJRunPluginScreenshot.png)
-4. To package the extension, choose the "Build Plugin" Gradle configuration. This will generate a .zip file in `extensions/intellij/build/distributions` with the version defined in `extensions/intellij/gradle.properties`.
-5. If you make changes, you may need to re-build before running the "Build Plugin" configuration
-
-   a. If you change code from the `core` or `binary` directories, make sure to run `npm run build` from the `binary` directory to create a new binary.
-
-   b. If you change code from the `gui` directory, make sure to run `npm run build` from the `gui` directory to create a new bundle.
-
-   c. Any changes to the Kotlin coded in the `extensions/intellij` directory will be automatically included when you run "Build Plugin"
-
-##### Debugging
-
-Continue's JetBrains extension shares much of the code with the VS Code extension by utilizing shared code in the `core` directory and packaging it in a binary in the `binary` directory. The Intellij extension (written in Kotlin) is then able to communicate over stdin/stdout in the [CoreMessenger.kt](./extensions/intellij/src/main/kotlin/com/github/continuedev/continueintellijextension/continue/CoreMessenger.kt) file.
-
-For the sake of rapid development, it is also possible to configure this communication to happen over local TCP sockets:
-
-1. In [CoreMessenger.kt](./extensions/intellij/src/main/kotlin/com/github/continuedev/continueintellijextension/continue/CoreMessenger.kt), change the `useTcp` variable to `true`.
-2. Open a VS Code window (we recommend this for a preconfigured Typescript debugging experience) with the `continue` repository. Select the "Core Binary" debug configuration and press play.
-3. Run the "Run Plugin" Gradle configuration.
-4. You can now set breakpoints in any of the TypeScript files in VS Code. If you make changes to the code, restart the "Core Binary" debug configuration and reload the _Host IntelliJ_ window.
-
-If you make changes to Kotlin code, they can often be hot-reloaded with "Run -> Debugging Actions -> Reload Changed Classes".
 
 ### Formatting
 
@@ -155,7 +125,7 @@ After you've written your context provider, make sure to complete the following:
 
 ### Adding an LLM Provider
 
-Continue has support for more than a dozen different LLM "providers", making it easy to use models running on OpenAI, Ollama, Together, LM Studio, and more. You can find all of the existing providers [here](https://github.com/continuedev/continue/tree/main/core/llm/llms), and if you see one missing, you can add it with the following steps:
+Continue has support for more than a dozen different LLM "providers", making it easy to use models running on OpenAI, Ollama, Together, LM Studio, and more. You can find all of the existing providers [here](https://github.com/trypear/pearai-submodule/tree/main/core/llm/llms), and if you see one missing, you can add it with the following steps:
 
 1. Create a new file in the `core/llm/llms` directory. The name of the file should be the name of the provider, and it should export a class that extends `BaseLLM`. This class should contain the following minimal implementation. We recommend viewing pre-existing providers for more details. The [LlamaCpp Provider](./core/llm/llms/LlamaCpp.ts) is a good simple example.
 

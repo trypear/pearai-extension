@@ -1,30 +1,21 @@
+<h1 align="center">PearAI Extension</h1>
+
 <div align="center">
 
-![Continue logo](media/readme.png)
+This is the source code for the bulk of PearAI's functionality. Founded by [nang](https://youtube.com/nang88) and [FryingPan](https://youtube.com/@FryingPan). It is a fork of Continue.
+
+To download the full product: visit https://trypear.ai. View our master document [here](https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing).
+
+To see the parent repository: visit https://github.com/trypear/pearai-app
 
 </div>
 
-<h1 align="center">Continue</h1>
 
 <div align="center">
-
-**[Continue](https://docs.continue.dev) keeps developers in flow. Our open-source [VS Code](https://marketplace.visualstudio.com/items?itemName=Continue.continue) and [JetBrains](https://plugins.jetbrains.com/plugin/22707-continue-extension) extensions enable you to easily create your own modular AI software development system that you can improve.**
-
-</div>
-
-<div align="center">
-
-<a target="_blank" href="https://opensource.org/licenses/Apache-2.0" style="background:none">
-    <img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" style="height: 22px;" />
-</a>
-<a target="_blank" href="https://docs.continue.dev" style="background:none">
-    <img src="https://img.shields.io/badge/continue_docs-%23BE1B55" style="height: 22px;" />
-</a>
-<a target="_blank" href="https://discord.gg/vapESyrFmJ" style="background:none">
-    <img src="https://img.shields.io/badge/discord-join-continue.svg?labelColor=191937&color=6F6FF7&logo=discord" style="height: 22px;" />
-</a>
 
 <p></p>
+
+# Features
 
 ## Easily understand code sections
 
@@ -32,15 +23,11 @@
 
 VS Code: `cmd+L` (MacOS) / `ctrl+L` (Windows)
 
-JetBrains: `cmd+J` (MacOS) / `ctrl+J` (Windows)
-
 ## Tab to autocomplete code suggestions
 
 ![autocomplete](docs/static/img/autocomplete.gif)
 
 VS Code: `tab` (MacOS) / `tab` (Windows)
-
-JetBrains: `tab` (MacOS) / `tab` (Windows)
 
 ## Refactor functions where you are coding
 
@@ -48,15 +35,11 @@ JetBrains: `tab` (MacOS) / `tab` (Windows)
 
 VS Code: `cmd+I` (MacOS) / `ctrl+I` (Windows)
 
-JetBrains: `cmd+I` (MacOS) / `ctrl+I` (Windows)
-
 ## Ask questions about your codebase
 
 ![codebase](docs/static/img/codebase.gif)
 
 VS Code: `cmd+enter` (MacOS) / `ctrl+enter` (Windows)
-
-JetBrains: `cmd+enter` (MacOS) / `ctrl+enter` (Windows)
 
 ## Quickly use documentation as context
 
@@ -64,22 +47,8 @@ JetBrains: `cmd+enter` (MacOS) / `ctrl+enter` (Windows)
 
 VS Code: `@docs` (MacOS) / `@docs` (Windows)
 
-JetBrains: `@docs` (MacOS) / `@docs` (Windows)
-
 </div>
-
-## Getting Started
-
-### Download for [VS Code](https://marketplace.visualstudio.com/items?itemName=Continue.continue) and [JetBrains](https://plugins.jetbrains.com/plugin/22707-continue-extension)
-
-You can try out Continue with our free trial models before configuring your setup.
-
-Learn more about the models and providers [here](https://continue.dev/docs/setup/overview).
-
-## Contributing
-
-Check out the [contribution ideas board](https://github.com/orgs/continuedev/projects/2), read the [contributing guide](https://github.com/continuedev/continue/blob/main/CONTRIBUTING.md), and join [#contribute on Discord](https://discord.gg/vapESyrFmJ)
 
 ## License
 
-[Apache 2.0 © 2023 Continue Dev, Inc.](./LICENSE)
+[Apache 2.0 © 2024 PearAI](./LICENSE)
