@@ -11,10 +11,9 @@
     "workspace"
   ],
   "bugs": {
-    "url": "https://github.com/trypear/pearai-app/issues",
-    "email": "nate@continue.dev"
+    "url": "https://github.com/trypear/pearai-app/issues"
   },
-  "homepage": "https://continue.dev",
+  "homepage": "https://trypear.ai",
   "qna": "https://github.com/trypear/pearai-app/issues/new/choose",
   "license": "Apache-2.0",
   "displayName": "Continue - Llama 3, GPT-4, and more",

@@ -74,7 +74,7 @@ JetBrains: `@docs` (MacOS) / `@docs` (Windows)
 
 You can try out Continue with our free trial models before configuring your setup.
 
-Learn more about the models and providers [here](https://continue.dev/docs/setup/overview).
+Learn more about the models and providers [here](https://trypear.ai/docs/setup/overview).
 
 ## Contributing
 
