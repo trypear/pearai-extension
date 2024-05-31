@@ -1,5 +1,5 @@
 {
-  "name": "continue",
+  "name": "pearai",
   "icon": "media/icon.png",
   "version": "0.9.145",
   "repository": {
@@ -19,7 +19,7 @@
   "displayName": "Continue - Llama 3, GPT-4, and more",
   "pricing": "Free",
   "description": "Open-source autopilot - build your own AI software development system",
-  "publisher": "Continue",
+  "publisher": "PearAI",
   "engines": {
     "vscode": "^1.70.0",
     "node": ">=20.11.0"
@@ -52,7 +52,7 @@
   "browser": "./out/extension.js",
   "contributes": {
     "configuration": {
-      "title": "Continue",
+      "title": "PearAI",
       "properties": {
         "continue.telemetryEnabled": {
           "type": "boolean",
@@ -89,133 +89,133 @@
     "commands": [
       {
         "command": "continue.acceptDiff",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Accept Diff",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.rejectDiff",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Reject Diff",
-        "group": "Continue",
+        "group": "PearAI",
         "icon": "$(stop)"
       },
       {
         "command": "continue.acceptVerticalDiffBlock",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Accept Vertical Diff Block",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.rejectVerticalDiffBlock",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Reject Vertical Diff Block",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.quickEdit",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Generate Code",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.toggleAuxiliaryBar",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Toggle Right Sidebar",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.focusContinueInput",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Add Highlighted Code to Context",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.focusContinueInputWithoutClear",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Add Highlighted Code to Context",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.debugTerminal",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Continue: Debug Terminal",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.toggleFullScreen",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Toggle Full Screen",
         "icon": "$(fullscreen)",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.openConfigJson",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Open config.json",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.toggleTabAutocompleteEnabled",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Toggle Autocomplete Enabled",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.shareSession",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Share Session",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.selectFilesAsContext",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Continue: Select Files as Context",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.newSession",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "New Session",
         "icon": "$(add)",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.viewHistory",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "View History",
         "icon": "$(history)",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.writeCommentsForCode",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Write Comments for this Code",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.writeDocstringForCode",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Write a Docstring for this Code",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.fixCode",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Fix this Code",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.optimizeCode",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Optimize this Code",
-        "group": "Continue"
+        "group": "PearAI"
       },
       {
         "command": "continue.fixGrammar",
-        "category": "Continue",
+        "category": "PearAI",
         "title": "Fix Grammar / Spelling",
-        "group": "Continue"
+        "group": "PearAI"
       }
     ],
     "keybindings": [
@@ -285,7 +285,7 @@
     "submenus": [
       {
         "id": "continue.continueSubMenu",
-        "label": "Continue"
+        "label": "PearAI"
       }
     ],
     "menus": {
@@ -321,39 +321,39 @@
       "editor/title/run": [
         {
           "command": "continue.rejectDiff",
-          "group": "Continue",
+          "group": "PearAI",
           "when": "continue.streamingDiff"
         }
       ],
       "continue.continueSubMenu": [
         {
           "command": "continue.focusContinueInputWithoutClear",
-          "group": "Continue",
+          "group": "PearAI",
           "when": "editorHasSelection"
         },
         {
           "command": "continue.writeCommentsForCode",
-          "group": "Continue",
+          "group": "PearAI",
           "when": "editorHasSelection"
         },
         {
           "command": "continue.writeDocstringForCode",
-          "group": "Continue",
+          "group": "PearAI",
           "when": "editorHasSelection"
         },
         {
           "command": "continue.fixCode",
-          "group": "Continue",
+          "group": "PearAI",
           "when": "editorHasSelection"
         },
         {
           "command": "continue.optimizeCode",
-          "group": "Continue",
+          "group": "PearAI",
           "when": "editorHasSelection"
         },
         {
           "command": "continue.fixGrammar",
-          "group": "Continue",
+          "group": "PearAI",
           "when": "editorHasSelection && editorLangId == 'markdown'"
         }
       ],
@@ -397,14 +397,14 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "continue",
-          "title": "Continue",
+          "id": "PearAI",
+          "title": "PearAI",
           "icon": "media/sidebar-icon.png"
         }
       ]
     },
     "views": {
-      "continue": [
+      "PearAI": [
         {
           "type": "webview",
           "id": "continue.continueGUIView",
@@ -415,7 +415,7 @@
     },
     "walkthroughs": [
       {
-        "id": "continue",
+        "id": "PearAI",
         "title": "Getting Started",
         "description": "Learn how to use Continue",
         "steps": [
