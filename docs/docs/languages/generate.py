@@ -101,9 +101,9 @@ anecdotes = f'''## Anecdotes from developers
 
 '''
 
-conclusion = f'''Original source: https://github.com/continuedev/continue/tree/main/docs/docs/languages/{language.lower()}.md
+conclusion = f'''Original source: https://github.com/trypear/pearai-app/tree/main/docs/docs/languages/{language.lower()}.md
 
-Data for all languages I've looked into so far: https://github.com/continuedev/continue/tree/main/docs/docs/languages/languages.csv
+Data for all languages I've looked into so far: https://github.com/trypear/pearai-app/tree/main/docs/docs/languages/languages.csv
 '''
 
 content = introduction + stack_overflow + benchmarks + multiple + babel + mbxp + humaneval_x + datasets + stack + codeparrot + alphacode + codegen + polycoder + presence + anecdotes + conclusion

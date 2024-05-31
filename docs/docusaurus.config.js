@@ -44,7 +44,7 @@ const config = {
         docs: {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/continuedev/continue/tree/main/docs",
+          editUrl: "https://github.com/trypear/pearai-app/tree/main/docs",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -83,7 +83,7 @@ const config = {
             label: "Docs",
           },
           {
-            to: "https://github.com/continuedev/continue",
+            to: "https://github.com/trypear/pearai-app",
             label: "GitHub",
             position: "right",
             className: 'github-navbar',
@@ -121,7 +121,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                to: "https://github.com/continuedev/continue",
+                to: "https://github.com/trypear/pearai-app",
               },
             ],
           },

@@ -1,21 +1,21 @@
 {
   "name": "continue",
   "icon": "media/icon.png",
-  "version": "0.9.143",
+  "version": "0.9.145",
   "repository": {
     "type": "git",
-    "url": "https://github.com/continuedev/continue"
+    "url": "https://github.com/trypear/pearai-app"
   },
   "extensionKind": [
     "ui",
     "workspace"
   ],
   "bugs": {
-    "url": "https://github.com/continuedev/continue/issues",
+    "url": "https://github.com/trypear/pearai-app/issues",
     "email": "nate@continue.dev"
   },
   "homepage": "https://continue.dev",
-  "qna": "https://github.com/continuedev/continue/issues/new/choose",
+  "qna": "https://github.com/trypear/pearai-app/issues/new/choose",
   "license": "Apache-2.0",
   "displayName": "Continue - Llama 3, GPT-4, and more",
   "pricing": "Free",

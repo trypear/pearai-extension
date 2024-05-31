@@ -226,7 +226,7 @@ export const stateSlice = createSlice({
         contextItems: [],
       });
 
-      // https://github.com/continuedev/continue/pull/1021
+      // https://github.com/trypear/pearai-app/pull/1021
       // state.contextItems = [];
       state.active = true;
     },
@@ -250,7 +250,7 @@ export const stateSlice = createSlice({
         },
         contextItems: [],
       });
-      // https://github.com/continuedev/continue/pull/1021
+      // https://github.com/trypear/pearai-app/pull/1021
       // state.contextItems = [];
       state.active = true;
     },

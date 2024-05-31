@@ -17,4 +17,4 @@ Replicate is a great option for newly released language models or models that yo
 
 If you don't specify the `model` parameter, it will default to `replicate/llama-2-70b-chat:58d078176e02c219e11eb4da5a02a7830a283b14cf8f94537af893ccff5ee781`.
 
-[View the source](https://github.com/continuedev/continue/blob/main/core/llm/llms/Replicate.ts)
+[View the source](https://github.com/trypear/pearai-app/blob/main/core/llm/llms/Replicate.ts)

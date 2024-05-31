@@ -143,7 +143,7 @@ function HelpPage() {
         </IconDiv>
         <IconDiv>
           <a
-            href="https://github.com/continuedev/continue/issues/new/choose"
+            href="https://github.com/trypear/pearai-app/issues/new/choose"
             target="_blank"
           >
             <svg

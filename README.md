@@ -78,7 +78,7 @@ Learn more about the models and providers [here](https://continue.dev/docs/setup
 
 ## Contributing
 
-Check out the [contribution ideas board](https://github.com/orgs/continuedev/projects/2), read the [contributing guide](https://github.com/continuedev/continue/blob/main/CONTRIBUTING.md), and join [#contribute on Discord](https://discord.gg/vapESyrFmJ)
+Check out the [contribution ideas board](https://github.com/orgs/trypear/projects/2), read the [contributing guide](https://github.com/trypear/pearai-app/blob/main/CONTRIBUTING.md), and join [#contribute on Discord](https://discord.gg/vapESyrFmJ)
 
 ## License
 

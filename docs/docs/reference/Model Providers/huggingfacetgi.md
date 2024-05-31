@@ -1,3 +1,3 @@
 # HuggingFaceTGI
 
-[View the source](https://github.com/continuedev/continue/blob/main/core/llm/llms/HuggingFaceTGI.ts)
+[View the source](https://github.com/trypear/pearai-app/blob/main/core/llm/llms/HuggingFaceTGI.ts)

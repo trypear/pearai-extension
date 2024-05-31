@@ -15,4 +15,4 @@ The [Mistral](https://mistral.ai) API provides hosted access to their models, in
 }
 ```
 
-[View the source](https://github.com/continuedev/continue/blob/main/core/llm/llms/Mistral.ts)
+[View the source](https://github.com/trypear/pearai-app/blob/main/core/llm/llms/Mistral.ts)

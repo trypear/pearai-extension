@@ -633,7 +633,7 @@ function TipTapEditor(props: TipTapEditorProps) {
   //   if (props.isMainInput && editor && document.hasFocus()) {
   //     editor.commands.focus();
   //     // setTimeout(() => {
-  //     //   // https://github.com/continuedev/continue/pull/881
+  //     //   // https://github.com/trypear/pearai-app/pull/881
   //     //   editor.commands.blur();
   //     // }, 0);
   //   }

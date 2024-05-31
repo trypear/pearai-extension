@@ -22,11 +22,11 @@
 
 ## 👋 Continue Contribution Ideas
 
-[This GitHub project board](https://github.com/orgs/continuedev/projects/2) is a list of ideas for how you can contribute to Continue. These aren't the only ways, but are a great starting point if you are new to the project.
+[This GitHub project board](https://github.com/orgs/trypear/projects/2) is a list of ideas for how you can contribute to Continue. These aren't the only ways, but are a great starting point if you are new to the project.
 
 ## 🐛 Report Bugs
 
-If you find a bug, please [create an issue](https://github.com/continuedev/continue/issues) to report it! A great bug report includes:
+If you find a bug, please [create an issue](https://github.com/trypear/pearai-app/issues) to report it! A great bug report includes:
 
 - A description of the bug
 - Steps to reproduce
@@ -41,7 +41,7 @@ Continue is quickly adding features, and we'd love to hear which are the most im
 - Create an issue
 
   - First, check whether a similar proposal has already been made
-  - If not, [create an issue](https://github.com/continuedev/continue/issues)
+  - If not, [create an issue](https://github.com/trypear/pearai-app/issues)
   - Please describe the enhancement in as much detail as you can, and why it would be useful
 
 - Join the [Continue Discord](https://discord.gg/NWtdYexhMs) and tell us about your idea in the `#feedback` channel
@@ -66,7 +66,7 @@ nvm use
 
 #### VS Code
 
-1. Clone and open in VS Code the Continue repo `https://github.com/continuedev/continue`
+1. Clone and open in VS Code the Continue repo `https://github.com/trypear/pearai-app`
 
 2. Open the VS Code command pallet (`cmd/ctrl+shift+p`) and select `Tasks: Run Task` and then select `install-all-dependencies`
 
@@ -155,7 +155,7 @@ After you've written your context provider, make sure to complete the following:
 
 ### Adding an LLM Provider
 
-Continue has support for more than a dozen different LLM "providers", making it easy to use models running on OpenAI, Ollama, Together, LM Studio, and more. You can find all of the existing providers [here](https://github.com/continuedev/continue/tree/main/core/llm/llms), and if you see one missing, you can add it with the following steps:
+Continue has support for more than a dozen different LLM "providers", making it easy to use models running on OpenAI, Ollama, Together, LM Studio, and more. You can find all of the existing providers [here](https://github.com/trypear/pearai-app/tree/main/core/llm/llms), and if you see one missing, you can add it with the following steps:
 
 1. Create a new file in the `core/llm/llms` directory. The name of the file should be the name of the provider, and it should export a class that extends `BaseLLM`. This class should contain the following minimal implementation. We recommend viewing pre-existing providers for more details. The [LlamaCpp Provider](./core/llm/llms/LlamaCpp.ts) is a good simple example.
 

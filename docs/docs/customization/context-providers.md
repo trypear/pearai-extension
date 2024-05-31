@@ -48,7 +48,7 @@ Type `@docs` to index and retrieve snippets from any documentation site. You can
 { "name": "docs" }
 ```
 
-Continue also pre-indexes a number of common sites, listed [here](https://github.com/continuedev/continue/blob/main/core/indexing/docs/preIndexedDocs.ts). The embeddings for these sites are hosted by us, but downloaded for local use after the first time. All other indexing occurs entirely locally.
+Continue also pre-indexes a number of common sites, listed [here](https://github.com/trypear/pearai-app/blob/main/core/indexing/docs/preIndexedDocs.ts). The embeddings for these sites are hosted by us, but downloaded for local use after the first time. All other indexing occurs entirely locally.
 
 ### Open Files
 
@@ -226,7 +226,7 @@ The only required settings are those for creating the database connection: `host
 
 By default, the `schema` filter is set to `public`, and the `sampleRows` is set to 3. You may unset the schema if you want to include tables from all schemas.
 
-[Here is a short demo.](https://github.com/continuedev/continue/pull/859)
+[Here is a short demo.](https://github.com/trypear/pearai-app/pull/859)
 
 ```json
 {
@@ -290,7 +290,7 @@ Type `@locals` to reference the contents of the local variables with top n level
 
 ### Requesting Context Providers
 
-Not seeing what you want? Create an issue [here](https://github.com/continuedev/continue/issues/new?assignees=TyDunn&labels=enhancement&projects=&template=feature-request-%F0%9F%92%AA.md&title=) to request a new ContextProvider.
+Not seeing what you want? Create an issue [here](https://github.com/trypear/pearai-app/issues/new?assignees=TyDunn&labels=enhancement&projects=&template=feature-request-%F0%9F%92%AA.md&title=) to request a new ContextProvider.
 
 ## Building Your Own Context Provider
 
@@ -439,7 +439,7 @@ The flow of information in the above example is as follows:
 
 To include outside Node modules in your config.ts, run `npm install <module_name>` from the `~/.continue` directory, and then import them in config.ts.
 
-Continue will use [esbuild](https://esbuild.github.io/) to bundle your `config.ts` and any dependencies into a single Javascript file. The exact configuration used can be found [here](https://github.com/continuedev/continue/blob/5c9874400e223bbc9786a8823614a2e501fbdaf7/extensions/vscode/src/ideProtocol.ts#L45-L52).
+Continue will use [esbuild](https://esbuild.github.io/) to bundle your `config.ts` and any dependencies into a single Javascript file. The exact configuration used can be found [here](https://github.com/trypear/pearai-app/blob/5c9874400e223bbc9786a8823614a2e501fbdaf7/extensions/vscode/src/ideProtocol.ts#L45-L52).
 
 ### `CustomContextProvider` Reference
 

@@ -47,4 +47,4 @@ If you need to send custom headers for authentication, you may use the `requestO
 }
 ```
 
-[View the source](https://github.com/continuedev/continue/blob/main/core/llm/llms/Ollama.ts)
+[View the source](https://github.com/trypear/pearai-app/blob/main/core/llm/llms/Ollama.ts)
