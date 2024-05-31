@@ -225,9 +225,9 @@ async function installNodeModuleInTempDirAndCopyToCurrent(package, toCopy) {
 
     // Download and unzip prebuilt esbuild binary for the target
     console.log(`[info] Downloading esbuild for ${target}...`);
-    // Version is pinned to 0.19.11 in package.json to make sure that they match
+    // Version is pinned to 0.20.0 in package.json to make sure that they match
     execCmdSync(
-      `curl -o ${targetDir}/esbuild.tgz https://registry.npmjs.org/@esbuild/${target}/-/${target}-0.19.11.tgz`,
+      `curl -o ${targetDir}/esbuild.tgz https://registry.npmjs.org/@esbuild/${target}/-/${target}-0.20.0.tgz`,
     );
     execCmdSync(`tar -xzvf ${targetDir}/esbuild.tgz -C ${targetDir}`);
     if (target.startsWith("win32")) {
