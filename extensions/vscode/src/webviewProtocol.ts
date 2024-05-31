@@ -30,7 +30,7 @@ import { getExtensionUri } from "./util/vscode";
 export async function showTutorial() {
   const tutorialPath = path.join(
     getExtensionUri().fsPath,
-    "continue_tutorial.py",
+    "pearai_tutorial.py",
   );
   // Ensure keyboard shortcuts match OS
   if (process.platform !== "darwin") {
