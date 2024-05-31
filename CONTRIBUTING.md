@@ -23,7 +23,7 @@
 ## 👋 Continue Contribution Ideas
 
 [This GitHub project board](https://github.com/orgs/trypear/projects/2) is a list of ideas for how you can contribute to Continue. These aren't the only ways, but are a great starting point if you are new to the project.
-
+pwd
 ## 🐛 Report Bugs
 
 If you find a bug, please [create an issue](https://github.com/trypear/pearai-app/issues) to report it! A great bug report includes:
@@ -44,7 +44,7 @@ Continue is quickly adding features, and we'd love to hear which are the most im
   - If not, [create an issue](https://github.com/trypear/pearai-app/issues)
   - Please describe the enhancement in as much detail as you can, and why it would be useful
 
-- Join the [Continue Discord](https://discord.gg/NWtdYexhMs) and tell us about your idea in the `#feedback` channel
+- Join the [Continue Discord](https://discord.gg/7QMraJUsQt) and tell us about your idea in the `#feedback` channel
 
 ## 📖 Updating / Improving Documentation
 

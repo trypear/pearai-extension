@@ -70,4 +70,4 @@ We plan to add support soon for templating with all [context providers](../custo
 
 ## Feedback
 
-If you have ideas about how to improve the `.prompt` file format, please reach out on [Discord](https://discord.gg/NWtdYexhMs).
+If you have ideas about how to improve the `.prompt` file format, please reach out on [Discord](https://discord.gg/7QMraJUsQt).

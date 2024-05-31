@@ -16,7 +16,7 @@ keywords: [quickstart, start, install, vscode, jetbrains]
 
 > We strongly recommend moving Continue to VS Code's right sidebar. This helps keep the file explorer open while using Continue, and the sidebar can be toggled with a simple keyboard shortcut. ![move-to-right-sidebar](/img/move-to-right-sidebar.png)
 
-4. If you have any problems, see the [troubleshooting guide](./troubleshooting.md) or ask for help in [our Discord](https://discord.gg/NWtdYexhMs).
+4. If you have any problems, see the [troubleshooting guide](./troubleshooting.md) or ask for help in [our Discord](https://discord.gg/7QMraJUsQt).
 
 ## JetBrains
 
@@ -28,6 +28,6 @@ keywords: [quickstart, start, install, vscode, jetbrains]
 
 ![jetbrains-quickstart](/img/jetbrains-quickstart.png)
 
-4. If you have any problems, see the [troubleshooting guide](./troubleshooting.md) or ask for help in [our Discord](https://discord.gg/NWtdYexhMs).
+4. If you have any problems, see the [troubleshooting guide](./troubleshooting.md) or ask for help in [our Discord](https://discord.gg/7QMraJUsQt).
 
 > Alternatively, you can install from disk after downloading from the [JetBrains Extension Marketplace](https://plugins.jetbrains.com/plugin/22707-continue-extension).
