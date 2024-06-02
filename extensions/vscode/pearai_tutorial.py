@@ -4,7 +4,7 @@ Welcome to PearAI! This is a 2 minute tutorial.
 You can click the gray buttons, starting with "Highlight the function" to follow along.
 """
 
-# region —————————————————————————— Part 1: Ask a question about code [Cmd+L] ——————————————————————————
+# region —————————————————————————— Part 1: Ask a question about code [Ctrl+L] ——————————————————————————
 
 
 """Step 1: Highlight the function below"""
