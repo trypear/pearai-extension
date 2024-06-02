@@ -273,7 +273,7 @@ const actions: TutorialCodeLensItems[] = [
         command: "continue.sendToTerminal",
         arguments: [
           "python " +
-            path.join(getExtensionUri().fsPath, "continue_tutorial.py") +
+            path.join(getExtensionUri().fsPath, "pearai_tutorial.py") +
             "\n",
         ],
       },
@@ -306,7 +306,7 @@ class TutorialCodeLensProvider implements vscode.CodeLensProvider {
   ): vscode.CodeLens[] | Thenable<vscode.CodeLens[]> {
     const codeLenses: vscode.CodeLens[] = [];
 
-    if (!document.uri.fsPath.endsWith("continue_tutorial.py")) {
+    if (!document.uri.fsPath.endsWith("pearai_tutorial.py")) {
       return codeLenses;
     }
 

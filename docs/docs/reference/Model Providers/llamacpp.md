@@ -21,4 +21,4 @@ After it's up and running, change `~/.continue/config.json` to look like this:
 }
 ```
 
-[View the source](https://github.com/continuedev/continue/blob/main/core/llm/llms/LlamaCpp.ts)
+[View the source](https://github.com/trypear/pearai-app/blob/main/core/llm/llms/LlamaCpp.ts)

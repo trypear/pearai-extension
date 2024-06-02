@@ -114,6 +114,6 @@ export function getMetaKeyName() {
 }
 
 export function getExtensionVersion(): string {
-  const extension = vscode.extensions.getExtension("continue.continue");
+  const extension = vscode.extensions.getExtension("pearai.pearai");
   return extension?.packageJSON.version || "0.1.0";
 }

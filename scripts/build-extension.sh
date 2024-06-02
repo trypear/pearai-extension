@@ -1,10 +1,24 @@
 #!/usr/bin/env bash
 
-cd extensions/vscode
-npm run esbuild
+# Run each command in parallel
+(
+  cd extensions/vscode
+  tsc -p ./
+) &
 
-cd ../../binary
-npm run build
+(
+  cd extensions/vscode
+  node scripts/prepackage.js
+) &
 
-cd ../gui
-npm run build
+(
+  cd extensions/vscode
+  npm run esbuild
+) &
+
+# (
+#   cd gui
+#   npm run dev
+# ) &
+
+wait

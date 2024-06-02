@@ -16,7 +16,7 @@ function Onboarding() {
 
   return (
     <div className="p-2 max-w-96 mt-16 mx-auto">
-      <h1 className="text-center">Welcome to Continue</h1>
+      <h1 className="text-center">Welcome to PearAI</h1>
       <p className="text-center pb-2">
         Let's find the setup that works best for you
       </p>

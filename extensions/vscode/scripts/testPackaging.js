@@ -58,7 +58,7 @@ const pathsToVerify = [
 
   // Tutorial
   "media/welcome.md",
-  "continue_tutorial.py",
+  "pearai_tutorial.py",
   "config_schema.json",
 
   // Embeddings model

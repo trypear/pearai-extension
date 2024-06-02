@@ -13,9 +13,9 @@ body:
       label: Validations
       description: Before submitting your suggested improvement
       options:
-        - label: I believe this is a way to improve. I'll try to join the [Continue Discord](https://discord.gg/NWtdYexhMs) for questions
+        - label: I believe this is a way to improve. I'll try to join the [Continue Discord](https://discord.gg/7QMraJUsQt) for questions
           required: false
-        - label: I'm not able to find an [open issue](https://github.com/continuedev/continue/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement) that requests the same enhancement
+        - label: I'm not able to find an [open issue](https://github.com/trypear/pearai-app/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement) that requests the same enhancement
           required: false
   - type: textarea
     attributes:

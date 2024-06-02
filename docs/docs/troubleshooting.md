@@ -93,4 +93,4 @@ You can find older versions of the JetBrains extension on their [marketplace](ht
 
 ## Still having trouble?
 
-Create a GitHub issue [here](https://github.com/continuedev/continue/issues/new?assignees=&labels=bug&projects=&template=bug-report-%F0%9F%90%9B.md&title=), leaving the details of your problem, and we'll be able to more quickly help you out.
+Create a GitHub issue [here](https://github.com/trypear/pearai-app/issues/new?assignees=&labels=bug&projects=&template=bug-report-%F0%9F%90%9B.md&title=), leaving the details of your problem, and we'll be able to more quickly help you out.

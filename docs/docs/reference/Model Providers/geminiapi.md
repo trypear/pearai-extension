@@ -15,4 +15,4 @@ The Google Gemini API is currently in beta. You can [create an API key in Google
 }
 ```
 
-[View the source](https://github.com/continuedev/continue/blob/main/core/llm/llms/Gemini.ts)
+[View the source](https://github.com/trypear/pearai-app/blob/main/core/llm/llms/Gemini.ts)

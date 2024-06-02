@@ -74,7 +74,7 @@ Shows the LLM your current git diff and asks it to generate a commit message.
 
 ### `/http`
 
-Write a custom slash command at your own HTTP endpoint. Set 'url' in the params object for the endpoint you have setup. The endpoint should return a sequence of string updates, which will be streamed to the Continue sidebar. See our basic [FastAPI example](https://github.com/continuedev/continue/blob/74002369a5e435735b83278fb965e004ae38a97d/core/context/providers/context_provider_server.py#L34-L45) for reference.
+Write a custom slash command at your own HTTP endpoint. Set 'url' in the params object for the endpoint you have setup. The endpoint should return a sequence of string updates, which will be streamed to the Continue sidebar. See our basic [FastAPI example](https://github.com/trypear/pearai-app/blob/74002369a5e435735b83278fb965e004ae38a97d/core/context/providers/context_provider_server.py#L34-L45) for reference.
 
 ```json
 {
@@ -92,7 +92,7 @@ Describe the issue you'd like to generate, and Continue will turn into a well-fo
 {
   "name": "issue",
   "description": "Generate a link to a drafted GitHub issue",
-  "params": { "repositoryUrl": "https://github.com/continuedev/continue" }
+  "params": { "repositoryUrl": "https://github.com/trypear/pearai-app" }
 }
 ```
 

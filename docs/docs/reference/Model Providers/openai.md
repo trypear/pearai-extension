@@ -59,4 +59,4 @@ To force usage of `chat/completions` instead of `completions` endpoint you can s
 "useLegacyCompletionsEndpoint": false
 ```
 
-[View the source](https://github.com/continuedev/continue/blob/main/core/llm/llms/OpenAI.ts)
+[View the source](https://github.com/trypear/pearai-app/blob/main/core/llm/llms/OpenAI.ts)

@@ -130,7 +130,7 @@ function modifyConfig(config: Config): Config {
 }
 ```
 
-This exact function and a few other default implementations are available in [`continuedev.libs.llm.prompts.chat`](https://github.com/continuedev/continue/blob/main/server/continuedev/libs/llm/prompts/chat.py).
+This exact function and a few other default implementations are available in [`continuedev.libs.llm.prompts.chat`](https://github.com/trypear/pearai-app/blob/main/server/continuedev/libs/llm/prompts/chat.py).
 
 ## Customizing the /edit Prompt
 
@@ -154,7 +154,7 @@ function modifyConfig(config: Config): Config {
 }
 ```
 
-You can find all existing templates for /edit in [`core/llm/templates/edit.ts`](https://github.com/continuedev/continue/blob/main/core/llm/templates/edit.ts).
+You can find all existing templates for /edit in [`core/llm/templates/edit.ts`](https://github.com/trypear/pearai-app/blob/main/core/llm/templates/edit.ts).
 
 ## Defining a Custom LLM Provider
 
