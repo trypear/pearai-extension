@@ -6,6 +6,7 @@ const unzipper = require("unzipper");
 // Get command line arguments
 const args = process.argv.slice(2);
 const isPreRelease = args.includes("--pre-release");
+const buildDir = "build";
 const outDir = args.find(arg => !arg.startsWith("--")) || "build";
 
 if (!fs.existsSync(outDir)) {
@@ -13,8 +14,8 @@ if (!fs.existsSync(outDir)) {
 }
 
 const command = isPreRelease
-  ? `npx vsce package --pre-release --no-dependencies --yarn --out ${outDir}`
-  : `npx vsce package --no-dependencies --yarn --out ${outDir}`;
+  ? `npx vsce package --pre-release --no-dependencies --yarn --out ${buildDir}`
+  : `npx vsce package --no-dependencies --yarn --out ${buildDir}`;
 
 exec(command, (error, stdout, stderr) => {
   if (error) {
@@ -33,7 +34,7 @@ exec(command, (error, stdout, stderr) => {
 
   console.log(`VSIX package created: ${vsixPath}`);
 
-  const extractDir = path.join(outDir, "extracted");
+  const extractDir = path.join(buildDir, "extracted");
 
   // Extract the VSIX file
   fs.createReadStream(vsixPath)
@@ -59,7 +60,7 @@ exec(command, (error, stdout, stderr) => {
         console.log(`Contents moved to ${finalOutputDir}`);
 
         // Cleanup extracted directory
-        fs.rmdirSync(extractDir, { recursive: true });
+        // fs.rmdirSync(extractDir, { recursive: true });
       });
     })
     .on("error", err => {
