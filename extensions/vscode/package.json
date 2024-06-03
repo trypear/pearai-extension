@@ -1,7 +1,7 @@
 {
   "name": "pearai",
   "icon": "media/icon.png",
-  "version": "0.9.147",
+  "version": "0.9.156",
   "repository": {
     "type": "git",
     "url": "https://github.com/trypear/pearai-app"
@@ -475,6 +475,7 @@
     "build-test": "tsc && node esbuild.test.mjs",
     "test": "npm run build-test && node ./out/test-runner/runTestOnVSCodeHost.js",
     "prepackage": "node scripts/prepackage.js",
+    "package-app-release": "node scripts/package-app-release.js",
     "package": "node scripts/package.js",
     "package:pre-release": "node scripts/package.js --pre-release",
     "build:rust": "cargo-cp-artifact -ac sync sync.node -- cargo build --manifest-path ../../sync/Cargo.toml --message-format=json-render-diagnostics",
@@ -504,6 +505,7 @@
     "ovsx": "^0.8.3",
     "rimraf": "^5.0.5",
     "typescript": "^5.3.3",
+    "unzipper": "^0.11.6",
     "vite": "^4.3.9",
     "vsce": "^2.15.0"
   },
