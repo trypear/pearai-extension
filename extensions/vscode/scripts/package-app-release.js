@@ -60,7 +60,7 @@ exec(command, (error, stdout, stderr) => {
         console.log(`Contents moved to ${finalOutputDir}`);
 
         // Cleanup extracted directory
-        // fs.rmdirSync(extractDir, { recursive: true });
+        fs.rmdirSync(extractDir, { recursive: true });
       });
     })
     .on("error", err => {
