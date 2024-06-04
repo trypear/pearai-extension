@@ -72,7 +72,7 @@ export class VsCodeExtension {
 
     // Config Handler with output channel
     const outputChannel = vscode.window.createOutputChannel(
-      "Continue - LLM Prompt/Completion",
+      "PearAI",
     );
     this.configHandler = new ConfigHandler(
       this.ide,

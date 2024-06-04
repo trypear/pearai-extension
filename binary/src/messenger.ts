@@ -21,19 +21,19 @@ export class IpcMessenger {
     console.log = logger;
     console.error = logger;
     console.warn = logger;
-    console.log("[info] Starting Continue core...");
+    console.log("[info] Starting PearAI core...");
 
     process.stdin.on("data", (data) => {
       this._handleData(data);
     });
     process.stdout.on("close", () => {
       fs.writeFileSync("./error.log", `${new Date().toISOString()}\n`);
-      console.log("[info] Exiting Continue core...");
+      console.log("[info] Exiting PearAI core...");
       process.exit(1);
     });
     process.stdin.on("close", () => {
       fs.writeFileSync("./error.log", `${new Date().toISOString()}\n`);
-      console.log("[info] Exiting Continue core...");
+      console.log("[info] Exiting PearAI core...");
       process.exit(1);
     });
   }

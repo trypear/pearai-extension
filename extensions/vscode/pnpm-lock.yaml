@@ -34,7 +34,7 @@ importers:
         version: 1.6.8
       core:
         specifier: file:../../core
-        version: '@continuedev/core@file:../../core(@apache-arrow/ts@14.0.2)(apache-arrow@14.0.2)(encoding@0.1.13)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(graphology-types@0.24.7)(typescript@5.4.5)'
+        version: '@pearai/core@file:../../core(@apache-arrow/ts@14.0.2)(apache-arrow@14.0.2)(encoding@0.1.13)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(graphology-types@0.24.7)(typescript@5.4.5)'
       cors:
         specifier: ^2.8.5
         version: 2.8.5
@@ -457,7 +457,7 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@continuedev/core@file:../../core':
+  '@pearai/core@file:../../core':
     resolution: {directory: ../../core, type: directory}
     engines: {node: '>=20.11.0'}
 
@@ -5815,7 +5815,7 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@continuedev/core@file:../../core(@apache-arrow/ts@14.0.2)(apache-arrow@14.0.2)(encoding@0.1.13)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(graphology-types@0.24.7)(typescript@5.4.5)':
+  '@pearai/core@file:../../core(@apache-arrow/ts@14.0.2)(apache-arrow@14.0.2)(encoding@0.1.13)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@5.62.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(graphology-types@0.24.7)(typescript@5.4.5)':
     dependencies:
       '@mozilla/readability': 0.5.0
       '@octokit/rest': 20.1.1

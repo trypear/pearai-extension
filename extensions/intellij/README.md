@@ -40,12 +40,12 @@
 
 ## Getting Started
 
-You can try out Continue with our free trial models before configuring your setup.
+You can try out PearAI with our free trial models before configuring your setup.
 
 Learn more about the models and providers [here](https://trypear.ai/docs/setup/overview).
 
 ## License
 
-[Apache 2.0 © 2023 Continue Dev, Inc.](./LICENSE)
+[Apache 2.0 © 2023 PearAI Dev, Inc.](./LICENSE)
 
 <!-- Plugin description end -->

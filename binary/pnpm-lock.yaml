@@ -16,7 +16,7 @@ importers:
         version: 12.0.0
       core:
         specifier: file:../core
-        version: '@continuedev/core@file:../core(@apache-arrow/ts@14.0.2)(apache-arrow@14.0.2)(encoding@0.1.13)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.9.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(graphology-types@0.24.7)(typescript@5.4.5)'
+        version: '@pearai/core@file:../core(@apache-arrow/ts@14.0.2)(apache-arrow@14.0.2)(encoding@0.1.13)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.9.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(graphology-types@0.24.7)(typescript@5.4.5)'
       follow-redirects:
         specifier: ^1.15.5
         version: 1.15.6
@@ -94,7 +94,7 @@ packages:
     resolution: {integrity: sha512-YuGopBq3ke25BVSiS6fgF49Ul9gH1x70Bcr6bqRLjWCkcX8Hre1/5+z+IiWOIerRMSSEfGZVB9z9kyq7wVs9YA==}
     engines: {node: '>=6.9.0'}
 
-  '@continuedev/core@file:../core':
+  '@pearai/core@file:../core':
     resolution: {directory: ../core, type: directory}
     engines: {node: '>=20.11.0'}
 
@@ -2813,7 +2813,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.5
       to-fast-properties: 2.0.0
 
-  '@continuedev/core@file:../core(@apache-arrow/ts@14.0.2)(apache-arrow@14.0.2)(encoding@0.1.13)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.9.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(graphology-types@0.24.7)(typescript@5.4.5)':
+  '@pearai/core@file:../core(@apache-arrow/ts@14.0.2)(apache-arrow@14.0.2)(encoding@0.1.13)(eslint-plugin-import@2.29.1(@typescript-eslint/parser@7.9.0(eslint@8.57.0)(typescript@5.4.5))(eslint@8.57.0))(eslint@8.57.0)(graphology-types@0.24.7)(typescript@5.4.5)':
     dependencies:
       '@mozilla/readability': 0.5.0
       '@octokit/rest': 20.1.1

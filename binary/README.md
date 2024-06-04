@@ -1,4 +1,4 @@
-# Continue Core Binary
+# PearAI Core Binary
 
 The purpose of this folder is to package Typescript code in a way that can be run from any IDE or platform. We first bundle with `esbuild` and then package into binaries with `pkg`.
 

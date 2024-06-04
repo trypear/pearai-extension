@@ -1,6 +1,6 @@
 # Tab Autocomplete (beta)
 
-Continue now provides support for tab autocomplete in [VS Code](https://marketplace.visualstudio.com/items?itemName=Continue.continue) and [JetBrains IDEs](https://plugins.jetbrains.com/plugin/22707-continue/edit). We will be greatly improving the experience over the next few releases, and it is always helpful to hear feedback. If you have any problems or suggestions, please let us know in our [Discord](https://discord.gg/vapESyrFmJ).
+PearAI now provides support for tab autocomplete in [VS Code](https://marketplace.visualstudio.com/items?itemName=Continue.continue) and [JetBrains IDEs](https://plugins.jetbrains.com/plugin/22707-continue/edit). We will be greatly improving the experience over the next few releases, and it is always helpful to hear feedback. If you have any problems or suggestions, please let us know in our [Discord](https://discord.gg/vapESyrFmJ).
 
 ## Setting up with Starcoder 7b (recommended)
 
@@ -36,7 +36,7 @@ You can also set up tab-autocomplete with a local LM Studio instance by followin
 2. Download a model (e.g. search for `second-state/StarCoder2-3B-GGUF` and choose one of the options there)
 3. Go to the server section (button is on the left), select your model from the dropdown at the top, and click "Start Server"
 4. Go to the "My Models" section (button is on the left), find your selected model, and copy the name the path (example: `second-state/StarCoder2-3B-GGUF/starcoder2-3b-Q8_0.gguf`); this will be used as the "model" attribute in Continue
-5. Go to Continue and modify the configurations for a [custom model](#setting-up-a-custom-model)
+5. Go to PearAI and modify the configurations for a [custom model](#setting-up-a-custom-model)
 6. Set the "provider" to `lmstudio` and the "model" to the path copied earlier
 
 Example:
@@ -146,7 +146,7 @@ Depending on your hardware, you may want to try a smaller, faster model. If 3b i
 
 ### Completions don't know about my code
 
-We are working on this! Right now Continue uses the Language Server Protocol to add definitions to the prompt, as well as using similarity search over recently edited files. We will be improving the accuracy of this system greatly over the next few weeks.
+We are working on this! Right now PearAI uses the Language Server Protocol to add definitions to the prompt, as well as using similarity search over recently edited files. We will be improving the accuracy of this system greatly over the next few weeks.
 
 ### Completions contain formatting errors
 
@@ -166,7 +166,7 @@ Alternatively, open VS Code settings, search for "Continue" and uncheck the box 
 
 ### JetBrains
 
-Open Settings -> Tools -> Continue and uncheck the box for "Enable Tab Autocomplete".
+Open Settings -> Tools -> PearAI and uncheck the box for "Enable Tab Autocomplete".
 
 ### Feedback
 

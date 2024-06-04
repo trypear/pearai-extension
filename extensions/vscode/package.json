@@ -1,7 +1,7 @@
 {
   "name": "pearai",
   "icon": "media/icon.png",
-  "version": "0.9.152",
+  "version": "0.9.154",
   "repository": {
     "type": "git",
     "url": "https://github.com/trypear/pearai-app"
@@ -16,9 +16,9 @@
   "homepage": "https://trypear.ai",
   "qna": "https://github.com/trypear/pearai-app/issues/new/choose",
   "license": "Apache-2.0",
-  "displayName": "Continue - Llama 3, GPT-4, and more",
+  "displayName": "PearAI",
   "pricing": "Free",
-  "description": "Open-source autopilot - build your own AI software development system",
+  "description": "Supercharge your development with AI",
   "publisher": "PearAI",
   "engines": {
     "vscode": "^1.70.0",
@@ -139,7 +139,7 @@
       {
         "command": "continue.debugTerminal",
         "category": "PearAI",
-        "title": "Continue: Debug Terminal",
+        "title": "Debug Terminal",
         "group": "PearAI"
       },
       {
@@ -170,7 +170,7 @@
       {
         "command": "continue.selectFilesAsContext",
         "category": "PearAI",
-        "title": "Continue: Select Files as Context",
+        "title": "Select Files as Context",
         "group": "PearAI"
       },
       {

@@ -8,7 +8,7 @@ keywords: [context, "@", provider, LLM]
 
 Context Providers allow you to type '@' and see a dropdown of content that can all be fed to the LLM as context. Every context provider is a plugin, which means if you want to reference some source of information that you don't see here, you can request (or build!) a new context provider.
 
-As an example, say you are working on solving a new GitHub Issue. You type '@issue' and select the one you are working on. Continue can now see the issue title and contents. You also know that the issue is related to the files 'readme.md' and 'helloNested.py', so you type '@readme' and '@hello' to find and select them. Now these 3 "Context Items" are displayed inline with the rest of your input.
+As an example, say you are working on solving a new GitHub Issue. You type '@issue' and select the one you are working on. PearAI can now see the issue title and contents. You also know that the issue is related to the files 'readme.md' and 'helloNested.py', so you type '@readme' and '@hello' to find and select them. Now these 3 "Context Items" are displayed inline with the rest of your input.
 
 ![Context Items](/img/context-provider-example.png)
 
@@ -42,13 +42,13 @@ Type '@terminal' to reference the contents of your IDE's terminal.
 
 ### Documentation
 
-Type `@docs` to index and retrieve snippets from any documentation site. You can add any site by selecting "Add Docs" in the dropdown, then entering the root URL of the documentation site and a title to remember it by. After the site has been indexed, you can type `@docs`, select your documentation from the dropdown, and Continue will use similarity search to automatically find important sections when answering your question.
+Type `@docs` to index and retrieve snippets from any documentation site. You can add any site by selecting "Add Docs" in the dropdown, then entering the root URL of the documentation site and a title to remember it by. After the site has been indexed, you can type `@docs`, select your documentation from the dropdown, and PearAI will use similarity search to automatically find important sections when answering your question.
 
 ```json
 { "name": "docs" }
 ```
 
-Continue also pre-indexes a number of common sites, listed [here](https://github.com/trypear/pearai-app/blob/main/core/indexing/docs/preIndexedDocs.ts). The embeddings for these sites are hosted by us, but downloaded for local use after the first time. All other indexing occurs entirely locally.
+PearAI also pre-indexes a number of common sites, listed [here](https://github.com/trypear/pearai-app/blob/main/core/indexing/docs/preIndexedDocs.ts). The embeddings for these sites are hosted by us, but downloaded for local use after the first time. All other indexing occurs entirely locally.
 
 ### Open Files
 
@@ -84,7 +84,7 @@ Type '@search' to reference the results of codebase search, just like the result
 
 ### URL
 
-Type '@url' and input a URL, then Continue will convert it to a markdown document to pass to the model.
+Type '@url' and input a URL, then PearAI will convert it to a markdown document to pass to the model.
 
 ```json
 { "name": "url" }
@@ -439,7 +439,7 @@ The flow of information in the above example is as follows:
 
 To include outside Node modules in your config.ts, run `npm install <module_name>` from the `~/.continue` directory, and then import them in config.ts.
 
-Continue will use [esbuild](https://esbuild.github.io/) to bundle your `config.ts` and any dependencies into a single Javascript file. The exact configuration used can be found [here](https://github.com/trypear/pearai-app/blob/5c9874400e223bbc9786a8823614a2e501fbdaf7/extensions/vscode/src/ideProtocol.ts#L45-L52).
+PearAI will use [esbuild](https://esbuild.github.io/) to bundle your `config.ts` and any dependencies into a single Javascript file. The exact configuration used can be found [here](https://github.com/trypear/pearai-app/blob/5c9874400e223bbc9786a8823614a2e501fbdaf7/extensions/vscode/src/ideProtocol.ts#L45-L52).
 
 ### `CustomContextProvider` Reference
 

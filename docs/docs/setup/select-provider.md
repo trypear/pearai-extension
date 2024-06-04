@@ -6,7 +6,7 @@ keywords: [openai, anthropic, gemini, ollama, ggml]
 
 # Select providers
 
-Continue makes it easy to use different providers for serving your chat, autocomplete, and embeddings models.
+PearAI makes it easy to use different providers for serving your chat, autocomplete, and embeddings models.
 
 To select the ones you want to use, add them to your `config.json`.
 

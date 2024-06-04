@@ -29,7 +29,7 @@ Write unit tests for the above selected code, following each of these instructio
 - Don't explain how to set up `jest`
 ```
 
-Now to use this prompt, you can highlight code and use cmd/ctrl+L to select it in the Continue sidebar. Then, type "/" to see the list of slash commands and choose the one called "test". Press enter and the LLM will respond given the instructions from your prompt file.
+Now to use this prompt, you can highlight code and use cmd/ctrl+L to select it in the PearAI sidebar. Then, type "/" to see the list of slash commands and choose the one called "test". Press enter and the LLM will respond given the instructions from your prompt file.
 
 ## Syntax
 

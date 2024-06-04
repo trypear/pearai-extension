@@ -6,7 +6,7 @@ keywords: [reload, delete, manually, logs, server, console]
 
 # ❓ Troubleshooting
 
-The Continue VS Code extension is currently in beta, and the Intellij extension is in Alpha. If you are having trouble, please follow the steps below.
+The PearAI is currently in beta, and the Intellij extension is in Alpha. If you are having trouble, please follow the steps below.
 
 ## Check the logs
 
@@ -27,7 +27,7 @@ To solve many problems, the first step is reading the logs to find the relevant 
 If you're getting a response from the LLM that doesn't seem to make sense, you can
 
 1. Open the "Output" panel (right next to the terminal)
-2. In the dropdown, select "Continue - LLM Prompts/Completions
+2. In the dropdown, select "PearAI - LLM Prompts/Completions
 3. View the exact prompts that were sent to the LLM and the completions recieved
 
 ### JetBrains
@@ -63,13 +63,13 @@ If you are using VS Code and require requests to be made through a proxy, you ar
 
 ### code-server
 
-Continue can be used in [code-server](https://coder.com/), but if you are running across an error in the logs that includes "This is likely because the editor is not running in a secure context", please see [their documentation on securely exposing code-server](https://coder.com/docs/code-server/latest/guide#expose-code-server).
+PearAI can be used in [code-server](https://coder.com/), but if you are running across an error in the logs that includes "This is likely because the editor is not running in a secure context", please see [their documentation on securely exposing code-server](https://coder.com/docs/code-server/latest/guide#expose-code-server).
 
 ## Download the latest pre-release
 
 ### VS Code
 
-We are constantly making fixes and improvements to Continue, but the latest changes remain in a "pre-release" version for roughly a week so that we can test their stability. If you are experiencing issues, you can try the pre-release by going to the Continue extension page in VS Code and selecting "Switch to Pre-Release" as shown below.
+We are constantly making fixes and improvements to Continue, but the latest changes remain in a "pre-release" version for roughly a week so that we can test their stability. If you are experiencing issues, you can try the pre-release by going to the PearAI extension page in VS Code and selecting "Switch to Pre-Release" as shown below.
 
 ![Pre-Release](../static/img/prerelease.png)
 

@@ -8,7 +8,7 @@ import { Core } from "./core";
 import { IpcMessenger } from "./messenger";
 
 const logFilePath = getCoreLogsPath();
-fs.appendFileSync(logFilePath, "[info] Starting Continue core...\n");
+fs.appendFileSync(logFilePath, "[info] Starting PearAI core...\n");
 
 const program = new Command();
 

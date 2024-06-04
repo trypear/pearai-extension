@@ -48,7 +48,7 @@ The easiest way to find this information is from the chat playground in the Azur
 
 ## Self-hosting an open-source model
 
-For many cases, either Continue will have a built-in provider or the API you use will be OpenAI-compatible, in which case you can use the "openai" provider and change the "baseUrl" to point to the server.
+For many cases, either PearAI will have a built-in provider or the API you use will be OpenAI-compatible, in which case you can use the "openai" provider and change the "baseUrl" to point to the server.
 
 However, if neither of these are the case, you will need to wire up a new LLM object. Learn how to do this [here](#defining-a-custom-llm-provider).
 
@@ -92,7 +92,7 @@ If you need to send custom headers for authentication, you may use the `requestO
 
 ## Customizing the Chat Template
 
-Most open-source models expect a specific chat format, for example llama2 and codellama expect the input to look like `"[INST] How do I write bubble sort in Rust? [/INST]"`. Continue will automatically attempt to detect the correct prompt format based on the `model`value that you provide, but if you are receiving nonsense responses, you can use the`template`property to explicitly set the format that you expect. The options are:`["llama2", "alpaca", "zephyr", "phind", "anthropic", "chatml", "openchat", "neural-chat", "none"]`.
+Most open-source models expect a specific chat format, for example llama2 and codellama expect the input to look like `"[INST] How do I write bubble sort in Rust? [/INST]"`. PearAI will automatically attempt to detect the correct prompt format based on the `model`value that you provide, but if you are receiving nonsense responses, you can use the`template`property to explicitly set the format that you expect. The options are:`["llama2", "alpaca", "zephyr", "phind", "anthropic", "chatml", "openchat", "neural-chat", "none"]`.
 
 If you want to create an entirely new chat template, this can be done in [config.ts](../customization/code-config.md) by defining a function and adding it to the `templateMessages` property of your `LLM`. Here is an example of `templateMessages` for the Alpaca/Vicuna format:
 

@@ -16,7 +16,7 @@ To use any of the built-in slash commands, open `~/.continue/config.json` and ad
 
 ### `/edit`
 
-Select code with ctrl/cmd + L (VS Code) or ctrl/cmd + J (JetBrains), and then type "/edit", followed by instructions for the edit. Continue will stream the changes into a side-by-side diff editor.
+Select code with ctrl/cmd + L (VS Code) or ctrl/cmd + J (JetBrains), and then type "/edit", followed by instructions for the edit. PearAI will stream the changes into a side-by-side diff editor.
 
 ```json
 {
@@ -74,7 +74,7 @@ Shows the LLM your current git diff and asks it to generate a commit message.
 
 ### `/http`
 
-Write a custom slash command at your own HTTP endpoint. Set 'url' in the params object for the endpoint you have setup. The endpoint should return a sequence of string updates, which will be streamed to the Continue sidebar. See our basic [FastAPI example](https://github.com/trypear/pearai-app/blob/74002369a5e435735b83278fb965e004ae38a97d/core/context/providers/context_provider_server.py#L34-L45) for reference.
+Write a custom slash command at your own HTTP endpoint. Set 'url' in the params object for the endpoint you have setup. The endpoint should return a sequence of string updates, which will be streamed to the PearAI sidebar. See our basic [FastAPI example](https://github.com/trypear/pearai-app/blob/74002369a5e435735b83278fb965e004ae38a97d/core/context/providers/context_provider_server.py#L34-L45) for reference.
 
 ```json
 {
@@ -86,7 +86,7 @@ Write a custom slash command at your own HTTP endpoint. Set 'url' in the params 
 
 ### `/issue`
 
-Describe the issue you'd like to generate, and Continue will turn into a well-formatted title and body, then give you a link to the draft so you can submit. Make sure to set the URL of the repository you want to generate issues for.
+Describe the issue you'd like to generate, and PearAI will turn into a well-formatted title and body, then give you a link to the draft so you can submit. Make sure to set the URL of the repository you want to generate issues for.
 
 ```json
 {
@@ -112,7 +112,7 @@ The StackOverflow slash command will automatically pull results from StackOverfl
 There are two ways to add custom slash commands:
 
 1. With natural language prompts - this is simpler and only requires writing a string or string template.
-2. With a custom function - this gives you full access to the Continue SDK and allows you to write arbitrary Typescript code.
+2. With a custom function - this gives you full access to the PearAI SDK and allows you to write arbitrary Typescript code.
 
 ### "Custom Commands" (Use Natural Language)
 

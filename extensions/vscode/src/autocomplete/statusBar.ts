@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 
 const statusBarItemText = (enabled: boolean | undefined) =>
-  enabled ? "$(check) Continue" : "$(circle-slash) Continue";
+  enabled ? "$(check) PearAI" : "$(circle-slash) PearAI";
 
 const statusBarItemTooltip = (enabled: boolean | undefined) =>
   enabled ? "Tab autocomplete is enabled" : "Click to enable tab autocomplete";
@@ -32,7 +32,7 @@ export function setupStatusBar(
   }
 
   statusBarItem.text = loading
-    ? "$(loading~spin) Continue"
+    ? "$(loading~spin) PearAI"
     : statusBarItemText(enabled);
   statusBarItem.tooltip = statusBarItemTooltip(enabled);
   statusBarItem.command = "continue.toggleTabAutocompleteEnabled";

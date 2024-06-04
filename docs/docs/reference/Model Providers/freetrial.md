@@ -1,8 +1,8 @@
 # Free Trial
 
-The `"free-trial"` provider lets new users try out Continue with GPT-4, Llama3, Claude 3, and other models using a proxy server that securely makes API calls to these services. Continue should just work the first time you install the extension.
+The `"free-trial"` provider lets new users try out PearAI with GPT-4, Llama3, Claude 3, and other models using a proxy server that securely makes API calls to these services. PearAI should just work the first time you install the extension.
 
-While the Continue extension is always free to use, we cannot support infinite free LLM usage for all of our users. You will eventually need to either:
+While the PearAI extension is always free to use, we cannot support infinite free LLM usage for all of our users. You will eventually need to either:
 
 1. Select an open-source model to use for free locally, or
 2. Add your own API key for OpenAI, Anthropic, or another LLM provider
@@ -14,7 +14,7 @@ While the Continue extension is always free to use, we cannot support infinite f
 Ollama is a local service that makes it easy to run language models on your laptop.
 
 1. Download Ollama from https://ollama.ai
-2. Open `~/.continue/config.json`. You can do this by clicking the gear icon in the bottom right corner of the Continue sidebar
+2. Open `~/.continue/config.json`. You can do this by clicking the gear icon in the bottom right corner of the PearAI sidebar
 3. Add the following to your `config.json`:
 
 ```json title="~/.continue/config.json"
@@ -69,4 +69,4 @@ Groq provides lightning fast inference for open-source LLMs like Llama3, up to t
 
 ### ⏩ Other options
 
-The above were only a few examples, but Continue can be used with any LLM or provider. You can find [a full list of providers here](../../setup/select-provider.md).
+The above were only a few examples, but PearAI can be used with any LLM or provider. You can find [a full list of providers here](../../setup/select-provider.md).

@@ -67,7 +67,7 @@ Pre-release Changes
 ### Changed
 
 - Context items are now kept around as a part of past messages, instead of staying at the main input
-- No more Python server - Continue runs entirely in Typescript
+- No more Python server - PearAI runs entirely in Typescript
 
 ## v0.6.4 - 2023-11-19
 
@@ -81,7 +81,7 @@ Pre-release Changes
 
 - Full screen mode
 - StackOverflow slash command to augment with web search
-- VS Code context menus: right click to add code to context, debug the terminal, or share your Continue session
+- VS Code context menus: right click to add code to context, debug the terminal, or share your PearAI session
 
 ### Fixed
 
@@ -91,7 +91,7 @@ Pre-release Changes
 
 ### Added
 
-- Codebase Retrieval: Use /codebase or cmd+enter and Continue will automatically gather the most important context
+- Codebase Retrieval: Use /codebase or cmd+enter and PearAI will automatically gather the most important context
 
 ### Changed
 

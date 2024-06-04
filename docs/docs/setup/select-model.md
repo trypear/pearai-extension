@@ -6,7 +6,7 @@ keywords: [llama-3, gpt-4, claude-3, gemini-pro, deepseek]
 
 # Select models
 
-Continue makes it easy to use different models for chat, autocomplete, and embeddings. To select the models you want to use, add them to your `config.json`.
+PearAI makes it easy to use different models for chat, autocomplete, and embeddings. To select the models you want to use, add them to your `config.json`.
 
 ## Chat
 

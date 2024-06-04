@@ -14,7 +14,7 @@ If you haven't already installed Continue, you can do that [here](https://market
 
 1. Create an account [here](https://api.together.xyz/signup)
 2. Copy your API key that appears on the welcome screen
-3. Update your Continue config file like this:
+3. Update your PearAI config file like this:
 
 ```json title="~/.continue/config.json"
 {
@@ -33,7 +33,7 @@ If you haven't already installed Continue, you can do that [here](https://market
 
 1. Download Ollama [here](https://ollama.ai/) (it should walk you through the rest of these steps)
 2. Open a terminal and run `ollama run codellama`
-3. Change your Continue config file like this:
+3. Change your PearAI config file like this:
 
 ```json title="~/.continue/config.json"
 {
@@ -50,7 +50,7 @@ If you haven't already installed Continue, you can do that [here](https://market
 ## Replicate
 
 1. Get your Replicate API key [here](https://replicate.ai/)
-2. Change your Continue config file like this:
+2. Change your PearAI config file like this:
 
 ```json title="~/.continue/config.json"
 {
@@ -69,7 +69,7 @@ If you haven't already installed Continue, you can do that [here](https://market
 
 1. Setup the FastChat API (https://github.com/lm-sys/FastChat) to use one of the Codellama models on Hugging Face (e.g: codellama/CodeLlama-7b-Instruct-hf).
 2. Start the OpenAI compatible API (ref: https://github.com/lm-sys/FastChat/blob/main/docs/openai_api.md).
-3. Change your Continue config file like this:
+3. Change your PearAI config file like this:
 
 ```json title="~/.continue/config.json"
 {

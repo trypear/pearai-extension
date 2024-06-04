@@ -1,6 +1,6 @@
 # Flowise
 
-[Flowise](https://flowiseai.com/) is a low-code/no-code drag & drop tool with the aim to make it easy for people to visualize and build LLM apps. Continue can then be configured to use the `Flowise` LLM class, like the example here:
+[Flowise](https://flowiseai.com/) is a low-code/no-code drag & drop tool with the aim to make it easy for people to visualize and build LLM apps. PearAI can then be configured to use the `Flowise` LLM class, like the example here:
 
 ```json title="~/.continue/config.json"
 {
