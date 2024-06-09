@@ -1,7 +1,7 @@
 {
   "name": "pearai",
   "icon": "media/icon.png",
-  "version": "0.9.157",
+  "version": "0.9.158",
   "repository": {
     "type": "git",
     "url": "https://github.com/trypear/pearai-app"
@@ -57,17 +57,17 @@
         "continue.telemetryEnabled": {
           "type": "boolean",
           "default": true,
-          "markdownDescription": "Continue collects anonymous usage data, cleaned of PII, to help us improve the product for our users. Read more  at [continue.dev › Telemetry](https://trypear.ai)."
+          "markdownDescription": "PearAI collects anonymous usage data, cleaned of PII, to help us improve the product for our users. Read more  at [continue.dev › Telemetry](https://trypear.ai)."
         },
         "continue.showInlineTip": {
           "type": "boolean",
           "default": true,
-          "description": "Show inline suggestion to use the Continue keyboard shortcuts (e.g. \"Cmd/Ctrl L to select code, Cmd/Ctrl I to edit\")."
+          "description": "Show inline suggestion to use the PearAI keyboard shortcuts (e.g. \"Cmd/Ctrl L to select code, Cmd/Ctrl I to edit\")."
         },
         "continue.enableTabAutocomplete": {
           "type": "boolean",
           "default": true,
-          "markdownDescription": "Enable Continue's tab autocomplete feature. Read our walkthrough to learn about configuration and how to share feedback: [continue.dev › Walkthrough: Tab Autocomplete](https://docs.continue.dev/walkthroughs/tab-autocomplete)"
+          "markdownDescription": "Enable PearAI's tab autocomplete feature. Read our walkthrough to learn about configuration and how to share feedback: [continue.dev › Walkthrough: Tab Autocomplete](https://docs.continue.dev/walkthroughs/tab-autocomplete)"
         },
         "continue.remoteConfigServerUrl": {
           "type": "string",
@@ -417,12 +417,12 @@
       {
         "id": "PearAI",
         "title": "Getting Started",
-        "description": "Learn how to use Continue",
+        "description": "Learn how to use PearAI",
         "steps": [
           {
             "id": "edit",
             "title": "Edit in natural language",
-            "description": "Highlight a section of code and instruct Continue to refactor it (e.g. `/edit rewrite this function to be async`)",
+            "description": "Highlight a section of code and instruct PearAI to refactor it (e.g. `/edit rewrite this function to be async`)",
             "media": {
               "image": "media/edit.png",
               "altText": "Empty image"
@@ -432,7 +432,7 @@
           {
             "id": "explain",
             "title": "Get possible explanations",
-            "description": "Ask Continue about a part of your code to get another perspective (e.g. `where in the page should I be making this request to the backend?`)",
+            "description": "Ask PearAI about a part of your code to get another perspective (e.g. `where in the page should I be making this request to the backend?`)",
             "media": {
               "image": "media/explain.png",
               "altText": "Empty image"
@@ -442,7 +442,7 @@
           {
             "id": "generate",
             "title": "Generate files from scratch",
-            "description": "Let Continue build the scaffolding of Python scripts, React components, and more (e.g. `/edit here is a connector for postgres, now write one for kafka`)",
+            "description": "Let PearAI build the scaffolding of Python scripts, React components, and more (e.g. `/edit here is a connector for postgres, now write one for kafka`)",
             "media": {
               "image": "media/generate.png",
               "altText": "Empty image"
