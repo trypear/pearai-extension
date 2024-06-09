@@ -1,28 +1,25 @@
 """
-Welcome to PearAI! This is a 2 minute tutorial.
+Welcome to PearAI! This is a 1 minute tutorial.
 
 You can click the gray buttons, starting with "Highlight the function" to follow along.
 """
 
-# region —————————————————————————— Part 1: Ask a question about code [Ctrl+L] ——————————————————————————
+# region —————————————————————————— Part 1: Ask about code [Ctrl+L] ——————————————————————————
 
 
 """Step 1: Highlight the function below"""
-
-
-def mysterious_function(x):
-    for i in range(len(x)):
-        for j in range(len(x) - 1):
-            if x[j] > x[j + 1]:
-                x[j], x[j + 1] = x[j + 1], x[j]
-
-    return x
-
+def mysterious_function(y, z):
+    a, b = 0, len(y) - 1
+    while a <= b:
+        c = (a + b) // 2
+        if y[c] == z: return c
+        a, b = ((c + 1, b) if y[c] < z else (a, c - 1))
+    return -1
 
 """Step 2: Use the keyboard shortcut [Cmd+L] to
-select the code and toggle the Continue input box"""
+select the code and toggle the PearAI input box"""
 
-"""Step 3: Ask a question and press Enter"""
+"""Step 3: Ask a question like "What does this code do?" and press Enter"""
 
 # endregion
 
@@ -30,24 +27,16 @@ select the code and toggle the Continue input box"""
 
 
 """Step 1: Highlight this code"""
-
-
-def mysterious_function(x):
-    n = len(x)
-    for i in range(n):
-        swapped = False
-        for j in range(0, n - i - 1):
-            if x[j] > x[j + 1]:
-                x[j], x[j + 1] = x[j + 1], x[j]
-                swapped = True
-        if swapped == False:
-            break
-    return x
-
+def filter_even_nums(nums):
+    even_nums = []
+    for x in nums:
+        if x % 2 == 0:
+            even_nums.append(x)
+    return even_nums
 
 """Step 2: Use the keyboard shortcut [Cmd+I] to edit"""
 
-"""Step 3: Type "<your edit request>" and press Enter"""
+"""Step 3: Type "Handle edge cases" and press Enter"""
 
 """Step 4: Use keyboard shortcuts to
 accept [Cmd+Shift+Enter] or reject [Cmd+Shift+Backspace] the edit"""
@@ -57,17 +46,15 @@ accept [Cmd+Shift+Enter] or reject [Cmd+Shift+Backspace] the edit"""
 # region ———————————————————————————— Part 3: Debug automatically [Cmd+Shift+R] ————————————————————————————
 
 
-"""Step 1: Run this Python file (it should error!)"""
-
-
-def print_sum(list_to_print):
-    print(sum(list_to_print))
-
+"""Step 1: Run this Python file (pearai_tutorial.py), and it will error. Let's debug it!"""
+def print_list(l):
+    for i in range(len(l)+1):
+        print(l[i])
 
 """Step 2: Use the keyboard shortcut [Cmd+Shift+R]
 to automatically debug the error"""
-print_sum(["a", "b", "c"])
+print_list(["a", "b", "c"])
 
 # endregion
 
-# Ready to learn more? Check out the Continue documentation: https://docs.continue.dev
+# Now you know some of PearAI's basic features! Enjoy, or learn more at https://trypear.ai
