@@ -19,7 +19,9 @@ def mysterious_function(y, z):
 """Step 2: Use the keyboard shortcut [Cmd+L] to
 select the code and toggle the PearAI input box"""
 
-"""Step 3: Ask a question like "What does this code do?" and press Enter"""
+"""Step 3: Ask a question like "What does this code do?" and press Enter.
+Note that PearAI can answer questions with context of your codebase if needed with [Cmd+Enter]"""
+
 
 # endregion
 
