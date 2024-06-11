@@ -1,15 +1,23 @@
 // Fill in the middle prompts
 
 import { CompletionOptions } from "../index.js";
+import { getLastNPathParts, shortestRelativePaths } from "../util/index.js";
 import { AutocompleteSnippet } from "./ranking.js";
 
 interface AutocompleteTemplate {
+  compilePrefixSuffix?: (
+    prefix: string,
+    suffix: string,
+    filepath: string,
+    reponame: string,
+    snippets: AutocompleteSnippet[],
+  ) => [string, string];
   template:
     | string
     | ((
         prefix: string,
         suffix: string,
-        filename: string,
+        filepath: string,
         reponame: string,
         snippets: AutocompleteSnippet[],
       ) => string);
@@ -21,6 +29,53 @@ const stableCodeFimTemplate: AutocompleteTemplate = {
   template: "<fim_prefix>{{{prefix}}}<fim_suffix>{{{suffix}}}<fim_middle>",
   completionOptions: {
     stop: ["<fim_prefix>", "<fim_suffix>", "<fim_middle>", "<|endoftext|>"],
+  },
+};
+
+const codestralFimTemplate: AutocompleteTemplate = {
+  template: "<s>[SUFFIX]{{{suffix}}}[PREFIX]{{{prefix}}}",
+  completionOptions: {
+    stop: ["[PREFIX]", "[SUFFIX]"],
+  },
+};
+
+const codestralMultifileFimTemplate: AutocompleteTemplate = {
+  compilePrefixSuffix: (
+    prefix: string,
+    suffix: string,
+    filepath: string,
+    reponame: string,
+    snippets: AutocompleteSnippet[],
+  ): [string, string] => {
+    if (snippets.length === 0) {
+      if (suffix.trim().length === 0 && prefix.trim().length === 0) {
+        return [`+++++ ${getLastNPathParts(filepath, 2)}\n${prefix}`, suffix];
+      }
+      return [prefix, suffix];
+    }
+    const relativePaths = shortestRelativePaths([
+      ...snippets.map((snippet) => snippet.filepath),
+      filepath,
+    ]);
+    const otherFiles = snippets
+      .map((snippet, i) => `+++++ ${relativePaths[i]}\n${snippet.contents}`)
+      .join("\n\n");
+    return [
+      `${otherFiles}\n\n+++++ ${relativePaths[relativePaths.length - 1]}\n${prefix}`,
+      suffix,
+    ];
+  },
+  template: (
+    prefix: string,
+    suffix: string,
+    filepath: string,
+    reponame: string,
+    snippets: AutocompleteSnippet[],
+  ): string => {
+    return `[SUFFIX]${suffix}[PREFIX]${prefix}`;
+  },
+  completionOptions: {
+    stop: ["[PREFIX]", "[SUFFIX]"],
   },
 };
 
@@ -51,16 +106,14 @@ const starcoder2FimTemplate: AutocompleteTemplate = {
     const otherFiles =
       snippets.length === 0
         ? ""
-        : "<file_sep>" +
-          snippets
+        : `<file_sep>${snippets
             .map((snippet) => {
               return snippet.contents;
               // return `${getBasename(snippet.filepath)}\n${snippet.contents}`;
             })
-            .join("<file_sep>") +
-          "<file_sep>";
+            .join("<file_sep>")}<file_sep>`;
 
-    let prompt = `${otherFiles}<fim_prefix>${prefix}<fim_suffix>${suffix}<fim_middle>`;
+    const prompt = `${otherFiles}<fim_prefix>${prefix}<fim_suffix>${suffix}<fim_middle>`;
     return prompt;
   },
   completionOptions: {
@@ -227,6 +280,10 @@ export function getTemplateForModel(model: string): AutocompleteTemplate {
     lowerCaseModel.includes("codeqwen")
   ) {
     return stableCodeFimTemplate;
+  }
+
+  if (lowerCaseModel.includes("codestral")) {
+    return codestralMultifileFimTemplate;
   }
 
   if (lowerCaseModel.includes("codegemma")) {

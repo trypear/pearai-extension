@@ -1,4 +1,3 @@
-import { BaseContextProvider } from "../index.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -7,6 +6,9 @@ import {
   LoadSubmenuItemsArgs,
 } from "../../index.js";
 import { getBasename, getLastNPathParts } from "../../util/index.js";
+import { BaseContextProvider } from "../index.js";
+
+const MAX_SUBMENU_ITEMS = 10_000;
 
 class FileContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
@@ -42,7 +44,7 @@ class FileContextProvider extends BaseContextProvider {
         return args.ide.listWorkspaceContents(dir);
       }),
     );
-    const files = results.flat();
+    const files = results.flat().slice(-MAX_SUBMENU_ITEMS);
     return files.map((file) => {
       return {
         id: file,

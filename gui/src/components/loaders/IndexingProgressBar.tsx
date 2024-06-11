@@ -1,10 +1,10 @@
 import { IndexingProgressUpdate } from "core";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 import { StyledTooltip, lightGray, vscForeground } from "..";
+import { IdeMessengerContext } from "../../context/IdeMessenger";
 import { getFontSize } from "../../util";
-import { postToIde } from "../../util/ide";
 
 const DIAMETER = 6;
 const CircleDiv = styled.div<{ color: string }>`
@@ -51,14 +51,34 @@ const P = styled.p`
 `;
 
 interface ProgressBarProps {
-  indexingState: IndexingProgressUpdate;
+  indexingState?: IndexingProgressUpdate;
 }
 
-const IndexingProgressBar = ({ indexingState }: ProgressBarProps) => {
+const IndexingProgressBar = ({ indexingState: indexingStateProp }: ProgressBarProps) => {
+  // If sidebar is opened before extension initiates, define a default indexingState
+  const defaultIndexingState: IndexingProgressUpdate = {
+    status: 'loading', 
+    progress: 0, 
+    desc: ''
+  };
+  const indexingState = indexingStateProp || defaultIndexingState;
+
+  // If sidebar is opened after extension initializes, retrieve saved states.
+  let initialized = false
+  useEffect(() => {
+    if (!initialized) {
+      // Triggers retrieval for possible non-default states set prior to IndexingProgressBar initialization
+      ideMessenger.post("index/indexingProgressBarInitialized", undefined)
+      initialized = true
+    }
+  }, []);
+
   const fillPercentage = Math.min(
     100,
     Math.max(0, indexingState.progress * 100),
   );
+
+  const ideMessenger = useContext(IdeMessengerContext);
 
   const tooltipPortalDiv = document.getElementById("tooltip-portal-div");
 
@@ -67,7 +87,7 @@ const IndexingProgressBar = ({ indexingState }: ProgressBarProps) => {
 
   useEffect(() => {
     if (paused === undefined) return;
-    postToIde("index/setPaused", paused);
+    ideMessenger.post("index/setPaused", paused);
   }, [paused]);
 
   return (
@@ -80,12 +100,12 @@ const IndexingProgressBar = ({ indexingState }: ProgressBarProps) => {
         ) {
           setPaused((prev) => !prev);
         } else {
-          postToIde("index/forceReIndex", undefined);
+          ideMessenger.post("index/forceReIndex", undefined);
         }
       }}
       className="cursor-pointer"
     >
-      {indexingState.status === "starting" ? ( // ice-blue 'indexing starting up' dot
+      {indexingState.status === "loading" ? ( // ice-blue 'indexing loading' dot
         <>
           <CircleDiv
             data-tooltip-id="indexingNotLoaded_dot"
@@ -94,7 +114,7 @@ const IndexingProgressBar = ({ indexingState }: ProgressBarProps) => {
           {tooltipPortalDiv &&
             ReactDOM.createPortal(
               <StyledTooltip id="indexingNotLoaded_dot" place="top">
-                Codebase indexing is starting up.
+                Continue is initializing
               </StyledTooltip>,
               tooltipPortalDiv,
             )}
@@ -148,7 +168,7 @@ const IndexingProgressBar = ({ indexingState }: ProgressBarProps) => {
             data-tooltip-id="progress_dot"
             color="#bb0"
             onClick={(e) => {
-              postToIde("index/setPaused", false);
+              ideMessenger.post("index/setPaused", false);
             }}
           ></CircleDiv>
           {tooltipPortalDiv &&
@@ -167,7 +187,7 @@ const IndexingProgressBar = ({ indexingState }: ProgressBarProps) => {
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             onClick={(e) => {
-              postToIde("index/setPaused", true);
+              ideMessenger.post("index/setPaused", true);
             }}
           >
             <ProgressBarWrapper>

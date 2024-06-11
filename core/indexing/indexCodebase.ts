@@ -56,16 +56,16 @@ export class CodebaseIndexer {
       yield {
         progress: 0,
         desc: "Nothing to index",
-        status: "disabled",
+        status: "disabled",     
       };
       return;
     }
-
+    
     const config = await this.configHandler.loadConfig();
     if (config.disableIndexing) {
       yield {
         progress: 0,
-        desc: "Indexing is disabled in the config.json",
+        desc: "Indexing is disabled in config.json",
         status: "disabled",
       };
       return;
@@ -73,7 +73,7 @@ export class CodebaseIndexer {
       yield {
         progress: 0,
         desc: "Starting indexing",
-        status: "starting",
+        status: "loading",
       };
     }
 
@@ -88,16 +88,20 @@ export class CodebaseIndexer {
     yield {
       progress: 0,
       desc: "Starting indexing...",
-      status: "starting",
+      status: "loading",
     };
 
-    for (let directory of workspaceDirs) {
-      const stats = await this.ide.getStats(directory);
+    for (const directory of workspaceDirs) {
+      // const scheme = vscode.workspace.workspaceFolders?.[0].uri.scheme;
+      // const files = await this.listWorkspaceContents(directory);
+
+      const files = await this.ide.listWorkspaceContents(directory);
+      const stats = await this.ide.getLastModified(files);
       const branch = await this.ide.getBranch(directory);
       const repoName = await this.ide.getRepoName(directory);
       let completedIndexes = 0;
 
-      for (let codebaseIndex of indexesToBuild) {
+      for (const codebaseIndex of indexesToBuild) {
         // TODO: IndexTag type should use repoName rather than directory
         const tag: IndexTag = {
           directory,
@@ -157,9 +161,15 @@ export class CodebaseIndexer {
             status: "indexing",
           };
         } catch (e) {
+          yield {
+            progress: 0, 
+            desc: `${e}`,
+            status: "failed"
+          }
           console.warn(
             `Error updating the ${codebaseIndex.artifactId} index: ${e}`,
           );
+          return
         }
       }
 

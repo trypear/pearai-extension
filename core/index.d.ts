@@ -37,7 +37,7 @@ export interface Chunk extends ChunkWithoutID {
 export interface IndexingProgressUpdate {
   progress: number;
   desc: string;
-  status: "starting" | "indexing" | "done" | "failed" | "paused" | "disabled";
+  status: "loading" | "indexing" | "done" | "failed" | "paused" | "disabled";
 }
 
 export type PromptTemplate =
@@ -58,7 +58,7 @@ export interface ILLM extends LLMOptions {
   contextLength: number;
   completionOptions: CompletionOptions;
   requestOptions?: RequestOptions;
-  promptTemplates?: Record<string, string>;
+  promptTemplates?: Record<string, PromptTemplate>;
   templateMessages?: (messages: ChatMessage[]) => string;
   writeLog?: (str: string) => Promise<void>;
   llmRequestHook?: (model: string, prompt: string) => any;
@@ -75,6 +75,12 @@ export interface ILLM extends LLMOptions {
 
   streamComplete(
     prompt: string,
+    options?: LLMFullCompletionOptions,
+  ): AsyncGenerator<string, PromptLog>;
+
+  streamFim(
+    prefix: string,
+    suffix: string,
     options?: LLMFullCompletionOptions,
   ): AsyncGenerator<string, PromptLog>;
 
@@ -95,6 +101,8 @@ export interface ILLM extends LLMOptions {
   supportsCompletions(): boolean;
 
   supportsPrefill(): boolean;
+
+  supportsFim(): boolean;
 
   listModels(): Promise<string[]>;
 
@@ -152,6 +160,13 @@ export interface ContextSubmenuItem {
   id: string;
   title: string;
   description: string;
+}
+
+export interface SiteIndexingConfig {
+  startUrl: string;
+  rootUrl: string;
+  title: string;
+  maxDepth?: number;
 }
 
 export interface IContextProvider {
@@ -287,14 +302,18 @@ export interface LLMOptions {
   completionOptions?: CompletionOptions;
   requestOptions?: RequestOptions;
   template?: TemplateType;
-  promptTemplates?: Record<string, string>;
+  promptTemplates?: Record<string, PromptTemplate>;
   templateMessages?: (messages: ChatMessage[]) => string;
   writeLog?: (str: string) => Promise<void>;
   llmRequestHook?: (model: string, prompt: string) => any;
   apiKey?: string;
+  aiGatewaySlug?: string;
   apiBase?: string;
 
   useLegacyCompletionsEndpoint?: boolean;
+
+  // Cloudflare options
+  accountId?: string;
 
   // Azure options
   engine?: string;
@@ -374,6 +393,13 @@ export interface IndexTag extends BranchAndDir {
   artifactId: string;
 }
 
+export enum FileType {
+  Unkown = 0,
+  File = 1,
+  Directory = 2,
+  SymbolicLink = 64,
+}
+
 export interface IDE {
   getIdeInfo(): Promise<IdeInfo>;
   getDiff(): Promise<string>;
@@ -386,7 +412,10 @@ export interface IDE {
     stackDepth: number,
   ): Promise<string[]>;
   getAvailableThreads(): Promise<Thread[]>;
-  listWorkspaceContents(directory?: string): Promise<string[]>;
+  listWorkspaceContents(
+    directory?: string,
+    useGitIgnore?: boolean,
+  ): Promise<string[]>;
   listFolders(): Promise<string[]>;
   getWorkspaceDirs(): Promise<string[]>;
   getWorkspaceConfigs(): Promise<ContinueRcJson[]>;
@@ -415,9 +444,15 @@ export interface IDE {
   subprocess(command: string): Promise<[string, string]>;
   getProblems(filepath?: string | undefined): Promise<Problem[]>;
   getBranch(dir: string): Promise<string>;
-  getStats(directory: string): Promise<{ [path: string]: number }>;
   getTags(artifactId: string): Promise<IndexTag[]>;
   getRepoName(dir: string): Promise<string | undefined>;
+  errorPopup(message: string): Promise<void>;
+  infoPopup(message: string): Promise<void>;
+
+  getGitRootPath(dir: string): Promise<string | undefined>;
+  listDir(dir: string): Promise<[string, FileType][]>;
+  getLastModified(files: string[]): Promise<{ [path: string]: number }>;
+  getGitHubAuthToken(): Promise<string | undefined>;
 }
 
 // Slash Commands
@@ -517,7 +552,9 @@ type ModelProvider =
   | "flowise"
   | "groq"
   | "continue-proxy"
-  | "custom";
+  | "fireworks"
+  | "custom"
+  | "cloudflare";
 
 export type ModelName =
   | "AUTODETECT"
@@ -532,6 +569,12 @@ export type ModelName =
   | "gpt-4-turbo-preview"
   | "gpt-4-vision-preview"
   // Mistral
+  | "codestral-latest"
+  | "open-mistral-7b"
+  | "open-mixtral-8x7b"
+  | "open-mixtral-8x22b"
+  | "mistral-small-latest"
+  | "mistral-large-latest"
   | "mistral-7b"
   | "mistral-8x7b"
   // Llama 2
@@ -568,6 +611,7 @@ export type ModelName =
   // Gemini
   | "gemini-pro"
   | "gemini-1.5-pro-latest"
+  | "gemini-1.5-flash-latest"
   // Mistral
   | "mistral-tiny"
   | "mistral-small"
@@ -586,6 +630,7 @@ export interface RequestOptions {
   proxy?: string;
   headers?: { [key: string]: string };
   extraBodyProperties?: { [key: string]: any };
+  noProxy?: string[];
 }
 
 export interface StepWithParams {
@@ -645,7 +690,8 @@ export type EmbeddingsProviderName =
   | "ollama"
   | "openai"
   | "cohere"
-  | "free-trial";
+  | "free-trial"
+  | "gemini";
 
 export interface EmbedOptions {
   apiBase?: string;
@@ -714,10 +760,11 @@ interface ModelRoles {
   inlineEdit?: string;
 }
 
-interface ExperimantalConfig {
+interface ExperimentalConfig {
   contextMenuPrompts?: ContextMenuConfig;
   modelRoles?: ModelRoles;
   defaultContext?: "activeFile"[];
+  promptPath?: string;
 }
 
 export interface SerializedContinueConfig {
@@ -738,7 +785,7 @@ export interface SerializedContinueConfig {
   tabAutocompleteOptions?: Partial<TabAutocompleteOptions>;
   ui?: ContinueUIConfig;
   reranker?: RerankerDescription;
-  experimental?: ExperimantalConfig;
+  experimental?: ExperimentalConfig;
 }
 
 export type ConfigMergeType = "merge" | "overwrite";
@@ -784,7 +831,7 @@ export interface Config {
   /** Options for the reranker */
   reranker?: RerankerDescription | Reranker;
   /** Experimental configuration */
-  experimental?: ExperimantalConfig;
+  experimental?: ExperimentalConfig;
 }
 
 export interface ContinueConfig {
@@ -803,7 +850,7 @@ export interface ContinueConfig {
   tabAutocompleteOptions?: Partial<TabAutocompleteOptions>;
   ui?: ContinueUIConfig;
   reranker?: Reranker;
-  experimental?: ExperimantalConfig;
+  experimental?: ExperimentalConfig;
 }
 
 export interface BrowserSerializedContinueConfig {
@@ -820,5 +867,5 @@ export interface BrowserSerializedContinueConfig {
   embeddingsProvider?: string;
   ui?: ContinueUIConfig;
   reranker?: RerankerDescription;
-  experimental?: ExperimantalConfig;
+  experimental?: ExperimentalConfig;
 }

@@ -28,11 +28,12 @@ import {
   SlashCommand,
 } from "../index.js";
 import TransformersJsEmbeddingsProvider from "../indexing/embeddings/TransformersJsEmbeddingsProvider.js";
-import { AllEmbeddingsProviders } from "../indexing/embeddings/index.js";
+import { allEmbeddingsProviders } from "../indexing/embeddings/index.js";
 import { BaseLLM } from "../llm/index.js";
 import CustomLLMClass from "../llm/llms/CustomLLM.js";
+import FreeTrial from "../llm/llms/FreeTrial.js";
 import { llmFromDescription } from "../llm/llms/index.js";
-import { IdeSettings } from "../protocol.js";
+import { IdeSettings } from "../protocol/ideWebview.js";
 import { fetchwithRequestOptions } from "../util/fetchWithOptions.js";
 import { copyOf } from "../util/index.js";
 import mergeJson from "../util/merge.js";
@@ -43,6 +44,7 @@ import {
   getConfigJsonPathForRemote,
   getConfigTsPath,
   getContinueDotEnv,
+  readAllGlobalPromptFiles,
 } from "../util/paths.js";
 import {
   defaultContextProvidersJetBrains,
@@ -55,7 +57,7 @@ const { execSync } = require("child_process");
 
 function resolveSerializedConfig(filepath: string): SerializedContinueConfig {
   let content = fs.readFileSync(filepath, "utf8");
-  let config = JSON.parse(content) as SerializedContinueConfig;
+  const config = JSON.parse(content) as SerializedContinueConfig;
   if (config.env && Array.isArray(config.env)) {
     const env = {
       ...process.env,
@@ -64,7 +66,7 @@ function resolveSerializedConfig(filepath: string): SerializedContinueConfig {
 
     config.env.forEach((envVar) => {
       if (envVar in env) {
-        content = content.replaceAll(
+        content = (content as any).replaceAll(
           new RegExp(`"${envVar}"`, "g"),
           `"${env[envVar]}"`,
         );
@@ -148,15 +150,22 @@ async function serializedToIntermediateConfig(
   }
 
   const workspaceDirs = await ide.getWorkspaceDirs();
-  const promptFiles = (
-    await Promise.all(
-      workspaceDirs.map((dir) =>
-        getPromptFiles(ide, path.join(dir, ".prompts")),
-      ),
+  const promptFolder = initial.experimental?.promptPath;
+
+  let promptFiles: { path: string; content: string }[] = [];
+  if (promptFolder) {
+    promptFiles = (
+      await Promise.all(
+        workspaceDirs.map((dir) => getPromptFiles(ide, promptFolder)),
+      )
     )
-  )
-    .flat()
-    .filter(({ path }) => path.endsWith(".prompt"));
+      .flat()
+      .filter(({ path }) => path.endsWith(".prompt"));
+  }
+
+  // Also read from ~/.continue/.prompts
+  promptFiles.push(...readAllGlobalPromptFiles());
+
   for (const file of promptFiles) {
     slashCommands.push(slashCommandFromPromptFile(file.path, file.content));
   }
@@ -216,7 +225,7 @@ async function intermediateToFinalConfig(
                 {
                   ...desc,
                   model: modelName,
-                  title: llm.title + " - " + modelName,
+                  title: `${llm.title} - ${modelName}`,
                 },
                 ide.readFile.bind(ide),
                 uniqueId,
@@ -272,6 +281,17 @@ async function intermediateToFinalConfig(
     };
   }
 
+  // Obtain auth token (only if free trial being used)
+  const freeTrialModels = models.filter(
+    (model) => model.providerName === "free-trial",
+  );
+  if (freeTrialModels.length > 0) {
+    const ghAuthToken = await ide.getGitHubAuthToken();
+    for (const model of freeTrialModels) {
+      (model as FreeTrial).setupGhAuthToken(ghAuthToken);
+    }
+  }
+
   // Tab autocomplete model
   let autocompleteLlm: BaseLLM | undefined = undefined;
   if (config.tabAutocompleteModel) {
@@ -285,6 +305,11 @@ async function intermediateToFinalConfig(
         config.completionOptions,
         config.systemMessage,
       );
+
+      if (autocompleteLlm?.providerName === "free-trial") {
+        const ghAuthToken = await ide.getGitHubAuthToken();
+        (autocompleteLlm as FreeTrial).setupGhAuthToken(ghAuthToken);
+      }
     } else {
       autocompleteLlm = new CustomLLMClass(config.tabAutocompleteModel);
     }
@@ -311,16 +336,22 @@ async function intermediateToFinalConfig(
     | undefined;
   if (embeddingsProviderDescription?.provider) {
     const { provider, ...options } = embeddingsProviderDescription;
-    const embeddingsProviderClass = AllEmbeddingsProviders[provider];
+    const embeddingsProviderClass = allEmbeddingsProviders[provider];
     if (embeddingsProviderClass) {
-      config.embeddingsProvider = new embeddingsProviderClass(
-        options,
-        (url: string | URL, init: any) =>
-          fetchwithRequestOptions(url, init, {
-            ...config.requestOptions,
-            ...options.requestOptions,
-          }),
-      );
+      if (
+        embeddingsProviderClass.name === "_TransformersJsEmbeddingsProvider"
+      ) {
+        config.embeddingsProvider = new embeddingsProviderClass();
+      } else {
+        config.embeddingsProvider = new embeddingsProviderClass(
+          options,
+          (url: string | URL, init: any) =>
+            fetchwithRequestOptions(url, init, {
+              ...config.requestOptions,
+              ...options.requestOptions,
+            }),
+        );
+      }
     }
   }
 
@@ -371,7 +402,7 @@ function finalToBrowserConfig(
       completionOptions: m.completionOptions,
       systemMessage: m.systemMessage,
       requestOptions: m.requestOptions,
-      promptTemplates: m.promptTemplates,
+      promptTemplates: m.promptTemplates as any,
     })),
     systemMessage: final.systemMessage,
     completionOptions: final.completionOptions,
@@ -431,14 +462,13 @@ async function buildConfigTs() {
   try {
     if (process.env.IS_BINARY === "true") {
       execSync(
-        escapeSpacesInPath(path.dirname(process.execPath)) +
-          `/esbuild${
-            getTarget().startsWith("win32") ? ".exe" : ""
-          } ${escapeSpacesInPath(
-            getConfigTsPath(),
-          )} --bundle --outfile=${escapeSpacesInPath(
-            getConfigJsPath(),
-          )} --platform=node --format=cjs --sourcemap --external:fetch --external:fs --external:path --external:os --external:child_process`,
+        `${escapeSpacesInPath(path.dirname(process.execPath))}/esbuild${
+          getTarget().startsWith("win32") ? ".exe" : ""
+        } ${escapeSpacesInPath(
+          getConfigTsPath(),
+        )} --bundle --outfile=${escapeSpacesInPath(
+          getConfigJsPath(),
+        )} --platform=node --format=cjs --sourcemap --external:fetch --external:fs --external:path --external:os --external:child_process`,
       );
     } else {
       // Dynamic import esbuild so potentially disastrous errors can be caught
@@ -456,7 +486,7 @@ async function buildConfigTs() {
     }
   } catch (e) {
     console.log(
-      "Build error. Please check your ~/.continue/config.ts file: " + e,
+      `Build error. Please check your ~/.continue/config.ts file: ${e}`,
     );
     return undefined;
   }

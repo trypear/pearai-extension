@@ -42,6 +42,7 @@ const PROVIDER_HANDLES_TEMPLATING: ModelProvider[] = [
   "anthropic",
   "bedrock",
   "continue-proxy",
+  "mistral",
 ];
 
 const PROVIDER_SUPPORTS_IMAGES: ModelProvider[] = [
@@ -62,6 +63,7 @@ const MODEL_SUPPORTS_IMAGES: string[] = [
   "claude-3",
   "gemini-ultra",
   "gemini-1.5-pro",
+  "gemini-1.5-flash",
   "sonnet",
   "opus",
   "haiku",
@@ -91,7 +93,6 @@ const PARALLEL_PROVIDERS: ModelProvider[] = [
   "anthropic",
   "bedrock",
   "deepinfra",
-  "gemini",
   "gemini",
   "huggingface-inference-api",
   "huggingface-tgi",
@@ -171,6 +172,10 @@ function autodetectTemplateType(model: string): TemplateType | undefined {
 
   // Claude requests always sent through Messages API, so formatting not necessary
   if (lower.includes("claude")) {
+    return "none";
+  }
+
+  if (lower.includes("codestral")) {
     return "none";
   }
 
@@ -301,10 +306,12 @@ function autodetectPromptTemplates(
     editTemplate = null;
   } else if (templateType) {
     editTemplate = gptEditPrompt;
+  } else if (model.includes("codestral")) {
+    editTemplate = osModelsEditPrompt;
   }
 
   if (editTemplate !== null) {
-    templates["edit"] = editTemplate;
+    templates.edit = editTemplate;
   }
 
   return templates;
@@ -315,6 +322,5 @@ export {
   autodetectTemplateFunction,
   autodetectTemplateType,
   llmCanGenerateInParallel,
-  modelSupportsImages
+  modelSupportsImages,
 };
-

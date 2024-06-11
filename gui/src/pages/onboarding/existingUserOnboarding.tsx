@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { TRIAL_FIM_MODEL } from "core/config/onboarding";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { greenButtonColor } from "../../components";
 import StyledMarkdownPreview from "../../components/markdown/StyledMarkdownPreview";
-import { postToIde } from "../../util/ide";
+import { IdeMessengerContext } from "../../context/IdeMessenger";
 import { setLocalStorage } from "../../util/localStorage";
 import { Div, StyledButton } from "./components";
 
@@ -22,6 +23,7 @@ const TopDiv = styled.div`
 
 function ExistingUserOnboarding() {
   const navigate = useNavigate();
+  const ideMessenger = useContext(IdeMessengerContext);
 
   const [hovered1, setHovered1] = useState(false);
   const [hovered2, setHovered2] = useState(false);
@@ -82,7 +84,7 @@ function ExistingUserOnboarding() {
   "tabAutocompleteModel": {
     "title": "Tab Autocomplete",
     "provider": "free-trial",
-    "model": "starcoder-7b"
+    "model": "${TRIAL_FIM_MODEL}"
   },
   // Voyage AI's voyage-code-2
   "embeddingsProvider": {
@@ -99,11 +101,10 @@ Alternatively, you can enter your own API keys:
 \`\`\`json
 {
   "tabAutocompleteModel": {
-    "title": "Starcoder 2",
-    "provider": "openai",
-    "model": "accounts/fireworks/models/starcoder-7b",
-    "apiBase": "https://api.fireworks.ai/inference/v1",
-    "apiKey": "FIREWORKS_API_KEY"
+    "title": "Codestral",
+    "provider": "mistral",
+    "model": "codestral-latest",
+    "apiKey": "MISTRAL_API_KEY"
   }
   "embeddingsProvider": {
     "provider": "openai",
@@ -127,14 +128,14 @@ Alternatively, you can enter your own API keys:
           <StyledButton
             disabled={selected < 0}
             onClick={() => {
-              postToIde("completeOnboarding", {
+              ideMessenger.post("completeOnboarding", {
                 mode: ["localExistingUser", "optimizedExistingUser"][
                   selected
                 ] as any,
               });
-              postToIde("openConfigJson", undefined);
+              ideMessenger.post("openConfigJson", undefined);
               setLocalStorage("onboardingComplete", true);
-              postToIde("index/forceReIndex", undefined);
+              ideMessenger.post("index/forceReIndex", undefined);
               navigate("/");
             }}
           >

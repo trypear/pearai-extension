@@ -1,26 +1,28 @@
-import { ContinueConfig, ContinueRcJson, IDE, ILLM } from "../index.js";
-import { IdeSettings } from "../protocol.js";
-import { Telemetry } from "../util/posthog.js";
 import {
   BrowserSerializedContinueConfig,
-  finalToBrowserConfig,
-  loadFullConfigNode,
-} from "./load.js";
+  ContinueConfig,
+  ContinueRcJson,
+  IContextProvider,
+  IDE,
+  ILLM,
+} from "../index.js";
+import { IdeSettings } from "../protocol/ideWebview.js";
+import { Telemetry } from "../util/posthog.js";
+import { finalToBrowserConfig, loadFullConfigNode } from "./load.js";
 
 export class ConfigHandler {
   private savedConfig: ContinueConfig | undefined;
   private savedBrowserConfig?: BrowserSerializedContinueConfig;
+  private additionalContextProviders: IContextProvider[] = [];
 
   constructor(
     private readonly ide: IDE,
-    private ideSettings: IdeSettings,
+    private ideSettingsPromise: Promise<IdeSettings>,
     private readonly writeLog: (text: string) => Promise<void>,
-    private readonly onConfigUpdate: () => void,
   ) {
     this.ide = ide;
-    this.ideSettings = ideSettings;
+    this.ideSettingsPromise = ideSettingsPromise;
     this.writeLog = writeLog;
-    this.onConfigUpdate = onConfigUpdate;
     try {
       this.loadConfig();
     } catch (e) {
@@ -29,15 +31,23 @@ export class ConfigHandler {
   }
 
   updateIdeSettings(ideSettings: IdeSettings) {
-    this.ideSettings = ideSettings;
+    this.ideSettingsPromise = Promise.resolve(ideSettings);
     this.reloadConfig();
+  }
+
+  private updateListeners: (() => void)[] = [];
+  onConfigUpdate(listener: () => void) {
+    this.updateListeners.push(listener);
   }
 
   reloadConfig() {
     this.savedConfig = undefined;
     this.savedBrowserConfig = undefined;
-    this.loadConfig();
-    this.onConfigUpdate();
+    this.loadConfig().then(() => {
+      for (const listener of this.updateListeners) {
+        listener();
+      }
+    });
   }
 
   async getSerializedConfig(): Promise<BrowserSerializedContinueConfig> {
@@ -63,26 +73,29 @@ export class ConfigHandler {
     const ideInfo = await this.ide.getIdeInfo();
     const uniqueId = await this.ide.getUniqueId();
 
-    this.savedConfig = await loadFullConfigNode(
+    const newConfig = await loadFullConfigNode(
       this.ide,
       workspaceConfigs,
-      this.ideSettings,
+      await this.ideSettingsPromise,
       ideInfo.ideType,
       uniqueId,
       this.writeLog,
     );
-    this.savedConfig.allowAnonymousTelemetry =
-      this.savedConfig.allowAnonymousTelemetry &&
+    newConfig.allowAnonymousTelemetry =
+      newConfig.allowAnonymousTelemetry &&
       (await this.ide.isTelemetryEnabled());
 
     // Setup telemetry only after (and if) we know it is enabled
     await Telemetry.setup(
-      this.savedConfig.allowAnonymousTelemetry ?? true,
+      newConfig.allowAnonymousTelemetry ?? true,
       await this.ide.getUniqueId(),
       ideInfo.extensionVersion,
     );
 
-    return this.savedConfig;
+    (newConfig.contextProviders ?? []).push(...this.additionalContextProviders);
+
+    this.savedConfig = newConfig;
+    return newConfig;
   }
 
   async llmFromTitle(title?: string): Promise<ILLM> {
@@ -94,5 +107,10 @@ export class ConfigHandler {
     }
 
     return model;
+  }
+
+  registerCustomContextProvider(contextProvider: IContextProvider) {
+    this.additionalContextProviders.push(contextProvider);
+    this.reloadConfig();
   }
 }

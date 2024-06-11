@@ -1,6 +1,6 @@
-import fs from "fs";
-import path from "path";
-import {
+import fs from "node:fs";
+import path from "node:path";
+import type {
   ChunkWithoutID,
   ContextItem,
   ContextSubmenuItem,
@@ -8,7 +8,7 @@ import {
   IndexTag,
   IndexingProgressUpdate,
 } from "../index.js";
-import { getBasename } from "../util/index.js";
+import { getBasename, getLastNPathParts } from "../util/index.js";
 import {
   getLanguageForFile,
   getParserForFile,
@@ -16,10 +16,10 @@ import {
 } from "../util/treeSitter.js";
 import { DatabaseConnection, SqliteDb, tagToString } from "./refreshIndex.js";
 import {
-  CodebaseIndex,
   IndexResultType,
   MarkCompleteCallback,
   RefreshIndexResults,
+  type CodebaseIndex,
 } from "./types.js";
 
 export class CodeSnippetsCodebaseIndex implements CodebaseIndex {
@@ -194,7 +194,7 @@ export class CodeSnippetsCodebaseIndex implements CodebaseIndex {
 
     return {
       name: row.title,
-      description: getBasename(row.path, 2),
+      description: getLastNPathParts(row.path, 2),
       content: `\`\`\`${getBasename(row.path)}\n${row.content}\n\`\`\``,
     };
   }
@@ -214,7 +214,7 @@ export class CodeSnippetsCodebaseIndex implements CodebaseIndex {
 
       return rows.map((row) => ({
         title: row.title,
-        description: getBasename(row.path, 2),
+        description: getLastNPathParts(row.path, 2),
         id: row.id.toString(),
       }));
     } catch (e) {

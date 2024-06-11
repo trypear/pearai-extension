@@ -3,7 +3,7 @@ import {
   QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 import { IndexingProgressUpdate } from "core";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -13,6 +13,7 @@ import {
   vscForeground,
   vscInputBackground,
 } from ".";
+import { IdeMessengerContext } from "../context/IdeMessenger";
 import { useWebviewListener } from "../hooks/useWebviewListener";
 import { defaultModelSelector } from "../redux/selectors/modelSelectors";
 import {
@@ -22,8 +23,7 @@ import {
 } from "../redux/slices/uiStateSlice";
 import { RootState } from "../redux/store";
 import { getFontSize, isMetaEquivalentKeyPressed } from "../util";
-import { isJetBrains, postToIde } from "../util/ide";
-import { getLocalStorage } from "../util/localStorage";
+import { getLocalStorage, setLocalStorage } from "../util/localStorage";
 import HeaderButtonWithText from "./HeaderButtonWithText";
 import TextDialog from "./dialogs";
 import { ftl } from "./dialogs/FTCDialog";
@@ -91,13 +91,17 @@ const DropdownPortalDiv = styled.div`
 const HIDE_FOOTER_ON_PAGES = [
   "/onboarding",
   "/existingUserOnboarding",
+  "/onboarding",
   "/localOnboarding",
+  "/apiKeyOnboarding",
 ];
 
 const Layout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
+  const ideMessenger = useContext(IdeMessengerContext);
+
   const dialogMessage = useSelector(
     (state: RootState) => state.uiState.dialogMessage,
   );
@@ -148,7 +152,7 @@ const Layout = () => {
   );
 
   useWebviewListener("openSettings", async () => {
-    postToIde("openConfigJson", undefined);
+    ideMessenger.post("openConfigJson", undefined);
   });
 
   useWebviewListener(
@@ -171,15 +175,36 @@ const Layout = () => {
   useWebviewListener(
     "addApiKey",
     async () => {
-      navigate("/modelconfig/openai");
+      navigate("/apiKeyOnboarding");
     },
     [navigate],
   );
 
   useWebviewListener(
+    "openOnboarding",
+    async () => {
+      navigate("/onboarding");
+    },
+    [navigate],
+  );
+
+  useWebviewListener(
+    "incrementFtc",
+    async () => {
+      const u = getLocalStorage("ftc");
+      if (u) {
+        setLocalStorage("ftc", u + 1);
+      } else {
+        setLocalStorage("ftc", 1);
+      }
+    },
+    [],
+  );
+
+  useWebviewListener(
     "setupLocalModel",
     async () => {
-      postToIde("completeOnboarding", {
+      ideMessenger.post("completeOnboarding", {
         mode: "localAfterFreeTrial",
       });
       navigate("/localOnboarding");
@@ -188,27 +213,19 @@ const Layout = () => {
   );
 
   useEffect(() => {
-    if (isJetBrains()) {
-      return;
-    }
     const onboardingComplete = getLocalStorage("onboardingComplete");
     if (
       !onboardingComplete &&
-      !location.pathname.startsWith("/onboarding") &&
-      !location.pathname.startsWith("/existingUserOnboarding")
+      (location.pathname === "/" || location.pathname === "/index.html")
     ) {
-      if (getLocalStorage("mainTextEntryCounter")) {
-        navigate("/existingUserOnboarding");
-      } else {
-        navigate("/onboarding");
-      }
+      navigate("/onboarding");
     }
   }, [location]);
 
   const [indexingState, setIndexingState] = useState<IndexingProgressUpdate>({
-    desc: "Indexing disabled",
+    desc: "Loading indexing config",
     progress: 0.0,
-    status: "disabled",
+    status: "loading",
   });
 
   return (
@@ -238,34 +255,6 @@ const Layout = () => {
           {HIDE_FOOTER_ON_PAGES.includes(location.pathname) || (
             <Footer>
               <div className="mr-auto flex gap-2 items-center">
-                {/* {localStorage.getItem("ide") === "jetbrains" ||
-                localStorage.getItem("hideFeature") === "true" || (
-                  <SparklesIcon
-                    className="cursor-pointer"
-                    onClick={() => {
-                      localStorage.setItem("hideFeature", "true");
-                    }}
-                    onMouseEnter={() => {
-                      dispatch(
-                        setBottomMessage(
-                          `🎁 New Feature: Use ${getMetaKeyLabel()}⇧R automatically debug errors in the terminal (you can click the sparkle icon to make it go away)`
-                        )
-                      );
-                    }}
-                    onMouseLeave={() => {
-                      dispatch(
-                        setBottomMessageCloseTimeout(
-                          setTimeout(() => {
-                            dispatch(setBottomMessage(undefined));
-                          }, 2000)
-                        )
-                      );
-                    }}
-                    width="1.3em"
-                    height="1.3em"
-                    color="yellow"
-                  />
-                )} */}
                 <ModelSelect />
                 {indexingState.status !== "indexing" && // Would take up too much space together with indexing progress
                   defaultModel?.provider === "free-trial" && (
@@ -274,10 +263,7 @@ const Layout = () => {
                       total={ftl()}
                     />
                   )}
-
-                {isJetBrains() || (
-                  <IndexingProgressBar indexingState={indexingState} />
-                )}
+                <IndexingProgressBar indexingState={indexingState} />
               </div>
               <HeaderButtonWithText
                 text="Help"
@@ -294,7 +280,7 @@ const Layout = () => {
               <HeaderButtonWithText
                 onClick={() => {
                   // navigate("/settings");
-                  postToIde("openConfigJson", undefined);
+                  ideMessenger.post("openConfigJson", undefined);
                 }}
                 text="Configure Continue"
               >

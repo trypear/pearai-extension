@@ -1,10 +1,10 @@
 import { http, https } from "follow-redirects";
-import * as fs from "fs";
 import { HttpProxyAgent } from "http-proxy-agent";
 import { globalAgent } from "https";
 import { HttpsProxyAgent } from "https-proxy-agent";
 import fetch, { RequestInit, Response } from "node-fetch";
-import tls from "tls";
+import * as fs from "node:fs";
+import tls from "node:tls";
 import { RequestOptions } from "../index.js";
 
 export function fetchwithRequestOptions(
@@ -38,7 +38,7 @@ export function fetchwithRequestOptions(
     );
   }
 
-  let timeout = (requestOptions?.timeout ?? TIMEOUT) * 1000; // measured in ms
+  const timeout = (requestOptions?.timeout ?? TIMEOUT) * 1000; // measured in ms
 
   const agentOptions = {
     ca,
@@ -53,11 +53,12 @@ export function fetchwithRequestOptions(
 
   // Create agent
   const protocol = url.protocol === "https:" ? https : http;
-  const agent = proxy
-    ? protocol === https
-      ? new HttpsProxyAgent(proxy, agentOptions)
-      : new HttpProxyAgent(proxy, agentOptions)
-    : new protocol.Agent(agentOptions);
+  const agent =
+    proxy && !requestOptions?.noProxy?.includes(url.hostname)
+      ? protocol === https
+        ? new HttpsProxyAgent(proxy, agentOptions)
+        : new HttpProxyAgent(proxy, agentOptions)
+      : new protocol.Agent(agentOptions);
 
   let headers: { [key: string]: string } = {};
   for (const [key, value] of Object.entries(init?.headers || {})) {
@@ -88,7 +89,7 @@ export function fetchwithRequestOptions(
   }
 
   // fetch the request with the provided options
-  let resp = fetch(url, {
+  const resp = fetch(url, {
     ...init,
     body: updatedBody ?? init?.body,
     headers: headers,

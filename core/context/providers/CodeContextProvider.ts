@@ -1,4 +1,3 @@
-import { BaseContextProvider } from "../index.js";
 import {
   ContextItem,
   ContextProviderDescription,
@@ -7,6 +6,9 @@ import {
   LoadSubmenuItemsArgs,
 } from "../../index.js";
 import { CodeSnippetsCodebaseIndex } from "../../indexing/CodeSnippetsIndex.js";
+import { BaseContextProvider } from "../index.js";
+
+const MAX_SUBMENU_ITEMS = 10_000;
 
 class CodeContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {
@@ -21,19 +23,23 @@ class CodeContextProvider extends BaseContextProvider {
     extras: ContextProviderExtras,
   ): Promise<ContextItem[]> {
     // Assume the query is the id as returned by loadSubmenuItems
-    return [await CodeSnippetsCodebaseIndex.getForId(parseInt(query, 10))];
+    return [
+      await CodeSnippetsCodebaseIndex.getForId(Number.parseInt(query, 10)),
+    ];
   }
 
   async loadSubmenuItems(
     args: LoadSubmenuItemsArgs,
   ): Promise<ContextSubmenuItem[]> {
+    // TODO: Dynamically load submenu items based on the query
+    // instead of loading everything into memory
     const tags = await args.ide.getTags("codeSnippets");
     const snippets = await Promise.all(
       tags.map((tag) => CodeSnippetsCodebaseIndex.getAll(tag)),
     );
 
     const submenuItems: ContextSubmenuItem[] = [];
-    for (const snippetList of snippets) {
+    for (const snippetList of snippets.slice(-MAX_SUBMENU_ITEMS)) {
       submenuItems.push(...snippetList);
     }
 

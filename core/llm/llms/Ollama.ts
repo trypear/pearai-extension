@@ -24,22 +24,22 @@ class Ollama extends BaseLLM {
     this.fetch(this.getEndpoint("api/show"), {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${this.apiKey}`
+        Authorization: `Bearer ${this.apiKey}`,
       },
       body: JSON.stringify({ name: this._getModel() }),
     })
       .then(async (response) => {
         if (response.status !== 200) {
-          console.warn(
-            "Error calling Ollama /api/show endpoint: ",
-            await response.text(),
-          );
+          // console.warn(
+          //   "Error calling Ollama /api/show endpoint: ",
+          //   await response.text(),
+          // );
           return;
         }
         const body = await response.json();
         if (body.parameters) {
           const params = [];
-          for (let line of body.parameters.split("\n")) {
+          for (const line of body.parameters.split("\n")) {
             let parts = line.match(/^(\S+)\s+((?:".*")|\S+)$/);
             if (parts.length < 2) {
               continue;
@@ -48,7 +48,7 @@ class Ollama extends BaseLLM {
             let value = parts[2];
             switch (key) {
               case "num_ctx":
-                this.contextLength = parseInt(value);
+                this.contextLength = Number.parseInt(value);
                 break;
               case "stop":
                 if (!this.completionOptions.stop) {
@@ -58,7 +58,7 @@ class Ollama extends BaseLLM {
                   this.completionOptions.stop.push(JSON.parse(value));
                 } catch (e) {
                   console.warn(
-                    "Error parsing stop parameter value \"{value}: ${e}",
+                    'Error parsing stop parameter value "{value}: ${e}',
                   );
                 }
                 break;
@@ -69,7 +69,7 @@ class Ollama extends BaseLLM {
         }
       })
       .catch((e) => {
-        console.warn(`Error calling Ollama /api/show endpoint: ${e}`);
+        // console.warn(`Error calling Ollama /api/show endpoint: ${e}`);
       });
   }
 
@@ -165,7 +165,7 @@ class Ollama extends BaseLLM {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.apiKey}`
+        Authorization: `Bearer ${this.apiKey}`,
       },
       body: JSON.stringify(this._convertArgs(options, prompt)),
     });
@@ -184,9 +184,9 @@ class Ollama extends BaseLLM {
           try {
             const j = JSON.parse(chunk);
             if ("response" in j) {
-              yield j["response"];
+              yield j.response;
             } else if ("error" in j) {
-              throw new Error(j["error"]);
+              throw new Error(j.error);
             }
           } catch (e) {
             throw new Error(`Error parsing Ollama response: ${e} ${chunk}`);
@@ -204,7 +204,7 @@ class Ollama extends BaseLLM {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.apiKey}`
+        Authorization: `Bearer ${this.apiKey}`,
       },
       body: JSON.stringify(this._convertArgs(options, messages)),
     });

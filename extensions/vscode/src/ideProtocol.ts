@@ -1,16 +1,24 @@
-import * as child_process from "child_process";
-import { exec } from "child_process";
-import {
+import * as child_process from "node:child_process";
+import { exec } from "node:child_process";
+import * as path from "node:path";
+
+import type {
   ContinueRcJson,
+  FileType,
   IDE,
   IdeInfo,
   IndexTag,
   Problem,
-  Range,
   Thread,
 } from "core";
-import { getContinueGlobalPath } from "core/util/paths";
-import * as path from "path";
+import { Range } from "core";
+import { defaultIgnoreFile } from "core/indexing/ignore";
+import { IdeSettings } from "core/protocol/ideWebview";
+import {
+  editConfigJson,
+  getConfigJsonPath,
+  getContinueGlobalPath,
+} from "core/util/paths";
 import * as vscode from "vscode";
 import { DiffManager } from "./diff/horizontal";
 import { Repository } from "./otherExtensions/git";
@@ -21,12 +29,137 @@ import {
   openEditorAndRevealRange,
   uriFromFilePath,
 } from "./util/vscode";
+import { VsCodeWebviewProtocol } from "./webviewProtocol";
 
 class VsCodeIde implements IDE {
   ideUtils: VsCodeIdeUtils;
 
-  constructor(private readonly diffManager: DiffManager) {
+  constructor(
+    private readonly diffManager: DiffManager,
+    private readonly vscodeWebviewProtocolPromise: Promise<VsCodeWebviewProtocol>,
+  ) {
     this.ideUtils = new VsCodeIdeUtils();
+  }
+
+  private authToken: string | undefined;
+  private askedForAuth = false;
+
+  async getGitHubAuthToken(): Promise<string | undefined> {
+    // Saved auth token
+    if (this.authToken) {
+      return this.authToken;
+    }
+
+    // Try to ask silently
+    const session = await vscode.authentication.getSession("github", [], {
+      silent: true,
+    });
+    if (session) {
+      this.authToken = session.accessToken;
+      return this.authToken;
+    }
+
+    try {
+      // If we haven't asked yet, give explanation of what is happening and why
+      // But don't wait to return this immediately
+      // We will use a callback to refresh the config
+      if (!this.askedForAuth) {
+        vscode.window
+          .showInformationMessage(
+            "Continue will request read access to your GitHub email so that we can prevent abuse of the free trial. If you prefer not to sign in, you can use Continue with your own API keys or local model.",
+            "Sign in",
+            "Use API key / local model",
+            "Learn more",
+          )
+          .then(async (selection) => {
+            if (selection === "Use API key / local model") {
+              await vscode.commands.executeCommand(
+                "continue.continueGUIView.focus",
+              );
+              (await this.vscodeWebviewProtocolPromise).request(
+                "openOnboarding",
+                undefined,
+              );
+
+              // Remove free trial models
+              editConfigJson((config) => {
+                const tabAutocompleteModel =
+                  config.tabAutocompleteModel?.provider === "free-trial"
+                    ? undefined
+                    : config.tabAutocompleteModel;
+                return {
+                  ...config,
+                  models: config.models.filter(
+                    (model) => model.provider !== "free-trial",
+                  ),
+                  tabAutocompleteModel,
+                };
+              });
+            } else if (selection === "Learn more") {
+              vscode.env.openExternal(
+                vscode.Uri.parse(
+                  "https://docs.continue.dev/reference/Model%20Providers/freetrial",
+                ),
+              );
+            } else if (selection === "Sign in") {
+              const session = await vscode.authentication.getSession(
+                "github",
+                [],
+                {
+                  createIfNone: true,
+                },
+              );
+              if (session) {
+                this.authToken = session.accessToken;
+              }
+            }
+          });
+        this.askedForAuth = true;
+        return undefined;
+      }
+
+      const session = await vscode.authentication.getSession("github", [], {
+        silent: this.askedForAuth,
+        createIfNone: !this.askedForAuth,
+      });
+      if (session) {
+        this.authToken = session.accessToken;
+        return session.accessToken;
+      } else if (!this.askedForAuth) {
+        // User cancelled the login prompt
+        // Explain that they can avoid the prompt by removing free trial models from config.json
+        vscode.window
+          .showInformationMessage(
+            "We'll only ask you to log in if using the free trial. To avoid this prompt, make sure to remove free trial models from your config.json",
+            "Remove for me",
+            "Open config.json",
+          )
+          .then((selection) => {
+            if (selection === "Remove for me") {
+              editConfigJson((configJson) => {
+                configJson.models = configJson.models.filter(
+                  (model) => model.provider !== "free-trial",
+                );
+                configJson.tabAutocompleteModel = undefined;
+                return configJson;
+              });
+            } else if (selection === "Open config.json") {
+              this.openFile(getConfigJsonPath());
+            }
+          });
+      }
+    } catch (error) {
+      console.error("Failed to get GitHub authentication session:", error);
+    }
+    return undefined;
+  }
+
+  async infoPopup(message: string): Promise<void> {
+    vscode.window.showInformationMessage(message);
+  }
+
+  async errorPopup(message: string): Promise<void> {
+    vscode.window.showErrorMessage(message);
   }
 
   async getRepoName(dir: string): Promise<string | undefined> {
@@ -83,13 +216,11 @@ class VsCodeIde implements IDE {
     );
   }
 
-  async getStats(directory: string): Promise<{ [path: string]: number }> {
-    const scheme = vscode.workspace.workspaceFolders?.[0].uri.scheme;
-    const files = await this.listWorkspaceContents(directory);
+  async getLastModified(files: string[]): Promise<{ [path: string]: number }> {
     const pathToLastModified: { [path: string]: number } = {};
     await Promise.all(
       files.map(async (file) => {
-        let stat = await vscode.workspace.fs.stat(uriFromFilePath(file));
+        const stat = await vscode.workspace.fs.stat(uriFromFilePath(file));
         pathToLastModified[file] = stat.mtime;
       }),
     );
@@ -137,17 +268,25 @@ class VsCodeIde implements IDE {
     return await this.ideUtils.getAvailableThreads();
   }
 
-  async listWorkspaceContents(directory?: string): Promise<string[]> {
+  async listWorkspaceContents(
+    directory?: string,
+    useGitIgnore?: boolean,
+  ): Promise<string[]> {
     if (directory) {
-      return await this.ideUtils.getDirectoryContents(directory, true);
-    } else {
-      const contents = await Promise.all(
-        this.ideUtils
-          .getWorkspaceDirectories()
-          .map((dir) => this.ideUtils.getDirectoryContents(dir, true)),
+      return await this.ideUtils.getDirectoryContents(
+        directory,
+        true,
+        useGitIgnore ?? true,
       );
-      return contents.flat();
     }
+    const contents = await Promise.all(
+      this.ideUtils
+        .getWorkspaceDirectories()
+        .map((dir) =>
+          this.ideUtils.getDirectoryContents(dir, true, useGitIgnore ?? true),
+        ),
+    );
+    return contents.flat();
   }
 
   async getWorkspaceConfigs() {
@@ -178,6 +317,7 @@ class VsCodeIde implements IDE {
         [],
         false,
         undefined,
+        true,
       )) {
         allDirs.push(dir);
       }
@@ -307,8 +447,8 @@ class VsCodeIde implements IDE {
   }
 
   async getSearchResults(query: string): Promise<string> {
-    let results = [];
-    for (let dir of await this.getWorkspaceDirs()) {
+    const results = [];
+    for (const dir of await this.getWorkspaceDirs()) {
       results.push(await this._searchDir(query, dir));
     }
 
@@ -351,6 +491,36 @@ class VsCodeIde implements IDE {
 
   async getBranch(dir: string): Promise<string> {
     return this.ideUtils.getBranch(vscode.Uri.file(dir));
+  }
+
+  getGitRootPath(dir: string): Promise<string | undefined> {
+    return this.ideUtils.getGitRoot(dir);
+  }
+
+  async listDir(dir: string): Promise<[string, FileType][]> {
+    const files = await vscode.workspace.fs.readDirectory(uriFromFilePath(dir));
+    return files
+      .filter(([name, type]) => {
+        !(type === vscode.FileType.File && defaultIgnoreFile.ignores(name));
+      })
+      .map(([name, type]) => [path.join(dir, name), type]) as any;
+  }
+
+  getIdeSettings(): IdeSettings {
+    const settings = vscode.workspace.getConfiguration("continue");
+    const remoteConfigServerUrl = settings.get<string | undefined>(
+      "remoteConfigServerUrl",
+      undefined,
+    );
+    const ideSettings: IdeSettings = {
+      remoteConfigServerUrl,
+      remoteConfigSyncPeriod: settings.get<number>(
+        "remoteConfigSyncPeriod",
+        60,
+      ),
+      userToken: settings.get<string>("userToken", ""),
+    };
+    return ideSettings;
   }
 }
 

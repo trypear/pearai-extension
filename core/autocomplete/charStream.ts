@@ -1,6 +1,7 @@
 export async function* onlyWhitespaceAfterEndOfLine(
   stream: AsyncGenerator<string>,
   endOfLine: string[],
+  fullStop: () => void,
 ): AsyncGenerator<string> {
   let pending = "";
   for await (let chunk of stream) {
@@ -12,6 +13,7 @@ export async function* onlyWhitespaceAfterEndOfLine(
         chunk[i + 1].trim() === chunk[i + 1]
       ) {
         yield chunk.slice(0, i + 1);
+        fullStop();
         return;
       }
     }
@@ -27,52 +29,13 @@ export async function* onlyWhitespaceAfterEndOfLine(
 
 export async function* noFirstCharNewline(stream: AsyncGenerator<string>) {
   let first = true;
-  for await (let char of stream) {
+  for await (const char of stream) {
     if (first) {
       first = false;
-      if (char === "\n") {
+      if (char.startsWith("\n") || char.startsWith("\r")) {
         return;
       }
     }
     yield char;
-  }
-}
-
-const BRACKETS: { [key: string]: string } = { "(": ")", "{": "}", "[": "]" };
-const BRACKETS_REVERSE: { [key: string]: string } = {
-  ")": "(",
-  "}": "{",
-  "]": "[",
-};
-export async function* stopOnUnmatchedClosingBracket(
-  stream: AsyncGenerator<string>,
-  suffix: string,
-): AsyncGenerator<string> {
-  const stack: string[] = [];
-  for (let i = 0; i < suffix.length; i++) {
-    if (suffix[i] === " ") continue;
-    const openBracket = BRACKETS_REVERSE[suffix[i]];
-    if (!openBracket) break;
-    stack.unshift(openBracket);
-  }
-
-  let all = "";
-  for await (let chunk of stream) {
-    all += chunk;
-    for (let i = 0; i < chunk.length; i++) {
-      const char = chunk[i];
-      if (Object.values(BRACKETS).includes(char)) {
-        // It's a closing bracket
-        if (stack.length === 0 || BRACKETS[stack.pop()!] !== char) {
-          // If the stack is empty or the top of the stack doesn't match the current closing bracket
-          yield chunk.slice(0, i);
-          return; // Stop the generator if the closing bracket doesn't have a matching opening bracket in the stream
-        }
-      } else if (Object.keys(BRACKETS).includes(char)) {
-        // It's an opening bracket
-        stack.push(char);
-      }
-    }
-    yield chunk;
   }
 }

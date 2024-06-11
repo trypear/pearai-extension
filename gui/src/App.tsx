@@ -1,4 +1,3 @@
-import { createContext } from "react";
 import { useDispatch } from "react-redux";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import Layout from "./components/Layout";
@@ -12,11 +11,14 @@ import Models from "./pages/models";
 import MonacoPage from "./pages/monaco";
 import SettingsPage from "./pages/settings";
 
-import { ContextSubmenuItem } from "core";
+import { SubmenuContextProvidersContext } from "./context/SubmenuContextProviders";
+import { VscThemeContext } from "./context/VscTheme";
 import useSubmenuContextProviders from "./hooks/useSubmenuContextProviders";
 import { useVscTheme } from "./hooks/useVscTheme";
 import GUI from "./pages/gui";
 import LocalOnboarding from "./pages/localOnboarding";
+import ApiKeyAutocompleteOnboarding from "./pages/onboarding/apiKeyAutocompleteOnboarding";
+import ApiKeyOnboarding from "./pages/onboarding/apiKeyOnboarding";
 import ExistingUserOnboarding from "./pages/onboarding/existingUserOnboarding";
 import Onboarding from "./pages/onboarding/onboarding";
 import Stats from "./pages/stats";
@@ -83,22 +85,17 @@ const router = createMemoryRouter([
         path: "/migration",
         element: <MigrationPage />,
       },
+      {
+        path: "/apiKeyOnboarding",
+        element: <ApiKeyOnboarding />,
+      },
+      {
+        path: "/apiKeyAutocompleteOnboarding",
+        element: <ApiKeyAutocompleteOnboarding />,
+      },
     ],
   },
 ]);
-
-export const SubmenuContextProvidersContext = createContext<{
-  getSubmenuContextItems: (
-    providerTitle: string | undefined,
-    query: string,
-  ) => (ContextSubmenuItem & { providerTitle: string })[];
-  addItem: (providerTitle: string, item: ContextSubmenuItem) => void;
-}>({
-  getSubmenuContextItems: () => [],
-  addItem: () => {},
-});
-
-export const VscThemeContext = createContext<any>(undefined);
 
 function App() {
   const dispatch = useDispatch();

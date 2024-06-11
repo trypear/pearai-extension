@@ -4,11 +4,14 @@ import { IndexingProgressUpdate } from "core";
 type LocalStorageTypes = {
   onboardingComplete: boolean;
   mainTextEntryCounter: number;
+  ide: "vscode" | "jetbrains";
+  ftc: number;
+  fontSize: number;
   lastSessionId: string | undefined;
   inputHistory: JSONContent[];
   extensionVersion: string;
   indexingState: IndexingProgressUpdate;
-  fontSize: number;
+  signedInToGh: boolean;
 };
 
 export function getLocalStorage<T extends keyof LocalStorageTypes>(

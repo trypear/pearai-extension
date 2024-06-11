@@ -1,8 +1,4 @@
-export interface SiteIndexingConfig {
-  startUrl: string;
-  title: string;
-  rootUrl: string;
-}
+import {SiteIndexingConfig} from "../../index.js";
 
 const configs: SiteIndexingConfig[] = [
   {
@@ -240,6 +236,11 @@ const configs: SiteIndexingConfig[] = [
     title: "Alpine.js",
     startUrl: "https://alpinejs.dev/start-here",
     rootUrl: "https://alpinejs.dev/",
+  },
+  {
+    title: "C# Language Reference",
+    startUrl: "https://learn.microsoft.com/en-us/dotnet/csharp/",
+    rootUrl: "https://learn.microsoft.com/en-us/dotnet/csharp/",
   },
 ];
 

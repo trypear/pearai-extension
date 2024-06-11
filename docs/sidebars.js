@@ -27,6 +27,7 @@ const sidebars = {
         "setup/select-provider",
         "setup/select-model",
         "setup/configuration",
+        "setup/examples",
       ],
     },
     {
@@ -47,6 +48,7 @@ const sidebars = {
       collapsed: true,
       items: [
         // "walkthroughs/codellama",
+        "walkthroughs/set-up-codestral",
         "walkthroughs/running-continue-without-internet",
         "walkthroughs/codebase-embeddings",
         "walkthroughs/tab-autocomplete",
