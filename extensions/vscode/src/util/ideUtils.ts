@@ -385,15 +385,6 @@ export class VsCodeIdeUtils {
       return "";
     }
 
-    // Sometimes the above won't successfully separate by command, so we attempt manually
-    const lines = terminalContents.split("\n");
-    const lastLine = lines.pop()?.trim();
-    if (lastLine) {
-      let i = lines.length - 1;
-      while (i >= 0 && !lines[i].trim().startsWith(lastLine)) i--;
-      terminalContents = lines.slice(i).join("\n");
-    }
-
     return terminalContents;
   }
 
