@@ -384,16 +384,24 @@ export class VsCodeIdeUtils {
       // This means there is no terminal open to select text from
       return "";
     }
-
+    
     // Sometimes the above won't successfully separate by command, so we attempt manually
-    const lines = terminalContents.split("\n");
-    const lastLine = lines.pop()?.trim();
+    const stripNonASCIIAndSpaces = (str: string): string => {
+      return str.replace(/[^\x00-\x7F\s]/g, "");
+    };
+    const lines: string[] = terminalContents.split("\n");
+    const lastLine: string | undefined = stripNonASCIIAndSpaces(lines.pop() || "")?.trim();
     if (lastLine) {
       let i = lines.length - 1;
-      while (i >= 0 && !(lines[i].trim().includes(lastLine) || lastLine.includes(lines[i].trim()))) i--;
-      terminalContents = i === -1 ? lines.join("\n") : lines.slice(i).join("\n");
+      while (i >= 0) {
+        const strippedLine = stripNonASCIIAndSpaces(lines[i]);
+        if (strippedLine.startsWith(lastLine)) {
+          break;
+        }
+        i--;
+        terminalContents = i === -1 ? lines.join("\n") : lines.slice(i).join("\n");
+      }
     }
-
     return terminalContents;
   }
 
