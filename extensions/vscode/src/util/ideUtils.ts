@@ -385,16 +385,17 @@ export class VsCodeIdeUtils {
       return "";
     }
     // Sometimes the above won't successfully separate by command, so we attempt manually
-    const stripNonASCIIAndSpaces = (str: string): string => {
-      return str.replace(/[^\x00-\x7F\s]/g, "");
+    const removeNonASCIIAndTrim= (str: string): string => {
+      str = str.replace(/[^\x00-\x7F\s]/g, "");
+      return str.trim()
     };
     const lines: string[] = terminalContents.split("\n");
-    const lastLine: string | undefined = stripNonASCIIAndSpaces(lines.pop() || "")?.trim();
+    const lastLine: string | undefined = removeNonASCIIAndTrim(lines.pop() || "")?.trim();
     if (lastLine) {
       let i = lines.length - 1;
       while (i >= 0) {
         // Strip non-ASCII characters and spaces from the current line
-        const strippedLine = stripNonASCIIAndSpaces(lines[i]);
+        const strippedLine = removeNonASCIIAndTrim(lines[i]);
         // Check if the stripped current line starts with the last line
         if (strippedLine.startsWith(lastLine)) {
           break;
