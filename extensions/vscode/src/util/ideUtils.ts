@@ -384,7 +384,6 @@ export class VsCodeIdeUtils {
       // This means there is no terminal open to select text from
       return "";
     }
-    
     // Sometimes the above won't successfully separate by command, so we attempt manually
     const stripNonASCIIAndSpaces = (str: string): string => {
       return str.replace(/[^\x00-\x7F\s]/g, "");
@@ -394,7 +393,9 @@ export class VsCodeIdeUtils {
     if (lastLine) {
       let i = lines.length - 1;
       while (i >= 0) {
+        // Strip non-ASCII characters and spaces from the current line
         const strippedLine = stripNonASCIIAndSpaces(lines[i]);
+        // Check if the stripped current line starts with the last line
         if (strippedLine.startsWith(lastLine)) {
           break;
         }
