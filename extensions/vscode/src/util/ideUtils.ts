@@ -390,8 +390,8 @@ export class VsCodeIdeUtils {
     const lastLine = lines.pop()?.trim();
     if (lastLine) {
       let i = lines.length - 1;
-      while (i >= 0 && !lines[i].trim().startsWith(lastLine)) i--;
-      terminalContents = lines.slice(i).join("\n");
+      while (i >= 0 && !(lines[i].trim().includes(lastLine) || lastLine.includes(lines[i].trim()))) i--;
+      terminalContents = i === -1 ? lines.join("\n") : lines.slice(i).join("\n");
     }
 
     return terminalContents;
