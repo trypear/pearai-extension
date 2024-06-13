@@ -1,10 +1,10 @@
 import {
   ArtifactType,
   EmbeddingsCacheResponse,
-  IContinueServerClient,
+  IPearAIServerClient,
 } from "../interface.js";
 
-export class ContinueServerClient implements IContinueServerClient {
+export class PearAIServerClient implements IPearAIServerClient {
   url: URL | undefined;
 
   constructor(
@@ -17,7 +17,7 @@ export class ContinueServerClient implements IContinueServerClient {
           ? undefined
           : new URL(serverUrl);
     } catch (e) {
-      console.warn("Invalid Continue server url", e);
+      console.warn("Invalid PearAI server url", e);
       this.url = undefined;
     }
   }

@@ -1,4 +1,4 @@
-import { IContinueServerClient } from "../../continueServer/interface.js";
+import { IPearAIServerClient } from "../../pearaiServer/interface.js";
 import { Chunk, IndexTag, IndexingProgressUpdate } from "../../index.js";
 import { MAX_CHUNK_SIZE } from "../../llm/constants.js";
 import { getBasename } from "../../util/index.js";
@@ -17,7 +17,7 @@ export class ChunkCodebaseIndex implements CodebaseIndex {
 
   constructor(
     private readonly readFile: (filepath: string) => Promise<string>,
-    private readonly continueServerClient: IContinueServerClient,
+    private readonly PearAIServerClient: IPearAIServerClient,
   ) {
     this.readFile = readFile;
   }
@@ -71,10 +71,10 @@ export class ChunkCodebaseIndex implements CodebaseIndex {
     }
 
     // Check the remote cache
-    if (this.continueServerClient.connected) {
+    if (this.PearAIServerClient.connected) {
       try {
         const keys = results.compute.map(({ cacheKey }) => cacheKey);
-        const resp = await this.continueServerClient.getFromIndexCache(
+        const resp = await this.PearAIServerClient.getFromIndexCache(
           keys,
           "chunks",
           repoName,

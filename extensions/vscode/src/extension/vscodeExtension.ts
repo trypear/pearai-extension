@@ -1,5 +1,5 @@
 import { ConfigHandler } from "core/config/handler";
-import { PearAIServerClient } from "core/continueServer/stubs/client";
+import { PearAIServerClient } from "core/pearaiServer/stubs/client";
 import { CodebaseIndexer, PauseToken } from "core/indexing/indexCodebase";
 import { IdeSettings } from "core/protocol";
 import { getConfigJsonPath, getConfigTsPath } from "core/util/paths";
@@ -65,7 +65,7 @@ export class VsCodeExtension {
       },
     );
 
-    const PearAIServerClient = new PearAIServerClient(
+    const pearAIServerClient = new PearAIServerClient(
       ideSettings.remoteConfigServerUrl,
       userTokenPromise,
     );
@@ -142,7 +142,7 @@ export class VsCodeExtension {
       this.configHandler,
       this.ide,
       indexingPauseToken,
-      PearAIServerClient,
+      pearAIServerClient,
     );
 
     if (

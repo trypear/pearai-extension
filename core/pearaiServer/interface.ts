@@ -18,7 +18,7 @@ export interface EmbeddingsCacheResponse<T extends ArtifactType> {
   files: { [cacheKey: string]: ArtifactReturnTypes[T] };
 }
 
-export interface IContinueServerClient {
+export interface IPearAIServerClient {
   connected: boolean;
   url: URL | undefined;
   getUserToken(): Promise<string | undefined>;
