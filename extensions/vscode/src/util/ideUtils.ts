@@ -384,24 +384,34 @@ export class VsCodeIdeUtils {
       // This means there is no terminal open to select text from
       return "";
     }
-    // Sometimes the above won't successfully separate by command, so we attempt manually
-    const removeNonASCIIAndTrim= (str: string): string => {
+    const removeNonASCIIAndTrim = (str: string): string => {
       str = str.replace(/[^\x00-\x7F\s]/g, "");
-      return str.trim()
+      return str.trim();
     };
-    const lines: string[] = terminalContents.split("\n");
+
+    var lines: string[] = terminalContents.split("\n");
     const lastLine: string | undefined = removeNonASCIIAndTrim(lines.pop() || "")?.trim();
+    
     if (lastLine) {
       let i = lines.length - 1;
       while (i >= 0) {
-        // Strip non-ASCII characters and spaces from the current line
-        const strippedLine = removeNonASCIIAndTrim(lines[i]);
-        // Check if the stripped current line starts with the last line
+        const currentLine = lines[i];
+        const strippedLine = removeNonASCIIAndTrim(currentLine);
         if (strippedLine.startsWith(lastLine)) {
           break;
         }
         i--;
-        terminalContents = i === -1 ? lines.join("\n") : lines.slice(i).join("\n");
+        
+        if (i === -1) {
+          // This is an edge case, usually the last line is the 
+          // the command prompt, but occasionally it is not
+          // This results in no match, so we should include the last line
+          // which would be part of the error in terminal
+          lines.push(lastLine);
+        } else {
+          lines = lines.slice(0, i + 1);
+        }
+        terminalContents = lines.join("\n");
       }
     }
     return terminalContents;
