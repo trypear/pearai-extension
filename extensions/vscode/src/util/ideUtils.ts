@@ -401,18 +401,17 @@ export class VsCodeIdeUtils {
           break;
         }
         i--;
-        
-        if (i === -1) {
-          // This is an edge case, usually the last line is the 
-          // the command prompt, but occasionally it is not
-          // This results in no match, so we should include the last line
-          // which would be part of the error in terminal
-          lines.push(lastLine);
-        } else {
-          lines = lines.slice(0, i + 1);
-        }
-        terminalContents = lines.join("\n");
       }
+      if (i === -1) {
+        // This is an edge case, usually the last line is the 
+        // the command prompt, but occasionally it is not
+        // This results in no match, so we should include the last line
+        // which would be part of the error in terminal
+        lines.push(lastLine);
+      } else {
+        lines = lines.slice(0, i + 1);
+      }
+      terminalContents = lines.join("\n");
     }
     return terminalContents;
   }
