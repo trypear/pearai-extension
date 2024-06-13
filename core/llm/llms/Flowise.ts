@@ -59,7 +59,7 @@ interface IFlowiseProviderLLMOptions extends LLMOptions {
 class Flowise extends BaseLLM {
   static providerName: ModelProvider = "flowise";
   static defaultOptions: Partial<IFlowiseProviderLLMOptions> = {
-    apiBase: "http://localhost:3000",
+    apiBase: "http://localhost:8000",
   };
   static FlowiseMessageType = {
     User: "userMessage",

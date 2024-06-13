@@ -296,7 +296,7 @@ const Layout = () => {
                   // navigate("/settings");
                   postToIde("openConfigJson", undefined);
                 }}
-                text="Configure Continue"
+                text="Configure PearAI"
               >
                 <Cog6ToothIcon width="1.4em" height="1.4em" />
               </HeaderButtonWithText>
