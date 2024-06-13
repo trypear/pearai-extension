@@ -1,4 +1,4 @@
-import { getHeaders } from "../../continueServer/stubs/headers.js";
+import { getHeaders } from "../../pearaiServer/stubs/headers.js";
 import { ChatMessage, CompletionOptions, ModelProvider } from "../../index.js";
 import { SERVER_URL } from "../../util/parameters.js";
 import { Telemetry } from "../../util/posthog.js";

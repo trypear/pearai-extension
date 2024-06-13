@@ -28,7 +28,7 @@ import OpenAIFreeTrial from "./OpenAIFreeTrial.js";
 import Replicate from "./Replicate.js";
 import TextGenWebUI from "./TextGenWebUI.js";
 import Together from "./Together.js";
-import ContinueProxy from "./stubs/ContinueProxy.js";
+import PearAIProxy from "./stubs/PearAIProxy.js";
 
 function convertToLetter(num: number): string {
   let result = "";
@@ -98,7 +98,7 @@ const LLMs = [
   OpenAIFreeTrial,
   Flowise,
   Groq,
-  ContinueProxy,
+  PearAIProxy,
 ];
 
 export async function llmFromDescription(
@@ -141,7 +141,7 @@ export async function llmFromDescription(
     uniqueId,
   };
 
-  if (desc.provider === "continue-proxy") {
+  if (desc.provider === "pearai-proxy") {
     options.apiKey = ideSettings.userToken;
     if (ideSettings.remoteConfigServerUrl) {
       options.apiBase = new URL(

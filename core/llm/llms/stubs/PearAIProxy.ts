@@ -1,11 +1,11 @@
 import { LLMOptions, ModelProvider } from "../../..";
 import OpenAI from "../OpenAI";
 
-class ContinueProxy extends OpenAI {
-  static providerName: ModelProvider = "continue-proxy";
+class PearAIProxy extends OpenAI {
+  static providerName: ModelProvider = "pearai-proxy";
   static defaultOptions: Partial<LLMOptions> = {
     apiBase: "http://localhost:3000/proxy/v1",
   };
 }
 
-export default ContinueProxy;
+export default PearAIProxy;

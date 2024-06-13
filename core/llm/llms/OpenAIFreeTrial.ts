@@ -2,8 +2,8 @@ import { BaseLLM } from "../index.js";
 import { ChatMessage, CompletionOptions, ModelProvider } from "../../index.js";
 import { streamResponse } from "../stream.js";
 
-// const SERVER_URL = "http://localhost:8080";
-const SERVER_URL = "https://proxy-server-l6vsfbzhba-uw.a.run.app";
+const SERVER_URL = "http://localhost:8080";
+// const SERVER_URL = "https://proxy-server-l6vsfbzhba-uw.a.run.app";
 
 class OpenAIFreeTrial extends BaseLLM {
   static providerName: ModelProvider = "openai-free-trial" as ModelProvider;

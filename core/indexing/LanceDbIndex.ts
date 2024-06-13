@@ -1,7 +1,7 @@
 // NOTE: vectordb requirement must be listed in extensions/vscode to avoid error
 import { v4 as uuidv4 } from "uuid";
 import { Table } from "vectordb";
-import { IContinueServerClient } from "../continueServer/interface.js";
+import { IPearAIServerClient } from "../pearaiServer/interface.js";
 import {
   BranchAndDir,
   Chunk,
@@ -40,7 +40,7 @@ export class LanceDbIndex implements CodebaseIndex {
   constructor(
     private readonly embeddingsProvider: EmbeddingsProvider,
     private readonly readFile: (filepath: string) => Promise<string>,
-    private readonly continueServerClient?: IContinueServerClient,
+    private readonly PearAIServerClient?: IPearAIServerClient,
   ) {}
 
   private tableNameForTag(tag: IndexTag) {
@@ -176,10 +176,10 @@ export class LanceDbIndex implements CodebaseIndex {
     };
 
     // Check remote cache
-    if (this.continueServerClient?.connected) {
+    if (this.PearAIServerClient?.connected) {
       try {
         const keys = results.compute.map(({ cacheKey }) => cacheKey);
-        const resp = await this.continueServerClient.getFromIndexCache(
+        const resp = await this.PearAIServerClient.getFromIndexCache(
           keys,
           "embeddings",
           repoName,

@@ -1,5 +1,5 @@
 import { Response } from "node-fetch";
-import { getHeaders } from "../../continueServer/stubs/headers.js";
+import { getHeaders } from "../../pearaiServer/stubs/headers.js";
 import { EmbedOptions } from "../../index.js";
 import { SERVER_URL } from "../../util/parameters.js";
 import { withExponentialBackoff } from "../../util/withExponentialBackoff.js";

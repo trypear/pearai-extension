@@ -1,5 +1,5 @@
 import { ConfigHandler } from "core/config/handler";
-import { PearAIServerClient } from "core/continueServer/stubs/client";
+import { PearAIServerClient } from "core/pearaiServer/stubs/client";
 import { CodebaseIndexer, PauseToken } from "core/indexing/indexCodebase";
 import { IdeSettings } from "core/protocol";
 import { getConfigJsonPath, getConfigTsPath } from "core/util/paths";

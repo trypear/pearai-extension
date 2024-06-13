@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { getHeaders } from "../../continueServer/stubs/headers.js";
+import { getHeaders } from "../../pearaiServer/stubs/headers.js";
 import { Chunk, Reranker } from "../../index.js";
 import { SERVER_URL } from "../../util/parameters.js";
 

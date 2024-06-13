@@ -1,5 +1,5 @@
 import { ConfigHandler } from "../config/handler.js";
-import { IContinueServerClient } from "../continueServer/interface.js";
+import { IPearAIServerClient } from "../pearaiServer/interface.js";
 import { IDE, IndexTag, IndexingProgressUpdate } from "../index.js";
 import { CodeSnippetsCodebaseIndex } from "./CodeSnippetsIndex.js";
 import { FullTextSearchCodebaseIndex } from "./FullTextSearch.js";
@@ -25,7 +25,7 @@ export class CodebaseIndexer {
     private readonly configHandler: ConfigHandler,
     private readonly ide: IDE,
     private readonly pauseToken: PauseToken,
-    private readonly continueServerClient: IContinueServerClient,
+    private readonly PearAIServerClient: IPearAIServerClient,
   ) {}
 
   private async getIndexesToBuild(): Promise<CodebaseIndex[]> {
@@ -34,12 +34,12 @@ export class CodebaseIndexer {
     const indexes = [
       new ChunkCodebaseIndex(
         this.ide.readFile.bind(this.ide),
-        this.continueServerClient,
+        this.PearAIServerClient,
       ), // Chunking must come first
       new LanceDbIndex(
         config.embeddingsProvider,
         this.ide.readFile.bind(this.ide),
-        this.continueServerClient,
+        this.PearAIServerClient,
       ),
       new FullTextSearchCodebaseIndex(),
       new CodeSnippetsCodebaseIndex(this.ide),
