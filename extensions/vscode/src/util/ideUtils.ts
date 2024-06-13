@@ -384,14 +384,17 @@ export class VsCodeIdeUtils {
       // This means there is no terminal open to select text from
       return "";
     }
+ 
+
+    // Sometimes the above won't successfully separate by command, so we attempt manually
+    // We are bounded by the functionality and stability of 
+    // workbench.action.terminal.selectToPreviousCommand which at times is unstable
     const removeNonASCIIAndTrim = (str: string): string => {
       str = str.replace(/[^\x00-\x7F\s]/g, "");
       return str.trim();
     };
-
     var lines: string[] = terminalContents.split("\n");
     const lastLine: string | undefined = removeNonASCIIAndTrim(lines.pop() || "")?.trim();
-    
     if (lastLine) {
       let i = lines.length - 1;
       while (i >= 0) {
