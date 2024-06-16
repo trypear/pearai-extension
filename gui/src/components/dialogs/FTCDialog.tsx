@@ -32,7 +32,7 @@ function FTCDialog() {
       <h3>Free Trial Limit Reached</h3>
       <p>
         You've reached the free trial limit of {ftl()} free inputs. To keep
-        using Continue, you can either use your own API key, or use a local LLM.
+        using PearAI, you can either use your own API key, or use a local LLM.
         To read more about the options, see our{" "}
         <a
           href="https://docs.continue.dev/customization/models"
