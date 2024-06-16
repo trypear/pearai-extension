@@ -517,6 +517,7 @@ type ModelProvider =
   | "flowise"
   | "groq"
   | "pearai-proxy"
+  | "pearai-server"
   | "custom";
 
 export type ModelName =

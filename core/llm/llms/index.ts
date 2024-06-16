@@ -29,6 +29,7 @@ import Replicate from "./Replicate.js";
 import TextGenWebUI from "./TextGenWebUI.js";
 import Together from "./Together.js";
 import PearAIProxy from "./stubs/PearAIProxy.js";
+import PearAIServer from "./PearAIServer.js";
 
 function convertToLetter(num: number): string {
   let result = "";
@@ -99,6 +100,7 @@ const LLMs = [
   Flowise,
   Groq,
   PearAIProxy,
+  PearAIServer,
 ];
 
 export async function llmFromDescription(

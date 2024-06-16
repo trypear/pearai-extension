@@ -42,6 +42,7 @@ const PROVIDER_HANDLES_TEMPLATING: ModelProvider[] = [
   "anthropic",
   "bedrock",
   "pearai-proxy",
+  "pearai-server",
 ];
 
 const PROVIDER_SUPPORTS_IMAGES: ModelProvider[] = [
@@ -52,6 +53,7 @@ const PROVIDER_SUPPORTS_IMAGES: ModelProvider[] = [
   "anthropic",
   "bedrock",
   "pearai-proxy",
+  "pearai-server",
 ];
 
 const MODEL_SUPPORTS_IMAGES: string[] = [

@@ -21,6 +21,7 @@ export enum ModelProviderTag {
   "Requires API Key" = "Requires API Key",
   "Local" = "Local",
   "Free" = "Free",
+  "Hosted" = "Hosted",
   "Open-Source" = "Open-Source",
 }
 
@@ -670,6 +671,28 @@ export const MODEL_INFO: (ModelPackage | string)[] = [
 ];
 
 export const PROVIDER_INFO: { [key: string]: ModelInfo } = {
+  pearaiserver: {
+    title: "PearAI Server (Beta)",
+    provider: "pearai-server",
+    refPage: "pearai-server",
+    description:
+      "Use PearAI's hosted services for convenient, fully-managed LLM integration.",
+    longDescription:
+      "Eliminate the need to set up or maintain your own API key, offering unlimited* usage at subscription cost.",
+    icon: "pearai.png", // Todo: change to pearai logo im not sure why its not working in gui/public/logos/
+    tags: [ModelProviderTag.Hosted],
+    packages: [
+      { ...gpt4o, title: "GPT-4o (PearAI Server)" },
+      {
+        ...AUTODETECT,
+        params: {
+          ...AUTODETECT.params,
+          title: "PearAI Server",
+        },
+      },
+    ],
+    collectInputFor: [...completionParamsInputs],
+  },
   openai: {
     title: "OpenAI",
     provider: "openai",
@@ -1020,34 +1043,5 @@ After it's up and running, you can start using PearAI.`,
       },
       ...osModels,
     ],
-  },
-  freetrial: {
-    title: "PearAI limited free trial",
-    provider: "free-trial",
-    refPage: "freetrial",
-    description:
-      "New users can try out PearAI for free using a proxy server that securely makes calls to OpenAI, Google, or Together using our API key",
-    longDescription:
-      'New users can try out PearAI for free using a proxy server that securely makes calls to OpenAI, Google, or Together using our API key. If you are ready to use your own API key or have used all 250 free uses, you can enter your API key in config.py where it says `apiKey=""` or select another model provider.',
-    icon: "openai.png",
-    tags: [ModelProviderTag.Free],
-    packages: [
-      codellama70bTrial,
-      mixtralTrial,
-      { ...claude3Opus, title: "Claude 3 Opus (trial)" },
-      { ...claude3Sonnet, title: "Claude 3 Sonnet (trial)" },
-      { ...claude3Haiku, title: "Claude 3 Haiku (trial)" },
-      { ...gemini15Pro, title: "Gemini 1.5 Pro (trial)" },
-      { ...gpt4o, title: "GPT-4o (trial)" },
-      { ...gpt35turbo, title: "GPT-3.5-Turbo (trial)" },
-      {
-        ...AUTODETECT,
-        params: {
-          ...AUTODETECT.params,
-          title: "Free Trial",
-        },
-      },
-    ],
-    collectInputFor: [...completionParamsInputs],
   },
 };
