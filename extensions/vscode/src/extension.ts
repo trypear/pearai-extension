@@ -48,10 +48,10 @@ async function dynamicImportAndActivate(context: vscode.ExtensionContext) {
 }
 
 function copySettingsAndInformUser() {
-  vscode.window.showInformationMessage('Copying your current VSCode settings and extensions to the PearAI directories...');
+  vscode.window.showInformationMessage('Copying your current VSCode settings and extensions over to PearAI!');
   copyVSCodeSettingsToPearAIDir();
   fs.writeFileSync(firstLaunchFlag, 'This is the first launch flag file');
-  vscode.window.showInformationMessage('Your VSCode settings and extensions have been copied to the PearAI settings directory. You might need to restart your editor for the changes to take effect.', 'Ok');
+  vscode.window.showInformationMessage('Your VSCode settings and extensions have been transferred over to PearAI! You may need to restart your editor for the changes to take effect.', 'Ok');
 }
 
 function copyVSCodeSettingsToPearAIDir() {
