@@ -47,14 +47,11 @@ async function dynamicImportAndActivate(context: vscode.ExtensionContext) {
   }
 }
 
-function promptUserToCopySettings() {
-  vscode.window.showInformationMessage('Do you want to copy your current VSCode settings and extensions to the PearAI directories?', 'Yes', 'No')
-    .then(selection => {
-      if (selection === 'Yes') {
-        copyVSCodeSettingsToPearAIDir();
-      }
-      fs.writeFileSync(firstLaunchFlag, 'This is the first launch flag file');
-    });
+function copySettingsAndInformUser() {
+  vscode.window.showInformationMessage('Copying your current VSCode settings and extensions to the PearAI directories...');
+  copyVSCodeSettingsToPearAIDir();
+  fs.writeFileSync(firstLaunchFlag, 'This is the first launch flag file');
+  vscode.window.showInformationMessage('Your VSCode settings and extensions have been copied to the PearAI settings directory. You might need to restart your editor for the changes to take effect.', 'Ok');
 }
 
 function copyVSCodeSettingsToPearAIDir() {
@@ -84,8 +81,6 @@ function copyVSCodeSettingsToPearAIDir() {
   });
 
   copyDirectoryRecursiveSync(vscodeExtensionsDir, pearAIDevExtensionsDir);
-
-  vscode.window.showInformationMessage('Your VSCode settings and extensions have been copied to the PearAI settings directory. You might need to restart your editor for the changes to take effect.', 'Ok');
 }
 
 function getVSCodeSettingsDir() {
@@ -116,7 +111,7 @@ function copyDirectoryRecursiveSync(source: string, destination: string) {
 
 export function activate(context: vscode.ExtensionContext) {
   if (!fs.existsSync(firstLaunchFlag)) {
-    promptUserToCopySettings();
+    copySettingsAndInformUser();
   }
   dynamicImportAndActivate(context);
 }
