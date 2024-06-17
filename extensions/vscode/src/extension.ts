@@ -7,6 +7,7 @@ import { getExtensionVersion } from "./util/util";
 
 const pearAISettingsDir = path.join(os.homedir(), '.pearai-dev');
 const firstLaunchFlag = path.join(pearAISettingsDir, 'firstLaunch.flag');
+const pearAIDevExtensionsDir = path.join(os.homedir(), '.pearai-dev', 'extensions');
 
 function getPearAIDevSettingsDir() {
   const platform = process.platform;
@@ -17,6 +18,10 @@ function getPearAIDevSettingsDir() {
   } else {
     return path.join(os.homedir(), '.config', 'pearai-dev', 'User');
   }
+}
+
+function getVSCodeExtensionsDir() {
+  return path.join(os.homedir(), '.vscode', 'extensions');
 }
 
 async function dynamicImportAndActivate(context: vscode.ExtensionContext) {
@@ -43,7 +48,7 @@ async function dynamicImportAndActivate(context: vscode.ExtensionContext) {
 }
 
 function promptUserToCopySettings() {
-  vscode.window.showInformationMessage('Do you want to copy your current VSCode settings to the PearAI settings directory?', 'Yes', 'No')
+  vscode.window.showInformationMessage('Do you want to copy your current VSCode settings and extensions to the PearAI directories?', 'Yes', 'No')
     .then(selection => {
       if (selection === 'Yes') {
         copyVSCodeSettingsToPearAIDir();
@@ -55,9 +60,14 @@ function promptUserToCopySettings() {
 function copyVSCodeSettingsToPearAIDir() {
   const vscodeSettingsDir = getVSCodeSettingsDir();
   const pearAIDevSettingsDir = getPearAIDevSettingsDir();
+  const vscodeExtensionsDir = getVSCodeExtensionsDir();
 
   if (!fs.existsSync(pearAIDevSettingsDir)) {
     fs.mkdirSync(pearAIDevSettingsDir, { recursive: true });
+  }
+
+  if (!fs.existsSync(pearAIDevExtensionsDir)) {
+    fs.mkdirSync(pearAIDevExtensionsDir, { recursive: true });
   }
 
   const itemsToCopy = ['settings.json', 'keybindings.json', 'snippets', 'sync'];
@@ -72,7 +82,10 @@ function copyVSCodeSettingsToPearAIDir() {
       }
     }
   });
-  vscode.window.showInformationMessage('Your VSCode settings have been copied to the PearAI settings directory.');
+
+  copyDirectoryRecursiveSync(vscodeExtensionsDir, pearAIDevExtensionsDir);
+
+  vscode.window.showInformationMessage('Your VSCode settings and extensions have been copied to the PearAI settings directory. You might need to restart your editor for the changes to take effect.', 'Ok');
 }
 
 function getVSCodeSettingsDir() {
