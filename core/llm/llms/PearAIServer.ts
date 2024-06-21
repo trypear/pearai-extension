@@ -103,7 +103,7 @@ class PearAIServer extends BaseLLM {
       true,
     );
 
-    const response = await this.fetch(`${SERVER_URL}/stream_chat`, {
+    const response = await this.fetch(`${SERVER_URL}/server_chat`, {
       method: "POST",
       headers: await this._getHeaders(),
       body: JSON.stringify({
@@ -111,14 +111,28 @@ class PearAIServer extends BaseLLM {
         ...args,
       }),
     });
-
+    
     let completion = "";
-    for await (const chunk of streamResponse(response)) {
-      yield {
-        role: "assistant",
-        content: chunk,
-      };
-      completion += chunk;
+    
+    for await (const value of streamResponse(response)) {
+      const chunks = value.split("\n").filter(chunk => chunk.trim() !== "");
+      
+      for (const chunk of chunks) {
+        const parsedChunk = JSON.parse(chunk);    
+        // Handle initial metadata if necessary
+        if (parsedChunk.metadata && Object.keys(parsedChunk.metadata).length > 0) {
+          // Do something with metadata if needed, currently just logging
+          console.log("Metadata received:", parsedChunk.metadata);
+        }
+    
+        if (parsedChunk.content) {
+          yield {
+            role: "assistant",
+            content: parsedChunk.content,
+          };
+          completion += parsedChunk.content;
+        }
+      }
     }
     this._countTokens(completion, args.model, false);
   }

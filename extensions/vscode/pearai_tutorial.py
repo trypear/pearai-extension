@@ -28,8 +28,13 @@ select the code and toggle the PearAI input box"""
 
 """Step 1: Highlight this code"""
 def filter_even_nums(nums):
+    if not isinstance(nums, list):
+        raise ValueError("Input must be a list.")
+        
     even_nums = []
     for x in nums:
+        if not isinstance(x, int):
+            raise ValueError("All elements in the list must be integers.")
         if x % 2 == 0:
             even_nums.append(x)
     return even_nums
