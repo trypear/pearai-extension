@@ -95,6 +95,9 @@ function getVSCodeSettingsDir() {
 }
 
 function copyDirectoryRecursiveSync(source: string, destination: string) {
+  if (!fs.existsSync(source)) {
+    return;
+  }
   if (!fs.existsSync(destination)) {
     fs.mkdirSync(destination, { recursive: true });
   }
