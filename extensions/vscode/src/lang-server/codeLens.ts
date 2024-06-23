@@ -325,29 +325,29 @@ class TutorialCodeLensProvider implements vscode.CodeLensProvider {
       }
     }
 
-    const lineOf11 = lines.findIndex((line) =>
+    const lineOf10 = lines.findIndex((line) =>
       line.includes("Step 1: Highlight the function below"),
     );
-    if (lineOf11 >= 0) {
-      const range = new vscode.Range(lineOf11, 0, lineOf11 + 1, 0);
+    if (lineOf10 >= 0) {
+      const range = new vscode.Range(lineOf10, 0, lineOf10 + 1, 0);
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: "Highlight the function",
           command: "continue.selectRange",
-          arguments: [lineOf11 + 3, lineOf11 + 11],
+          arguments: [lineOf10 + 1, lineOf10 + 8],
         }),
       );
     }
-    const lineOf21 = lines.findIndex((line) =>
+    const lineOf30 = lines.findIndex((line) =>
       line.includes("Step 1: Highlight this code"),
     );
-    if (lineOf21 >= 0) {
-      const range = new vscode.Range(lineOf21, 0, lineOf21 + 1, 0);
+    if (lineOf30 >= 0) {
+      const range = new vscode.Range(lineOf30, 0, lineOf30 + 1, 0);
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: "Highlight the function",
           command: "continue.selectRange",
-          arguments: [lineOf21 + 3, lineOf21 + 14],
+          arguments: [lineOf30 + 1, lineOf30 + 7],
         }),
       );
     }
