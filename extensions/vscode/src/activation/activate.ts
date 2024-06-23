@@ -25,6 +25,7 @@ export async function activateExtension(context: vscode.ExtensionContext) {
         path.join(getExtensionUri().fsPath, "media", "welcome.md"),
       ),
     );
+    vscode.commands.executeCommand("continue.continueGUIView.focus");
   });
 
   // Load PearAI configuration
