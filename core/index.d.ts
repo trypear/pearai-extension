@@ -497,6 +497,7 @@ type TemplateType =
   | "llama3";
 
 type ModelProvider =
+  | "pearai"
   | "openai"
   | "free-trial"
   | "anthropic"

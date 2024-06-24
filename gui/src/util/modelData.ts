@@ -18,6 +18,7 @@ export function updatedObj(old: any, pathToValue: { [key: string]: any }) {
 }
 
 export enum ModelProviderTag {
+  "Requires Login" = "Requires Login",
   "Requires API Key" = "Requires API Key",
   "Local" = "Local",
   "Free" = "Free",
@@ -26,6 +27,7 @@ export enum ModelProviderTag {
 
 export const MODEL_PROVIDER_TAG_COLORS: any = {};
 MODEL_PROVIDER_TAG_COLORS[ModelProviderTag["Requires API Key"]] = "#FF0000";
+MODEL_PROVIDER_TAG_COLORS[ModelProviderTag["Requires Login"]] = "#ef2bff";
 MODEL_PROVIDER_TAG_COLORS[ModelProviderTag["Local"]] = "#00bb00";
 MODEL_PROVIDER_TAG_COLORS[ModelProviderTag["Open-Source"]] = "#0033FF";
 MODEL_PROVIDER_TAG_COLORS[ModelProviderTag["Free"]] = "#ffff00";
@@ -670,6 +672,35 @@ export const MODEL_INFO: (ModelPackage | string)[] = [
 ];
 
 export const PROVIDER_INFO: { [key: string]: ModelInfo } = {
+  pearai: {
+    title: "PearAI",
+    provider: "pearai",
+    description: "We have state-of-the-art models with large context length and high recall...",
+    longDescription:
+      "We have state-of-the-art models with large context length and high recall developered specifically for code enhancements.",
+    icon: "pearai.png",
+    tags: [ModelProviderTag["Requires Login"]],
+    packages: [
+      gpt4o,
+      {
+        ...AUTODETECT,
+        params: {
+          ...AUTODETECT.params,
+          title: "PearAI",
+        },
+      },
+    ],
+    collectInputFor: [
+      {
+        inputType: CollectInputType.text,
+        key: "apiKey",
+        label: "API Key",
+        placeholder: "Enter your OpenAI API key",
+        required: false,
+      },
+      ...completionParamsInputs,
+    ],
+  },
   openai: {
     title: "OpenAI",
     provider: "openai",
