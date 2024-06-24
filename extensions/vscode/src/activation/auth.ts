@@ -19,7 +19,7 @@ export class ManualTokenAuthProvider implements vscode.AuthenticationProvider {
   ): Thenable<readonly vscode.AuthenticationSession[]> {
     const sessions = this.context.globalState.get<
       vscode.AuthenticationSession[]
-    >("continue.manualTokenSessions");
+    >("pearai.manualTokenSessions");
     return Promise.resolve(
       sessions?.filter((session) => {
         if (!scopes) {
@@ -54,7 +54,7 @@ export class ManualTokenAuthProvider implements vscode.AuthenticationProvider {
   }
   removeSession(sessionId: string): Thenable<void> {
     return this.context.globalState.update(
-      "continue.manualTokenSessions",
+      "pearai.manualTokenSessions",
       (sessions: vscode.AuthenticationSession[] | undefined) =>
         sessions?.filter((session) => session.id !== sessionId),
     );
