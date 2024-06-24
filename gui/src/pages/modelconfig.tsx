@@ -15,7 +15,7 @@ import StyledMarkdownPreview from "../components/markdown/StyledMarkdownPreview"
 import ModelCard from "../components/modelSelection/ModelCard";
 import { useNavigationListener } from "../hooks/useNavigationListener";
 import { setDefaultModel } from "../redux/slices/stateSlice";
-import { ideRequest, postToIde } from "../util/ide";
+import { postToIde } from "../util/ide";
 import {
   MODEL_PROVIDER_TAG_COLORS,
   ModelInfo,
@@ -136,20 +136,6 @@ function ModelConfig() {
             className="mt-2"
             source={modelInfo?.longDescription || modelInfo?.description}
           />
-          {modelInfo?.provider === "pearai" && (
-            <>
-              <CustomModelButton
-                className="m-5 bg-blue-500"
-                disabled={false}
-                onClick={(e) => {
-                  postToIde("openUrl", "https://trypear.ai/login?redirect=vscode://pearai/auth");
-                }}
-              >
-                <h3 className="text-center my-2">Login w/ PearAI</h3>
-              </CustomModelButton>
-            </>
-          )}
-
           <br />
 
           {(modelInfo?.collectInputFor?.filter((d) => d.required).length || 0) >
