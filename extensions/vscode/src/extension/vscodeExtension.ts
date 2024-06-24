@@ -71,9 +71,7 @@ export class VsCodeExtension {
     );
 
     // Config Handler with output channel
-    const outputChannel = vscode.window.createOutputChannel(
-      "PearAI",
-    );
+    const outputChannel = vscode.window.createOutputChannel("PearAI");
     this.configHandler = new ConfigHandler(
       this.ide,
       ideSettings,
@@ -108,6 +106,30 @@ export class VsCodeExtension {
 
     setupRemoteConfigSync(
       this.configHandler.reloadConfig.bind(this.configHandler),
+    );
+
+    // handleURI
+    context.subscriptions.push(
+      vscode.window.registerUriHandler({
+        handleUri(uri: vscode.Uri) {
+          vscode.window.showInformationMessage(
+            `URI handler called: ${uri.toString()}`,
+          );
+
+          if (uri.authority === "pearai") {
+            if (uri.path === "/auth") {
+              const queryParams = new URLSearchParams(uri.query);
+              const token = queryParams.get("token") ?? "nil";
+
+              // token = vscode.Uri.parse(
+              //   "vscode://pearai/auth?token=abc123",
+              // );
+
+              vscode.commands.executeCommand("pearai.setAccessToken", token);
+            }
+          }
+        },
+      }),
     );
 
     // Sidebar

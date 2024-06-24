@@ -139,10 +139,13 @@ function ModelConfig() {
           {modelInfo?.provider === "pearai" && (
             <>
               <CustomModelButton
-                className="m-5 bg-blue-500"
+                className="m-5"
                 disabled={false}
                 onClick={(e) => {
-                  postToIde("openUrl", "https://trypear.ai/login?redirect=vscode://pearai/auth");
+                  postToIde(
+                    "openUrl",
+                    "http://localhost:3000/signin?redirect=vscode%3A%2F%2Fpearai%2Fauth",
+                  );
                 }}
               >
                 <h3 className="text-center my-2">Login w/ PearAI</h3>
