@@ -247,7 +247,7 @@ export class ContinueCompletionProvider
         completionRange,
         {
           title: "Log Autocomplete Outcome",
-          command: "continue.logAutocompleteOutcome",
+          command: "pearai.logAutocompleteOutcome",
           arguments: [input.completionId, this.completionProvider],
         },
       );

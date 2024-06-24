@@ -20,6 +20,7 @@
       }
     },
     {
+      // ESBuild task
       "label": "vscode-extension:esbuild",
       "type": "npm",
       "script": "esbuild-watch",
@@ -43,7 +44,8 @@
             "endsPattern": ">"
           }
         }
-      ]
+      ],
+      "dependsOn": "vscode-extension:continue-ui:build"
     },
     // Tsc currently errors out due to testing setup issues, will be resolved in a different PR
     // This will be useful for preventing debugging if there are compile errors
@@ -63,15 +65,31 @@
       "label": "vscode-extension:continue-ui:build",
       "type": "shell",
       "command": "node",
-      "args": ["${workspaceFolder}/extensions/vscode/scripts/prepackage.js"],
+      "args": ["./scripts/prepackage.js"],
+      "osx": {
+        "options": {
+          "cwd": "${workspaceFolder}/extensions/vscode"
+        }
+      },
+      "linux": {
+        "options": {
+          "cwd": "${workspaceFolder}/extensions/vscode"
+        }
+      },
+      "windows": {
+        "options": {
+          "cwd": "${workspaceFolder}\\extensions\\vscode"
+        }
+      },
       "problemMatcher": ["$tsc"],
       "presentation": {
         "revealProblems": "onProblem",
         "clear": true
       },
       "options": {
-        "cwd": "${workspaceFolder}/extensions/vscode"
-      }
+        "cwd": "${workspaceFolder}"
+      },
+      "dependsOn": "vscode-extension:tsc"
     },
     //
     // Compile and bundle tests
@@ -141,7 +159,8 @@
             "endsPattern": "."
           }
         }
-      ]
+      ],
+      "dependsOn": "vscode-extension:esbuild"
     },
     //
     // esbuild for the core binary

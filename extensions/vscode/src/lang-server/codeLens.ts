@@ -45,12 +45,12 @@ class VerticalPerLineCodeLensProvider implements vscode.CodeLensProvider {
         codeLenses.push(
           new vscode.CodeLens(range, {
             title: `Accept All (${getMetaKeyLabel()}⇧⏎)`,
-            command: "continue.acceptDiff",
+            command: "pearai.acceptDiff",
             arguments: [filepath, i],
           }),
           new vscode.CodeLens(range, {
             title: `Reject All (${getMetaKeyLabel()}⇧⌫)`,
-            command: "continue.rejectDiff",
+            command: "pearai.rejectDiff",
             arguments: [filepath, i],
           }),
         );
@@ -62,7 +62,7 @@ class VerticalPerLineCodeLensProvider implements vscode.CodeLensProvider {
               ? ` (${getAltOrOption()}${getMetaKeyLabel()}Y)`
               : ""
           }`,
-          command: "continue.acceptVerticalDiffBlock",
+          command: "pearai.acceptVerticalDiffBlock",
           arguments: [filepath, i],
         }),
         new vscode.CodeLens(range, {
@@ -71,7 +71,7 @@ class VerticalPerLineCodeLensProvider implements vscode.CodeLensProvider {
               ? ` (${getAltOrOption()}${getMetaKeyLabel()}N)`
               : ""
           }`,
-          command: "continue.rejectVerticalDiffBlock",
+          command: "pearai.rejectVerticalDiffBlock",
           arguments: [filepath, i],
         }),
       );
@@ -109,12 +109,12 @@ class SuggestionsCodeLensProvider implements vscode.CodeLensProvider {
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: "Accept",
-          command: "continue.acceptSuggestion",
+          command: "pearai.acceptSuggestion",
           arguments: [suggestion],
         }),
         new vscode.CodeLens(range, {
           title: "Reject",
-          command: "continue.rejectSuggestion",
+          command: "pearai.rejectSuggestion",
           arguments: [suggestion],
         }),
       );
@@ -153,17 +153,17 @@ class DiffViewerCodeLensProvider implements vscode.CodeLensProvider {
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: `Accept All ✅ (${getMetaKeyLabel()}⇧⏎)`,
-          command: "continue.acceptDiff",
+          command: "pearai.acceptDiff",
           arguments: [document.uri.fsPath],
         }),
         new vscode.CodeLens(range, {
           title: `Reject All ❌ (${getMetaKeyLabel()}⇧⌫)`,
-          command: "continue.rejectDiff",
+          command: "pearai.rejectDiff",
           arguments: [document.uri.fsPath],
         }),
         // new vscode.CodeLens(range, {
         //   title: `Further Edit ✏️ (${getMetaKeyLabel()}⇧M)`,
-        //   command: "continue.focusContinueInputWithEdit",
+        //   command: "pearai.focusContinueInputWithEdit",
         // })
       );
       return codeLenses;
@@ -195,7 +195,7 @@ class ConfigPyCodeLensProvider implements vscode.CodeLensProvider {
       // codeLenses.push(
       //   new vscode.CodeLens(range, {
       //     title: `+ Add a Model`,
-      //     command: "continue.addModel",
+      //     command: "pearai.addModel",
       //   })
       // );
     }
@@ -214,7 +214,7 @@ class ConfigPyCodeLensProvider implements vscode.CodeLensProvider {
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: `✏️ Edit in UI`,
-          command: "continue.openSettingsUI",
+          command: "pearai.openSettingsUI",
         }),
       );
     }
@@ -236,7 +236,7 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: `${cmdCtrl}+L`,
-        command: "continue.focusContinueInput",
+        command: "pearai.focusContinueInput",
       },
     ],
   },
@@ -245,12 +245,12 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: `"what does this code do?"`,
-        command: "continue.sendMainUserInput",
+        command: "pearai.sendMainUserInput",
         arguments: ["what does this code do?"],
       },
       {
         title: `"what is an alternative to this?"`,
-        command: "continue.sendMainUserInput",
+        command: "pearai.sendMainUserInput",
         arguments: ["what is an alternative to this?"],
       },
     ],
@@ -260,7 +260,7 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: `${cmdCtrl}+I`,
-        command: "continue.quickEdit",
+        command: "pearai.quickEdit",
         arguments: ["Add comments"],
       },
     ],
@@ -270,7 +270,7 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: "Run the file",
-        command: "continue.sendToTerminal",
+        command: "pearai.sendToTerminal",
         arguments: [
           "python " +
             path.join(getExtensionUri().fsPath, "pearai_tutorial.py") +
@@ -284,7 +284,7 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: "Debug the error",
-        command: "continue.debugTerminal",
+        command: "pearai.debugTerminal",
       },
     ],
   },
@@ -293,7 +293,7 @@ const actions: TutorialCodeLensItems[] = [
     commands: [
       {
         title: `${cmdCtrl}+Shift+R`,
-        command: "continue.debugTerminal",
+        command: "pearai.debugTerminal",
       },
     ],
   },
@@ -333,7 +333,7 @@ class TutorialCodeLensProvider implements vscode.CodeLensProvider {
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: "Highlight the function",
-          command: "continue.selectRange",
+          command: "pearai.selectRange",
           arguments: [lineOf11 + 3, lineOf11 + 11],
         }),
       );
@@ -346,7 +346,7 @@ class TutorialCodeLensProvider implements vscode.CodeLensProvider {
       codeLenses.push(
         new vscode.CodeLens(range, {
           title: "Highlight the function",
-          command: "continue.selectRange",
+          command: "pearai.selectRange",
           arguments: [lineOf21 + 3, lineOf21 + 14],
         }),
       );
@@ -368,7 +368,7 @@ class TutorialCodeLensProvider implements vscode.CodeLensProvider {
     //   codeLenses.push(
     //     new vscode.CodeLens(range, {
     //       title: `Begin Section`,
-    //       command: "continue.foldAndUnfold",
+    //       command: "pearai.foldAndUnfold",
     //       arguments: [linesToFold, [lineOfRegion, lineOfRegion + 1]],
     //     }),
     //   );

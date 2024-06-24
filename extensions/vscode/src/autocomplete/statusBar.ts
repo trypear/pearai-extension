@@ -35,7 +35,7 @@ export function setupStatusBar(
     ? "$(loading~spin) PearAI"
     : statusBarItemText(enabled);
   statusBarItem.tooltip = statusBarItemTooltip(enabled);
-  statusBarItem.command = "continue.toggleTabAutocompleteEnabled";
+  statusBarItem.command = "pearai.toggleTabAutocompleteEnabled";
 
   statusBarItem.show();
 
