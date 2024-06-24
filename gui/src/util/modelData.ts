@@ -675,9 +675,9 @@ export const PROVIDER_INFO: { [key: string]: ModelInfo } = {
   pearai: {
     title: "PearAI",
     provider: "pearai",
-    description: "We have state-of-the-art models with large context length and high recall...",
+    description: "We have cutting-edge models designed specifically for code enhancements...",
     longDescription:
-      "We have state-of-the-art models with large context length and high recall developered specifically for code enhancements.",
+      "We have cutting-edge models designed specifically for code enhancements, featuring extended context length and high recall.",
     icon: "pearai.png",
     tags: [ModelProviderTag["Requires Login"]],
     packages: [
