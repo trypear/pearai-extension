@@ -3,7 +3,7 @@ import { ChatMessage, CompletionOptions, ModelProvider } from "../../index.js";
 import { SERVER_URL } from "../../util/parameters.js";
 import { Telemetry } from "../../util/posthog.js";
 import { BaseLLM } from "../index.js";
-import { streamResponse } from "../stream.js";
+import { streamResponse, streamJSON } from "../stream.js";
 
 class PearAIServer extends BaseLLM {
   static providerName: ModelProvider = "pearai-server";
@@ -66,7 +66,7 @@ class PearAIServer extends BaseLLM {
     });
 
     let completion = "";
-    for await (const value of streamResponse(response)) {
+    for await (const value of streamJSON(response)) {
       yield value;
       completion += value;
     }
@@ -114,24 +114,19 @@ class PearAIServer extends BaseLLM {
     
     let completion = "";
     
-    for await (const value of streamResponse(response)) {
-      const chunks = value.split("\n").filter(chunk => chunk.trim() !== "");
-      
-      for (const chunk of chunks) {
-        const parsedChunk = JSON.parse(chunk);    
-        // Handle initial metadata if necessary
-        if (parsedChunk.metadata && Object.keys(parsedChunk.metadata).length > 0) {
-          // Do something with metadata if needed, currently just logging
-          console.log("Metadata received:", parsedChunk.metadata);
-        }
-    
-        if (parsedChunk.content) {
-          yield {
-            role: "assistant",
-            content: parsedChunk.content,
-          };
-          completion += parsedChunk.content;
-        }
+    for await (const value of streamJSON(response)) {
+      // Handle initial metadata if necessary
+      if (value.metadata && Object.keys(value.metadata).length > 0) {
+        // Do something with metadata if needed, currently just logging
+        console.log("Metadata received:", value.metadata);
+      }
+  
+      if (value.content) {
+        yield {
+          role: "assistant",
+          content: value.content,
+        };
+        completion += value.content;
       }
     }
     this._countTokens(completion, args.model, false);
