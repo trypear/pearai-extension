@@ -38,7 +38,7 @@ async function dynamicImportAndActivate(context: vscode.ExtensionContext) {
       )
       .then((selection) => {
         if (selection === "View Logs") {
-          vscode.commands.executeCommand("continue.viewLogs");
+          vscode.commands.executeCommand("pearai.viewLogs");
         } else if (selection === "Retry") {
           // Reload VS Code window
           vscode.commands.executeCommand("workbench.action.reloadWindow");

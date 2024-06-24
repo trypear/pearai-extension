@@ -94,7 +94,7 @@ export class VerticalPerLineDiffManager {
       this.filepathToHandler.delete(filepath);
     }
 
-    vscode.commands.executeCommand("setContext", "continue.diffVisible", false);
+    vscode.commands.executeCommand("setContext", "pearai.diffVisible", false);
   }
 
   acceptRejectVerticalDiffBlock(
@@ -143,7 +143,7 @@ export class VerticalPerLineDiffManager {
     modelTitle: string | undefined,
     onlyOneInsertion?: boolean,
   ) {
-    vscode.commands.executeCommand("setContext", "continue.diffVisible", true);
+    vscode.commands.executeCommand("setContext", "pearai.diffVisible", true);
 
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
@@ -207,7 +207,7 @@ export class VerticalPerLineDiffManager {
 
     vscode.commands.executeCommand(
       "setContext",
-      "continue.streamingDiff",
+      "pearai.streamingDiff",
       true,
     );
 
@@ -229,7 +229,7 @@ export class VerticalPerLineDiffManager {
     } finally {
       vscode.commands.executeCommand(
         "setContext",
-        "continue.streamingDiff",
+        "pearai.streamingDiff",
         false,
       );
     }

@@ -113,7 +113,7 @@ export class VsCodeExtension {
     // Sidebar
     context.subscriptions.push(
       vscode.window.registerWebviewViewProvider(
-        "continue.continueGUIView",
+        "pearai.continueGUIView",
         this.sidebar,
         {
           webviewOptions: { retainContextWhenHidden: true },
@@ -124,10 +124,10 @@ export class VsCodeExtension {
 
     // Indexing + pause token
     const indexingPauseToken = new PauseToken(
-      context.globalState.get<boolean>("continue.indexingPaused") === true,
+      context.globalState.get<boolean>("pearai.indexingPaused") === true,
     );
     this.webviewProtocol.on("index/setPaused", (msg) => {
-      context.globalState.update("continue.indexingPaused", msg.data);
+      context.globalState.update("pearai.indexingPaused", msg.data);
       indexingPauseToken.paused = msg.data;
     });
     this.webviewProtocol.on("index/forceReIndex", (msg) => {
@@ -289,9 +289,9 @@ export class VsCodeExtension {
     this.indexingCancellationController = new AbortController();
 
     //reset all state variables
-    context.globalState.update("continue.indexingFailed", false);
-    context.globalState.update("continue.indexingProgress", 0);
-    context.globalState.update("continue.indexingDesc", "");
+    context.globalState.update("pearai.indexingFailed", false);
+    context.globalState.update("pearai.indexingProgress", 0);
+    context.globalState.update("pearai.indexingDesc", "");
 
     let err = undefined;
     for await (const update of this.indexer.refresh(
@@ -299,7 +299,7 @@ export class VsCodeExtension {
       this.indexingCancellationController.signal,
     )) {
       this.webviewProtocol.request("indexProgress", update);
-      context.globalState.update("continue.indexingProgress", update);
+      context.globalState.update("pearai.indexingProgress", update);
     }
 
     if (err) {
