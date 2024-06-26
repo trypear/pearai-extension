@@ -35,7 +35,7 @@ import ModelSelect from "./modelSelection/ModelSelect";
 const FOOTER_HEIGHT = "1.8em";
 
 const LayoutTopDiv = styled(CustomScrollbarDiv)`
-  height: 100%;
+  min-height: 100%;
   border-radius: ${defaultBorderRadius};
 `;
 
@@ -74,7 +74,7 @@ const Footer = styled.footer`
 const GridDiv = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
-  height: 100vh;
+  min-height: 100vh;
   overflow-x: visible;
 `;
 

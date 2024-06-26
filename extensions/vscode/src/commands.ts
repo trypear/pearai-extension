@@ -17,7 +17,7 @@ import { VsCodeWebviewProtocol } from "./webviewProtocol";
 function getFullScreenTab() {
   const tabs = vscode.window.tabGroups.all.flatMap((tabGroup) => tabGroup.tabs);
   return tabs.find((tab) =>
-    (tab.input as any)?.viewType?.endsWith("continue.continueGUIView"),
+    (tab.input as any)?.viewType?.endsWith("pearai.continueGUIView"),
   );
 }
 
@@ -165,31 +165,27 @@ const commandsMap: (
     );
   }
   return {
-    "continue.acceptDiff": async (newFilepath?: string | vscode.Uri) => {
+    "pearai.acceptDiff": async (newFilepath?: string | vscode.Uri) => {
       if (newFilepath instanceof vscode.Uri) {
         newFilepath = newFilepath.fsPath;
       }
       verticalDiffManager.clearForFilepath(newFilepath, true);
       await diffManager.acceptDiff(newFilepath);
     },
-    "continue.rejectDiff": async (newFilepath?: string | vscode.Uri) => {
+    "pearai.rejectDiff": async (newFilepath?: string | vscode.Uri) => {
       if (newFilepath instanceof vscode.Uri) {
         newFilepath = newFilepath.fsPath;
       }
       verticalDiffManager.clearForFilepath(newFilepath, false);
       await diffManager.rejectDiff(newFilepath);
     },
-    "continue.acceptVerticalDiffBlock": (filepath?: string, index?: number) => {
+    "pearai.acceptVerticalDiffBlock": (filepath?: string, index?: number) => {
       verticalDiffManager.acceptRejectVerticalDiffBlock(true, filepath, index);
     },
-    "continue.rejectVerticalDiffBlock": (filepath?: string, index?: number) => {
+    "pearai.rejectVerticalDiffBlock": (filepath?: string, index?: number) => {
       verticalDiffManager.acceptRejectVerticalDiffBlock(false, filepath, index);
     },
-    "continue.quickFix": async (
-      message: string,
-      code: string,
-      edit: boolean,
-    ) => {
+    "pearai.quickFix": async (message: string, code: string, edit: boolean) => {
       sidebar.webviewProtocol?.request("newSessionWithPrompt", {
         prompt: `${
           edit ? "/edit " : ""
@@ -197,19 +193,19 @@ const commandsMap: (
       });
 
       if (!edit) {
-        vscode.commands.executeCommand("continue.continueGUIView.focus");
+        vscode.commands.executeCommand("pearai.continueGUIView.focus");
       }
     },
-    "continue.focusContinueInput": async () => {
+    "pearai.focusContinueInput": async () => {
       if (!getFullScreenTab()) {
-        vscode.commands.executeCommand("continue.continueGUIView.focus");
+        vscode.commands.executeCommand("pearai.continueGUIView.focus");
       }
       sidebar.webviewProtocol?.request("focusContinueInput", undefined);
       await addHighlightedCodeToContext(false, sidebar.webviewProtocol);
     },
-    "continue.focusContinueInputWithoutClear": async () => {
+    "pearai.focusContinueInputWithoutClear": async () => {
       if (!getFullScreenTab()) {
-        vscode.commands.executeCommand("continue.continueGUIView.focus");
+        vscode.commands.executeCommand("pearai.continueGUIView.focus");
       }
       sidebar.webviewProtocol?.request(
         "focusContinueInputWithoutClear",
@@ -217,10 +213,10 @@ const commandsMap: (
       );
       await addHighlightedCodeToContext(true, sidebar.webviewProtocol);
     },
-    "continue.toggleAuxiliaryBar": () => {
+    "pearai.toggleAuxiliaryBar": () => {
       vscode.commands.executeCommand("workbench.action.toggleAuxiliaryBar");
     },
-    "continue.quickEdit": async (prompt?: string) => {
+    "pearai.quickEdit": async (prompt?: string) => {
       const selectionEmpty = vscode.window.activeTextEditor?.selection.isEmpty;
 
       const editor = vscode.window.activeTextEditor;
@@ -325,34 +321,34 @@ const commandsMap: (
         }
       }
     },
-    "continue.writeCommentsForCode": async () => {
+    "pearai.writeCommentsForCode": async () => {
       streamInlineEdit(
         "comment",
         "Write comments for this code. Do not change anything about the code itself.",
       );
     },
-    "continue.writeDocstringForCode": async () => {
+    "pearai.writeDocstringForCode": async () => {
       streamInlineEdit(
         "docstring",
         "Write a docstring for this code. Do not change anything about the code itself.",
         true,
       );
     },
-    "continue.fixCode": async () => {
+    "pearai.fixCode": async () => {
       streamInlineEdit("fix", "Fix this code");
     },
-    "continue.optimizeCode": async () => {
+    "pearai.optimizeCode": async () => {
       streamInlineEdit("optimize", "Optimize this code");
     },
-    "continue.fixGrammar": async () => {
+    "pearai.fixGrammar": async () => {
       streamInlineEdit(
         "fixGrammar",
         "If there are any grammar or spelling mistakes in this writing, fix them. Do not make other large changes to the writing.",
       );
     },
-    "continue.viewLogs": async () => {
-      // Open ~/.continue/continue.log
-      const logFile = path.join(os.homedir(), ".continue", "continue.log");
+    "pearai.viewLogs": async () => {
+      // Open ~/.continue/pearai.log
+      const logFile = path.join(os.homedir(), ".continue", "pearai.log");
       // Make sure the file/directory exist
       if (!fs.existsSync(logFile)) {
         fs.mkdirSync(path.dirname(logFile), { recursive: true });
@@ -362,37 +358,37 @@ const commandsMap: (
       const uri = vscode.Uri.file(logFile);
       await vscode.window.showTextDocument(uri);
     },
-    "continue.debugTerminal": async () => {
+    "pearai.debugTerminal": async () => {
       const terminalContents = await ide.getTerminalContents();
-      vscode.commands.executeCommand("continue.continueGUIView.focus");
+      vscode.commands.executeCommand("pearai.continueGUIView.focus");
       sidebar.webviewProtocol?.request("userInput", {
         input: `I got the following error, can you please help explain how to fix it?\n\n${terminalContents.trim()}`,
       });
     },
-    "continue.hideInlineTip": () => {
+    "pearai.hideInlineTip": () => {
       vscode.workspace
         .getConfiguration("continue")
         .update("showInlineTip", false, vscode.ConfigurationTarget.Global);
     },
 
     // Commands without keyboard shortcuts
-    "continue.addModel": () => {
-      vscode.commands.executeCommand("continue.continueGUIView.focus");
+    "pearai.addModel": () => {
+      vscode.commands.executeCommand("pearai.continueGUIView.focus");
       sidebar.webviewProtocol?.request("addModel", undefined);
     },
-    "continue.openSettingsUI": () => {
-      vscode.commands.executeCommand("continue.continueGUIView.focus");
+    "pearai.openSettingsUI": () => {
+      vscode.commands.executeCommand("pearai.continueGUIView.focus");
       sidebar.webviewProtocol?.request("openSettings", undefined);
     },
-    "continue.sendMainUserInput": (text: string) => {
+    "pearai.sendMainUserInput": (text: string) => {
       sidebar.webviewProtocol?.request("userInput", {
         input: text,
       });
     },
-    "continue.shareSession": () => {
+    "pearai.shareSession": () => {
       sidebar.sendMainUserInput("/share");
     },
-    "continue.selectRange": (startLine: number, endLine: number) => {
+    "pearai.selectRange": (startLine: number, endLine: number) => {
       if (!vscode.window.activeTextEditor) {
         return;
       }
@@ -403,7 +399,7 @@ const commandsMap: (
         0,
       );
     },
-    "continue.foldAndUnfold": (
+    "pearai.foldAndUnfold": (
       foldSelectionLines: number[],
       unfoldSelectionLines: number[],
     ) => {
@@ -414,16 +410,16 @@ const commandsMap: (
         selectionLines: foldSelectionLines,
       });
     },
-    "continue.sendToTerminal": (text: string) => {
+    "pearai.sendToTerminal": (text: string) => {
       ide.runCommand(text);
     },
-    "continue.newSession": () => {
+    "pearai.newSession": () => {
       sidebar.webviewProtocol?.request("newSession", undefined);
     },
-    "continue.viewHistory": () => {
+    "pearai.viewHistory": () => {
       sidebar.webviewProtocol?.request("viewHistory", undefined);
     },
-    "continue.toggleFullScreen": () => {
+    "pearai.toggleFullScreen": () => {
       // Check if full screen is already open by checking open tabs
       const fullScreenTab = getFullScreenTab();
 
@@ -460,8 +456,8 @@ const commandsMap: (
 
       //create the full screen panel
       let panel = vscode.window.createWebviewPanel(
-        "continue.continueGUIView",
-        "Continue",
+        "pearai.continueGUIView",
+        "PearAI",
         vscode.ViewColumn.One,
       );
 
@@ -481,26 +477,26 @@ const commandsMap: (
       panel.onDidDispose(
         () => {
           sidebar.resetWebviewProtocolWebview();
-          vscode.commands.executeCommand("continue.focusContinueInput");
+          vscode.commands.executeCommand("pearai.focusContinueInput");
         },
         null,
         extensionContext.subscriptions,
       );
     },
-    "continue.openConfigJson": () => {
+    "pearai.openConfigJson": () => {
       ide.openFile(getConfigJsonPath());
     },
-    "continue.selectFilesAsContext": (
+    "pearai.selectFilesAsContext": (
       firstUri: vscode.Uri,
       uris: vscode.Uri[],
     ) => {
-      vscode.commands.executeCommand("continue.continueGUIView.focus");
+      vscode.commands.executeCommand("pearai.continueGUIView.focus");
 
       for (const uri of uris) {
         addEntireFileToContext(uri, false, sidebar.webviewProtocol);
       }
     },
-    "continue.updateAllReferences": (filepath: vscode.Uri) => {
+    "pearai.updateAllReferences": (filepath: vscode.Uri) => {
       // Get the cursor position in the editor
       const editor = vscode.window.activeTextEditor;
       if (!editor) {
@@ -511,13 +507,13 @@ const commandsMap: (
         `/references ${filepath.fsPath} ${position.line} ${position.character}`,
       );
     },
-    "continue.logAutocompleteOutcome": (
+    "pearai.logAutocompleteOutcome": (
       completionId: string,
       completionProvider: CompletionProvider,
     ) => {
       completionProvider.accept(completionId);
     },
-    "continue.toggleTabAutocompleteEnabled": () => {
+    "pearai.toggleTabAutocompleteEnabled": () => {
       const config = vscode.workspace.getConfiguration("continue");
       const enabled = config.get("enableTabAutocomplete");
       config.update(
