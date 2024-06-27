@@ -129,11 +129,13 @@ export class VsCodeWebviewProtocol {
           if (message.includes("https://proxy-server")) {
             message = message.split("\n").slice(1).join("\n").trim();
             try {
-              message = JSON.parse(message).message;
+              message = JSON.parse(message).message ?? message;
             } catch {}
             if (message.includes("exceeded")) {
               message +=
                 " To keep using Continue, you can set up a local model or use your own API key.";
+            } else if (message.includes("401 Unauthorized")) {
+              return;
             } else {
               message +=
                 " To avoid rate limiting, you can set up a local model or use your own API key.";

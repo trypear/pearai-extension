@@ -241,6 +241,23 @@ ${prompt}`;
 
         if (!resp.ok) {
           let text = await resp.text();
+
+          if (resp.status === 401) {
+            // supress "Unathorized error" for v0 launch, redo later for PearAI.
+            if (
+              text.includes("Please upgrade to the latest version of Continue")
+            ) {
+              console.warn(
+                `supressed error: HTTP ${resp.status} ${resp.statusText} from ${resp.url}\n\n${text}`,
+              );
+              throw {
+                status: resp.status,
+                statusText: "Unauthorized Error",
+                url: resp.url,
+              };
+            }
+          }
+
           if (resp.status === 404 && !resp.url.includes("/v1")) {
             if (text.includes("try pulling it first")) {
               const model = JSON.parse(text).error.split(" ")[1].slice(1, -1);
@@ -267,6 +284,9 @@ ${prompt}`;
           throw new Error(
             "Failed to connect to local Ollama instance. To start Ollama, first download it at https://ollama.ai.",
           );
+        }
+        if (e.statusText === "Unauthorized Error") {
+          throw `${e}`;
         }
         throw new Error(`${e}`);
       }
@@ -533,4 +553,3 @@ ${prompt}`;
     }
   }
 }
-
