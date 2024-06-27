@@ -18,7 +18,7 @@ class ContinueQuickFixProvider implements vscode.CodeActionProvider {
     const createQuickFix = (edit: boolean) => {
       const diagnostic = context.diagnostics[0];
       const quickFix = new vscode.CodeAction(
-        edit ? "Fix with Continue" : "Ask Continue",
+        edit ? "Fix with PearAI" : "Ask PearAI",
         vscode.CodeActionKind.QuickFix,
       );
       quickFix.isPreferred = false;
@@ -30,7 +30,7 @@ class ContinueQuickFixProvider implements vscode.CodeActionProvider {
       );
       quickFix.command = {
         command: "pearai.quickFix",
-        title: "Continue Quick Fix",
+        title: "PearAI Quick Fix",
         arguments: [
           diagnostic.message,
           document.getText(surroundingRange),

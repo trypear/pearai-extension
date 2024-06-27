@@ -4,6 +4,7 @@ import { SERVER_URL } from "../../util/parameters.js";
 import { Telemetry } from "../../util/posthog.js";
 import { BaseLLM } from "../index.js";
 import { streamResponse, streamJSON } from "../stream.js";
+import { checkTokenExpired } from "../../db/token.js"
 
 class PearAIServer extends BaseLLM {
   static providerName: ModelProvider = "pearai-server";
@@ -106,12 +107,24 @@ class PearAIServer extends BaseLLM {
 
     // Todo: add jwt to saved thing here
     // TODO: add save if need to refresh
-    const jwt = "eyJhbGciOiJIUzI1NiIsImtpZCI6IjA4VjF0WkpRVlZHb3NPRDYiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzE5NDQ2NjUxLCJpYXQiOjE3MTk0NDMwNTEsImlzcyI6Imh0dHBzOi8vd21xd3h4anBqcGhic3BrY3h0anQuc3VwYWJhc2UuY28vYXV0aC92MSIsInN1YiI6IjAzZGE5MTA4LTNhOTMtNDNjMS1hOTJjLTBlNzcyM2FmNTI5MSIsImVtYWlsIjoibmF0aGFuYW5nMjAwMEBnbWFpbC5jb20iLCJwaG9uZSI6IiIsImFwcF9tZXRhZGF0YSI6eyJwcm92aWRlciI6Imdvb2dsZSIsInByb3ZpZGVycyI6WyJnb29nbGUiXX0sInVzZXJfbWV0YWRhdGEiOnsiYXZhdGFyX3VybCI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0oyX3kybkU0WS0zbzJJR1hCZDlvZmpacmpHZXJUZVNlVVVsNkRZT1lwV19JaEtGTW0wPXM5Ni1jIiwiZW1haWwiOiJuYXRoYW5hbmcyMDAwQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmdWxsX25hbWUiOiJOYXRoYW4gQW5nIiwiaXNzIjoiaHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tIiwibmFtZSI6Ik5hdGhhbiBBbmciLCJwaG9uZV92ZXJpZmllZCI6ZmFsc2UsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NKMl95Mm5FNFktM28ySUdYQmQ5b2ZqWnJqR2VyVGVTZVVVbDZEWU9ZcFdfSWhLRk1tMD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTE1NDA5MDEyMzczMzEyNTE3NTE2Iiwic3ViIjoiMTE1NDA5MDEyMzczMzEyNTE3NTE2In0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3MTk0Mzg1NDh9XSwic2Vzc2lvbl9pZCI6IjQzYjllMDhhLTA0OGYtNDNmYy05MWFmLTYxY2FkMWRjOGZiZSIsImlzX2Fub255bW91cyI6ZmFsc2V9.mTqH4tIQMunI3uemG-1zruql-OFYTtM8j7hdzUeoRU4"
+    let accessToken: string = "";
+    let refreshToken: string = "";
+    try {
+      const tokens = await checkTokenExpired();
+      accessToken = tokens.accessToken;
+      refreshToken = tokens.refreshToken;
+      console.log('Access Token:', accessToken);
+      console.log('Refresh Token:', refreshToken);
+    } catch (error) {
+      console.error('Error checking token expiration:', error);
+      // Handle the error (e.g., redirect to login page)
+    }
+
     const response = await this.fetch(`${SERVER_URL}/server_chat`, {
       method: "POST",
       headers: {
         ...(await this._getHeaders()),
-        'Authorization': `Bearer ${jwt}`
+        'Authorization': `Bearer ${accessToken}`
       },
       body: JSON.stringify({
         messages: messages.map(this._convertMessage),
