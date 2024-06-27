@@ -165,6 +165,51 @@ const commandsMap: (
     );
   }
   return {
+    "pearai.debug": async () => {
+      const extensionUrl = `${vscode.env.uriScheme}://pearai/auth`;
+      const extensionUrlParsed = vscode.Uri.parse(extensionUrl);
+      const callbackUri = await vscode.env.asExternalUri(
+        vscode.Uri.parse(extensionUrl),
+      );
+
+      vscode.window.showInformationMessage(`${callbackUri.toString(true)}`);
+
+      await vscode.env.openExternal(
+        await vscode.env.asExternalUri(
+          vscode.Uri.parse(
+            `https://localhost:3000/signin?redirect=${callbackUri.toString()}`,
+          ),
+        ),
+      );
+    },
+    "pearai.setAccessToken": async (token: string) => {
+      if (!token) {
+        token =
+          (await vscode.window.showInputBox({
+            prompt: "Please enter your PearAI Token found in Settings at trypear.ai",
+            placeHolder: "Token",
+          })) ?? "undefined";
+
+        if (!token) {
+          vscode.window.showWarningMessage(
+            "PearAI: Failed to get access token!",
+          );
+          return;
+        }
+      }
+
+      if (token === "nil") {
+        vscode.window.showErrorMessage(
+          "PearAI: There was a problem validating your access token!",
+        );
+        return;
+      }
+
+      // TODO: Talk to backend/core to validate the auth token with supabase
+
+      extensionContext.secrets.store("pearai-token", token);
+      vscode.window.showInformationMessage(`PearAI: Successfully logged in!`);
+    },
     "pearai.acceptDiff": async (newFilepath?: string | vscode.Uri) => {
       if (newFilepath instanceof vscode.Uri) {
         newFilepath = newFilepath.fsPath;

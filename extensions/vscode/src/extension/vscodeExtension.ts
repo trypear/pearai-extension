@@ -110,6 +110,30 @@ export class VsCodeExtension {
       this.configHandler.reloadConfig.bind(this.configHandler),
     );
 
+    // handleURI
+    context.subscriptions.push(
+      vscode.window.registerUriHandler({
+        handleUri(uri: vscode.Uri) {
+          vscode.window.showInformationMessage(
+            `URI handler called: ${uri.toString()}`,
+          );
+
+          if (uri.authority === "pearai") {
+            if (uri.path === "/auth") {
+              const queryParams = new URLSearchParams(uri.query);
+              const token = queryParams.get("token") ?? "nil";
+
+              // token = vscode.Uri.parse(
+              //   "vscode://pearai/auth?token=abc123",
+              // );
+
+              vscode.commands.executeCommand("pearai.setAccessToken", token);
+            }
+          }
+        },
+      }),
+    );
+
     // Sidebar
     context.subscriptions.push(
       vscode.window.registerWebviewViewProvider(

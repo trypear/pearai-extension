@@ -30,6 +30,5 @@ export const RETRIEVAL_PARAMS = {
   nRetrieve: 20,
   bm25Threshold: -2.5,
 };
-
 export const SERVER_URL = "https://stingray-app-gb2an.ondigitalocean.app/pearai-server-api2"
 // export const SERVER_URL = "http://localhost:8000";

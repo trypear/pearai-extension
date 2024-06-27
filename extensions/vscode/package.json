@@ -45,6 +45,7 @@
     "ai"
   ],
   "activationEvents": [
+    "onUri",
     "onStartupFinished",
     "onView:continueGUIView"
   ],
@@ -87,6 +88,18 @@
       }
     },
     "commands": [
+      {
+        "command": "pearai.debug",
+        "category": "PearAI",
+        "title": "Debug",
+        "group": "PearAI"
+      },
+      {
+        "command": "pearai.setAccessToken",
+        "category": "PearAI",
+        "title": "Set PearAI Token",
+        "group": "PearAI"
+      },
       {
         "command": "pearai.acceptDiff",
         "category": "PearAI",
