@@ -675,7 +675,7 @@ export const MODEL_INFO: (ModelPackage | string)[] = [
 
 export const PROVIDER_INFO: { [key: string]: ModelInfo } = {
   pearaiserver: {
-    title: "PearAI Server (Beta)",
+    title: "PearAI Server",
     provider: "pearai-server",
     refPage: "pearai-server",
     description:
@@ -686,15 +686,8 @@ export const PROVIDER_INFO: { [key: string]: ModelInfo } = {
     tags: [ModelProviderTag["Requires Login"], ModelProviderTag["Hosted"]],
     packages: [
       { ...gpt4o, title: "GPT-4o (PearAI Server)" },
-      {
-        ...AUTODETECT,
-        params: {
-          ...AUTODETECT.params,
-          title: "PearAI Server",
-        },
-      },
     ],
-    collectInputFor: [...completionParamsInputs],
+    collectInputFor: [],
   },
   openai: {
     title: "OpenAI",

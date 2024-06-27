@@ -36,7 +36,7 @@ export class VsCodeExtension {
     this.diffManager = new DiffManager(context);
     this.ide = new VsCodeIde(this.diffManager);
 
-    const settings = vscode.workspace.getConfiguration("continue");
+    const settings = vscode.workspace.getConfiguration("pearai");
     const remoteConfigServerUrl = settings.get<string | undefined>(
       "remoteConfigServerUrl",
       undefined,
@@ -189,7 +189,7 @@ export class VsCodeExtension {
       verticalDiffCodeLens.refresh.bind(verticalDiffCodeLens);
 
     // Tab autocomplete
-    const config = vscode.workspace.getConfiguration("continue");
+    const config = vscode.workspace.getConfiguration("pearai");
     const enabled = config.get<boolean>("enableTabAutocomplete");
 
     // Register inline completion provider

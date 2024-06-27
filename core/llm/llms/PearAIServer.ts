@@ -4,7 +4,7 @@ import { SERVER_URL } from "../../util/parameters.js";
 import { Telemetry } from "../../util/posthog.js";
 import { BaseLLM } from "../index.js";
 import { streamResponse, streamJSON } from "../stream.js";
-import { checkTokenExpired } from "../../db/token.js"
+import { getTokens } from "../../db/token.js"
 
 class PearAIServer extends BaseLLM {
   static providerName: ModelProvider = "pearai-server";
@@ -110,7 +110,7 @@ class PearAIServer extends BaseLLM {
     let accessToken: string = "";
     let refreshToken: string = "";
     try {
-      const tokens = await checkTokenExpired();
+      const tokens = await getTokens();
       accessToken = tokens.accessToken;
       refreshToken = tokens.refreshToken;
       console.log('Access Token:', accessToken);
