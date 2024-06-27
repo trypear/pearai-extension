@@ -1,7 +1,7 @@
 {
   "name": "pearai",
   "icon": "media/icon.png",
-  "version": "0.9.157",
+  "version": "0.9.159",
   "repository": {
     "type": "git",
     "url": "https://github.com/trypear/pearai-app"

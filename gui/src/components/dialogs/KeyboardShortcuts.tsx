@@ -95,6 +95,16 @@ const vscodeShortcuts: KeyboardShortcutProps[] = [
     description: "Select Code + New Session",
   },
   {
+    mac: "⌘ [",
+    windows: "⌃ [",
+    description: "Enlarge Pear chat",
+  },
+  {
+    mac: "⌘ :",
+    windows: "⌃ :",
+    description: "Close Pear chat",
+  },
+  {
     mac: "⌘ I",
     windows: "⌃ I",
     description: "Edit highlighted code",

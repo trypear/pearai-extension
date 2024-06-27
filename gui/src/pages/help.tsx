@@ -1,4 +1,4 @@
-import { ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import {
@@ -128,7 +128,7 @@ function HelpPage() {
           </a>
         </IconDiv>
         <IconDiv backgroundColor="rgb(88, 98, 227)">
-          <a href="https://discord.gg/vapESyrFmJ" target="_blank">
+          <a href="https://discord.gg/Uw9mVvFUk3" target="_blank">
             <svg
               width="42px"
               height="42px"
