@@ -3,6 +3,7 @@ import {
   IDE,
   IdeInfo,
   IndexTag,
+  PearAuth,
   Problem,
   Range,
   Thread,
@@ -12,6 +13,18 @@ export class MessageIde implements IDE {
   constructor(
     private readonly request: (messageType: string, data: any) => Promise<any>,
   ) {}
+
+  getPearAuth(): Promise<PearAuth> {
+    return this.request("getPearAuth", undefined);
+  }
+
+  updatePearCredentials(auth: PearAuth): Promise<void> {
+    return this.request("updatePearCredentials", auth);
+  }
+
+  authenticatePear(): Promise<void> {
+    return this.request("authenticatePear", undefined);
+  }
 
   getRepoName(dir: string): Promise<string | undefined> {
     return this.request("getRepoName", { dir });

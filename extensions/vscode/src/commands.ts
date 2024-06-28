@@ -174,15 +174,19 @@ const commandsMap: (
 
       vscode.window.showInformationMessage(`${callbackUri.toString(true)}`);
 
-      vscode.commands.executeCommand("pearai.updateUserAuth");
+      console.log(
+        "auth:",
+        vscode.commands.executeCommand("pearai.getPearAuth"),
+      );
+    },
+    "pearai.getPearAuth": async () => {
+      // TODO: This may need some work, for now we dont have vscode ExtensionContext access in the ideProtocol.ts so this will do
+      const creds = {
+        accessToken: extensionContext.secrets.get("pearai-token"),
+        refreshToken: extensionContext.secrets.get("pearai-refresh"),
+      };
 
-      // await vscode.env.openExternal(
-      //   await vscode.env.asExternalUri(
-      //     vscode.Uri.parse(
-      //       `https://localhost:3000/signin?redirect=${callbackUri.toString()}`,
-      //     ),
-      //   ),
-      // );
+      return creds;
     },
     "pearai.login": async () => {
       const extensionUrl = `${vscode.env.uriScheme}://pearai.pearai/auth`;
@@ -190,6 +194,7 @@ const commandsMap: (
         vscode.Uri.parse(extensionUrl),
       );
 
+      // TODO: Open the proxy location with vscode redirect
       await vscode.env.openExternal(
         await vscode.env.asExternalUri(
           vscode.Uri.parse(

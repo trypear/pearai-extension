@@ -1,4 +1,4 @@
-import { FileEdit, RangeInFile, Thread } from "core";
+import { FileEdit, PearAuth, RangeInFile, Thread } from "core";
 import { defaultIgnoreFile } from "core/indexing/ignore";
 import path from "path";
 import * as vscode from "vscode";
@@ -24,6 +24,27 @@ const asyncExec = util.promisify(require("child_process").exec);
 
 export class VsCodeIdeUtils {
   visibleMessages: Set<string> = new Set();
+
+  /**
+   * Request credentials object from vscode
+   */
+  async getPearCredentials(): Promise<PearAuth> {
+    return await vscode.commands.executeCommand("pearai.getPearAuth");
+  }
+
+  /**
+   * Send login request to IDE via commands, this opens the website
+   */
+  async executePearLogin() {
+    vscode.commands.executeCommand("pearai.login");
+  }
+
+  /**
+   * Set the stored credentials in vscode
+   */
+  async updatePearCredentials(auth: PearAuth) {
+    await vscode.commands.executeCommand("pearai.updateUserAuth", auth);
+  }
 
   async gotoDefinition(
     filepath: string,
@@ -384,17 +405,18 @@ export class VsCodeIdeUtils {
       // This means there is no terminal open to select text from
       return "";
     }
- 
 
     // Sometimes the above won't successfully separate by command, so we attempt manually
-    // We are bounded by the functionality and stability of 
+    // We are bounded by the functionality and stability of
     // workbench.action.terminal.selectToPreviousCommand which at times is unstable
     const removeNonASCIIAndTrim = (str: string): string => {
       str = str.replace(/[^\x00-\x7F\s]/g, "");
       return str.trim();
     };
     var lines: string[] = terminalContents.split("\n");
-    const lastLine: string | undefined = removeNonASCIIAndTrim(lines.pop() || "")?.trim();
+    const lastLine: string | undefined = removeNonASCIIAndTrim(
+      lines.pop() || "",
+    )?.trim();
     if (lastLine) {
       let i = lines.length - 1;
       while (i >= 0) {
@@ -406,7 +428,7 @@ export class VsCodeIdeUtils {
         i--;
       }
       if (i === -1) {
-        // This is an edge case, usually the last line is the 
+        // This is an edge case, usually the last line is the
         // the command prompt, but occasionally it is not
         // This results in no match, so we should include the last line
         // which would be part of the error in terminal

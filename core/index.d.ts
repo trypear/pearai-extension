@@ -374,7 +374,15 @@ export interface IndexTag extends BranchAndDir {
   artifactId: string;
 }
 
+export interface PearAuth {
+  accessToken: string?;
+  refreshToken: string?;
+}
+
 export interface IDE {
+  getPearAuth(): Promise<PearAuth | undefined>;
+  updatePearCredentials(auth: PearAuth): Promise<void>;
+  authenticatePear(): Promise<void>;
   getIdeInfo(): Promise<IdeInfo>;
   getDiff(): Promise<string>;
   isTelemetryEnabled(): Promise<boolean>;
