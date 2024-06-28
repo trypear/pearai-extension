@@ -333,6 +333,20 @@
           "if": {
             "properties": {
               "provider": {
+                "enum": [
+                  "pearai-server"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": ["apiKey", "refreshToken"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "provider": {
                 "enum": ["huggingface-tgi", "huggingface-inference-api"]
               }
             }
