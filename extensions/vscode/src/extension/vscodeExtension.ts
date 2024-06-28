@@ -71,9 +71,7 @@ export class VsCodeExtension {
     );
 
     // Config Handler with output channel
-    const outputChannel = vscode.window.createOutputChannel(
-      "PearAI",
-    );
+    const outputChannel = vscode.window.createOutputChannel("PearAI");
     this.configHandler = new ConfigHandler(
       this.ide,
       ideSettings,
@@ -111,28 +109,29 @@ export class VsCodeExtension {
     );
 
     // handleURI
-    // context.subscriptions.push(
-    //   vscode.window.registerUriHandler({
-    //     handleUri(uri: vscode.Uri) {
-    //       vscode.window.showInformationMessage(
-    //         `URI handler called: ${uri.toString()}`,
-    //       );
+    context.subscriptions.push(
+      vscode.window.registerUriHandler({
+        handleUri(uri: vscode.Uri) {
+          console.log(uri);
+          console.log("Received a custom URI!");
+          if (uri.authority === "pearai.pearai") {
+            if (uri.path === "/hi") {
+              vscode.window.showInformationMessage(
+                "PearAI received a custom URI!",
+              );
+            } else if (uri.path === "/auth") {
+              const queryParams = new URLSearchParams(uri.query);
+              const data = {
+                accessToken: queryParams.get("token"),
+                refreshToken: queryParams.get("refresh"),
+              };
 
-    //       if (uri.authority === "pearai") {
-    //         if (uri.path === "/auth") {
-    //           const queryParams = new URLSearchParams(uri.query);
-    //           const token = queryParams.get("token") ?? "nil";
-
-    //           // token = vscode.Uri.parse(
-    //           //   "vscode://pearai/auth?token=abc123",
-    //           // );
-
-    //           vscode.commands.executeCommand("pearai.setAccessToken", token);
-    //         }
-    //       }
-    //     },
-    //   }),
-    // );
+              vscode.commands.executeCommand("pearai.updateUserAuth", data);
+            }
+          }
+        },
+      }),
+    );
 
     // Sidebar
     context.subscriptions.push(
