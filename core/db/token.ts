@@ -20,19 +20,20 @@ function isTokenExpired(token: string): boolean {
   return expired;
 }
 
-export async function getTokens(): Promise<{ accessToken: string, refreshToken: string }> {
+export async function checkTokens(
+  accessToken: string | undefined, 
+  refreshToken: string  | undefined
+): Promise<{ accessToken: string, refreshToken: string }> {
   console.log('Checking if tokens are expired');
-  //  let accessToken: string | null = localStorage.getItem('access_token');
-  // let refreshToken: string | null = localStorage.getItem('refresh_token');
-  let accessToken = "eyJhbGciOiJIUzI1NiIsImtpZCI6IjA4VjF0WkpRVlZHb3NPRDYiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzE5NTE4NTcxLCJpYXQiOjE3MTk1MTQ5NzEsImlzcyI6Imh0dHBzOi8vd21xd3h4anBqcGhic3BrY3h0anQuc3VwYWJhc2UuY28vYXV0aC92MSIsInN1YiI6ImM5NDA2MTgyLWQ3NzAtNDZhOS1hZjAxLWE2YTVmYzRmNTczYiIsImVtYWlsIjoibmF0aGFuYW5nMjAwMEBnbWFpbC5jb20iLCJwaG9uZSI6IiIsImFwcF9tZXRhZGF0YSI6eyJwcm92aWRlciI6Imdvb2dsZSIsInByb3ZpZGVycyI6WyJnb29nbGUiXX0sInVzZXJfbWV0YWRhdGEiOnsiYXZhdGFyX3VybCI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0oyX3kybkU0WS0zbzJJR1hCZDlvZmpacmpHZXJUZVNlVVVsNkRZT1lwV19JaEtGTW0wPXM5Ni1jIiwiZW1haWwiOiJuYXRoYW5hbmcyMDAwQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmdWxsX25hbWUiOiJOYXRoYW4gQW5nIiwiaXNzIjoiaHR0cHM6Ly9hY2NvdW50cy5nb29nbGUuY29tIiwibmFtZSI6Ik5hdGhhbiBBbmciLCJwaG9uZV92ZXJpZmllZCI6ZmFsc2UsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NKMl95Mm5FNFktM28ySUdYQmQ5b2ZqWnJqR2VyVGVTZVVVbDZEWU9ZcFdfSWhLRk1tMD1zOTYtYyIsInByb3ZpZGVyX2lkIjoiMTE1NDA5MDEyMzczMzEyNTE3NTE2Iiwic3ViIjoiMTE1NDA5MDEyMzczMzEyNTE3NTE2In0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoib2F1dGgiLCJ0aW1lc3RhbXAiOjE3MTk1MTQ5NzF9XSwic2Vzc2lvbl9pZCI6ImRjMjg2ODgzLWY2YzEtNDMzYi1hMjA5LTQ4YjY3ZTAwZmI5OSIsImlzX2Fub255bW91cyI6ZmFsc2V9.78ZX-UnAeMSEvyMYmTarkYGVVvzjUeX8lZQUavQ79to"
-  let refreshToken = "lvbwpiy4uvWxXZbOpiJLoA"
 
-  console.log('Access token from local storage:', accessToken);
-  console.log('Refresh token from local storage:', refreshToken);
+  if (!accessToken) {
+    console.error('Access token is not available');
+    return Promise.reject('Access token is not available');
+  }
 
-  if (!accessToken || !refreshToken) {
-    console.error('Tokens are not available');
-    return Promise.reject('Tokens are not available');
+  if (!refreshToken) {
+    console.error('Refresh token is not available');
+    return Promise.reject('Refresh token is not available');
   }
 
   if (isTokenExpired(accessToken)) {
@@ -55,14 +56,9 @@ export async function getTokens(): Promise<{ accessToken: string, refreshToken: 
 
     console.log('New access token:', accessToken);
     console.log('New refresh token:', refreshToken);
-    
-    // localStorage.setItem('access_token', accessToken);
-    // localStorage.setItem('refresh_token', refreshToken);
-
-    console.log('Access token and refresh token updated in local storage');
   } else {
     console.log('Access token is still valid');
   }
+  
   return { accessToken, refreshToken };
-
 }

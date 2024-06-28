@@ -4,7 +4,7 @@ import { SERVER_URL } from "../../util/parameters.js";
 import { Telemetry } from "../../util/posthog.js";
 import { BaseLLM } from "../index.js";
 import { streamResponse, streamJSON } from "../stream.js";
-import { getTokens } from "../../db/token.js"
+import { checkTokens } from "../../db/token.js"
 
 
 class PearAIServer extends BaseLLM {
@@ -114,18 +114,22 @@ class PearAIServer extends BaseLLM {
       true,
     );
 
-    // Todo: add jwt to saved thing here
-    // TODO: add save if need to refresh
-    let accessToken: string = "";
-    let refreshToken: string = "";
+    
+    let accessToken: string | undefined = this.apiKey;
+    let refreshToken: string | undefined= this.refreshToken;
     try {
-      const tokens = await getTokens();
-      accessToken = tokens.accessToken;
-      refreshToken = tokens.refreshToken;
-      console.log('Access Token:', accessToken);
-      console.log('Refresh Token:', refreshToken);
-      console.log('Access Token2:', this.apiKey);
-      console.log('Refresh Token2:', this.refreshToken);
+      const tokens = await checkTokens(accessToken, refreshToken);
+
+      // TODO: If we use config.json as the source of truth, we need to update it with new keys
+      if (tokens.accessToken !== accessToken) {
+        this.apiKey = tokens.accessToken;
+        console.log('PearAI access token changed from:', accessToken, 'to:', tokens.accessToken);
+      }
+
+      if (tokens.refreshToken !== refreshToken) {
+        this.refreshToken = tokens.refreshToken;
+        console.log('PearAI refresh token changed from:', refreshToken, 'to:', tokens.refreshToken);
+      }
     } catch (error) {
       console.error('Error checking token expiration:', error);
       // Handle the error (e.g., redirect to login page)
