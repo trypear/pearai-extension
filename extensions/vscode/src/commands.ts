@@ -164,24 +164,24 @@ const commandsMap: (
       onlyOneInsertion,
     );
   }
-  return {
-    "pearai.debug": async () => {
-      const extensionUrl = `${vscode.env.uriScheme}://pearai/auth`;
-      const extensionUrlParsed = vscode.Uri.parse(extensionUrl);
-      const callbackUri = await vscode.env.asExternalUri(
-        vscode.Uri.parse(extensionUrl),
-      );
+  return { //
+    // "pearai.debug": async () => {
+    //   const extensionUrl = `${vscode.env.uriScheme}://pearai/auth`;
+    //   const extensionUrlParsed = vscode.Uri.parse(extensionUrl);
+    //   const callbackUri = await vscode.env.asExternalUri(
+    //     vscode.Uri.parse(extensionUrl),
+    //   );
 
-      vscode.window.showInformationMessage(`${callbackUri.toString(true)}`);
+    //   vscode.window.showInformationMessage(`${callbackUri.toString(true)}`);
 
-      await vscode.env.openExternal(
-        await vscode.env.asExternalUri(
-          vscode.Uri.parse(
-            `https://localhost:3000/signin?redirect=${callbackUri.toString()}`,
-          ),
-        ),
-      );
-    },
+    //   await vscode.env.openExternal(
+    //     await vscode.env.asExternalUri(
+    //       vscode.Uri.parse(
+    //         `https://localhost:3000/signin?redirect=${callbackUri.toString()}`,
+    //       ),
+    //     ),
+    //   );
+    // },
     "pearai.setAccessToken": async (token: string) => {
       if (!token) {
         token =
