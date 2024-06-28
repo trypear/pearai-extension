@@ -687,7 +687,22 @@ export const PROVIDER_INFO: { [key: string]: ModelInfo } = {
     packages: [
       { ...gpt4o, title: "GPT-4o (PearAI Server)" },
     ],
-    collectInputFor: [],
+    collectInputFor: [
+      {
+        inputType: CollectInputType.text,
+        key: "apiKey",
+        label: "PearAI Key",
+        placeholder: "Enter your PearAI Key",
+        required: true,
+      },
+      {
+        inputType: CollectInputType.text,
+        key: "refreshToken",
+        label: "PearAI Refresh Token",
+        placeholder: "Enter your PearAI Refresh Token",
+        required: true,
+      },
+    ],
   },
   openai: {
     title: "OpenAI",

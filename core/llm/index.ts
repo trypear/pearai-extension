@@ -85,6 +85,7 @@ export abstract class BaseLLM implements ILLM {
   writeLog?: (str: string) => Promise<void>;
   llmRequestHook?: (model: string, prompt: string) => any;
   apiKey?: string;
+  refreshToken?: string;
   apiBase?: string;
 
   engine?: string;
@@ -139,6 +140,8 @@ export abstract class BaseLLM implements ILLM {
     this.writeLog = options.writeLog;
     this.llmRequestHook = options.llmRequestHook;
     this.apiKey = options.apiKey;
+    this.refreshToken = options.refreshToken;
+
     this.apiBase = options.apiBase;
     if (this.apiBase && !this.apiBase.endsWith("/")) {
       this.apiBase = this.apiBase + "/";
