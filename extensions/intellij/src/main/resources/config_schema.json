@@ -180,12 +180,17 @@
         },
         "apiKey": {
           "title": "Api Key",
-          "description": "OpenAI, Anthropic, Cohere, Together, or other API key",
+          "description": "PearAI, OpenAI, Anthropic, Cohere, Together, or other API key",
           "type": "string"
         },
         "apiBase": {
           "title": "Api Base",
           "description": "The base URL of the LLM API.",
+          "type": "string"
+        },
+        "refreshToken": {
+          "title": "Refresh Token",
+          "description": "Refresh Token For PearAI Server",
           "type": "string"
         },
         "contextLength": {
@@ -321,6 +326,20 @@
           },
           "then": {
             "required": ["apiKey"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "provider": {
+                "enum": [
+                  "pearai-server"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": ["apiKey", "refreshToken"]
           }
         },
         {

@@ -64,6 +64,7 @@ export interface ILLM extends LLMOptions {
   llmRequestHook?: (model: string, prompt: string) => any;
   apiKey?: string;
   apiBase?: string;
+  refreshToken?: string;
 
   engine?: string;
   apiVersion?: string;
@@ -293,7 +294,7 @@ export interface LLMOptions {
   llmRequestHook?: (model: string, prompt: string) => any;
   apiKey?: string;
   apiBase?: string;
-
+  refreshToken?: string;
   useLegacyCompletionsEndpoint?: boolean;
 
   // Azure options
@@ -633,6 +634,7 @@ export interface ModelDescription {
   model: string;
   apiKey?: string;
   apiBase?: string;
+  refreshToken?: string;
   contextLength?: number;
   template?: TemplateType;
   completionOptions?: BaseCompletionOptions;
@@ -651,6 +653,7 @@ export type EmbeddingsProviderName =
 export interface EmbedOptions {
   apiBase?: string;
   apiKey?: string;
+  refreshToken?: string;
   model?: string;
   requestOptions?: RequestOptions;
 }

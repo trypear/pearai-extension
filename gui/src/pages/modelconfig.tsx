@@ -138,23 +138,46 @@ function ModelConfig() {
           />
           {modelInfo?.provider === "pearai-server" && (
             <>
+              <h3>1. Login & Subscribe w/ PearAI </h3>
               <CustomModelButton
                 className="m-5"
                 disabled={false}
                 onClick={(e) => {
                   postToIde(
                     "openUrl",
-                    "http://localhost:3000/signin?redirect=vscode%3A%2F%2Fpearai%2Fauth",
+                    "https://trypear.ai/signin",
                   );
                 }}
               >
                 <h3 className="text-center my-2">Login w/ PearAI</h3>
               </CustomModelButton>
+              <h3>2. Enter in PearAI Keys Found In "Settings" On Website: </h3>
+              {modelInfo?.collectInputFor
+                ?.filter((d) => d.required)
+                .map((d, idx) => {
+                  return (
+                    <div key={idx}>
+                      <label htmlFor={d.key}>{d.key}</label>
+                      <Input
+                        type={d.inputType}
+                        id={d.key}
+                        className="border-2 border-gray-200 rounded-md p-2 m-2"
+                        placeholder={d.key}
+                        defaultValue={d.defaultValue}
+                        min={d.min}
+                        max={d.max}
+                        step={d.step}
+                        {...formMethods.register(d.key, {
+                          required: true,
+                        })}
+                      />
+                    </div>
+                  );
+                })}
             </>
           )}
           <br />
-
-          {(modelInfo?.collectInputFor?.filter((d) => d.required).length || 0) >
+          {modelInfo?.provider !== "pearai-server" && (modelInfo?.collectInputFor?.filter((d) => d.required).length || 0) >
             0 && (
             <>
               <h3 className="mb-2">Enter required parameters</h3>
@@ -184,7 +207,7 @@ function ModelConfig() {
             </>
           )}
 
-          {(modelInfo?.collectInputFor?.filter((d) => !d.required).length ||
+          {modelInfo?.provider !== "pearai-server" &&  (modelInfo?.collectInputFor?.filter((d) => !d.required).length ||
             0) > 0 && (
             <details>
               <summary className="mb-2">

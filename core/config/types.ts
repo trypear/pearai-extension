@@ -70,7 +70,7 @@ declare global {
     llmRequestHook?: (model: string, prompt: string) => any;
     apiKey?: string;
     apiBase?: string;
-  
+    refreshToken?: string;
     engine?: string;
     apiVersion?: string;
     apiType?: string;
@@ -292,6 +292,7 @@ declare global {
     llmRequestHook?: (model: string, prompt: string) => any;
     apiKey?: string;
     apiBase?: string;
+    refreshToken?: string;
   
     useLegacyCompletionsEndpoint?: boolean;
   
@@ -627,6 +628,7 @@ declare global {
     model: string;
     apiKey?: string;
     apiBase?: string;
+    refreshToken?: string;
     contextLength?: number;
     template?: TemplateType;
     completionOptions?: BaseCompletionOptions;
@@ -645,6 +647,7 @@ declare global {
   export interface EmbedOptions {
     apiBase?: string;
     apiKey?: string;
+    refreshToken?: string;
     model?: string;
     requestOptions?: RequestOptions;
   }

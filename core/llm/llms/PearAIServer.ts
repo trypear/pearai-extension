@@ -1,14 +1,23 @@
 import { getHeaders } from "../../pearaiServer/stubs/headers.js";
-import { ChatMessage, CompletionOptions, ModelProvider } from "../../index.js";
+import { ChatMessage, CompletionOptions, LLMOptions,  ModelProvider } from "../../index.js";
 import { SERVER_URL } from "../../util/parameters.js";
 import { Telemetry } from "../../util/posthog.js";
 import { BaseLLM } from "../index.js";
 import { streamResponse, streamJSON } from "../stream.js";
 import { getTokens } from "../../db/token.js"
 
+
 class PearAIServer extends BaseLLM {
   static providerName: ModelProvider = "pearai-server";
+  constructor(options: LLMOptions) {
+    super(options);
+  }
 
+  static defaultOptions: Partial<LLMOptions> = {
+    model: "gpt-4o",
+    title: "PearAI LLM"
+  };
+  
   private async _getHeaders() {
     
     return {
@@ -115,6 +124,8 @@ class PearAIServer extends BaseLLM {
       refreshToken = tokens.refreshToken;
       console.log('Access Token:', accessToken);
       console.log('Refresh Token:', refreshToken);
+      console.log('Access Token2:', this.apiKey);
+      console.log('Refresh Token2:', this.refreshToken);
     } catch (error) {
       console.error('Error checking token expiration:', error);
       // Handle the error (e.g., redirect to login page)

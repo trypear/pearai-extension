@@ -214,6 +214,7 @@ class OpenAI extends BaseLLM {
       ...m,
       content: m.content === "" ? " " : m.content,
     })) as any;
+    console.log('Access Token2:', this.apiKey);
     const response = await this.fetch(this._getEndpoint("chat/completions"), {
       method: "POST",
       headers: this._getHeaders(),
