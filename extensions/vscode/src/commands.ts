@@ -166,7 +166,7 @@ const commandsMap: (
   }
   return {
     "pearai.debug2": async () => {
-      const extensionUrl = `${vscode.env.uriScheme}://pearai/auth`;
+      const extensionUrl = `${vscode.env.uriScheme}://pearai.pearai/auth?token=TOKEN&refresh=REFRESH`;
       const extensionUrlParsed = vscode.Uri.parse(extensionUrl);
       const callbackUri = await vscode.env.asExternalUri(
         vscode.Uri.parse(extensionUrl),
@@ -174,16 +174,17 @@ const commandsMap: (
 
       vscode.window.showInformationMessage(`${callbackUri.toString(true)}`);
 
-      console.log(
-        "auth:",
-        vscode.commands.executeCommand("pearai.getPearAuth"),
-      );
+      const creds = await vscode.commands.executeCommand("pearai.getPearAuth");
+      console.log("auth:", creds);
     },
     "pearai.getPearAuth": async () => {
       // TODO: This may need some work, for now we dont have vscode ExtensionContext access in the ideProtocol.ts so this will do
+      const accessToken = await extensionContext.secrets.get("pearai-token");
+      const refreshToken = await extensionContext.secrets.get("pearai-refresh");
+
       const creds = {
-        accessToken: extensionContext.secrets.get("pearai-token"),
-        refreshToken: extensionContext.secrets.get("pearai-refresh"),
+        accessToken: accessToken ? accessToken.toString() : null,
+        refreshToken: refreshToken ? refreshToken.toString() : null,
       };
 
       return creds;
@@ -217,8 +218,6 @@ const commandsMap: (
 
       extensionContext.secrets.store("pearai-token", data.accessToken);
       extensionContext.secrets.store("pearai-refresh", data.refreshToken);
-
-      console.log(data);
 
       vscode.window.showInformationMessage("PearAI: Successfully logged in!");
     },
