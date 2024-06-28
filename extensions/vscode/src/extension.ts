@@ -117,6 +117,32 @@ export function activate(context: vscode.ExtensionContext) {
     copySettingsAndInformUser();
   }
   dynamicImportAndActivate(context);
+  console.log('Congratulations, your extension "pearai" is now active!');
+  context.subscriptions.push(vscode.commands.registerCommand('pearai.debug', async () => {
+    const extensionUrl = `${vscode.env.uriScheme}://pearai/auth`;
+    const extensionUrlParsed = vscode.Uri.parse(extensionUrl);
+    const callbackUri = await vscode.env.asExternalUri(extensionUrlParsed);
+
+    vscode.window.showInformationMessage(`${callbackUri.toString(true)}`);
+
+    await vscode.env.openExternal(
+      await vscode.env.asExternalUri(
+        vscode.Uri.parse(
+          `https://localhost:3001/signin?redirect=${callbackUri.toString()}`,
+        ),
+      ),
+    );
+  }));
+
+  context.subscriptions.push(vscode.window.registerUriHandler({
+    handleUri(uri: vscode.Uri) {
+      console.log(uri);
+      console.log("Received a custom URI!")
+      if (uri.path === '/hi') {
+        vscode.window.showInformationMessage('PearAI received a custom URI!');
+      }
+    }
+  }));
 }
 
 export function deactivate() {
