@@ -65,7 +65,6 @@ export interface ILLM extends LLMOptions {
   apiKey?: string;
   apiBase?: string;
   refreshToken?: string;
-
   engine?: string;
   apiVersion?: string;
   apiType?: string;
@@ -653,7 +652,6 @@ export type EmbeddingsProviderName =
 export interface EmbedOptions {
   apiBase?: string;
   apiKey?: string;
-  refreshToken?: string;
   model?: string;
   requestOptions?: RequestOptions;
 }

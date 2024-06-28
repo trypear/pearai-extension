@@ -169,7 +169,8 @@
             "### Llamafile\nTo get started with llamafiles, find and download a binary on their [GitHub repo](https://github.com/Mozilla-Ocho/llamafile#binary-instructions). Then run it with the following command:\n\n```shell\nchmod +x ./llamafile\n./llamafile\n```\n> [Reference](https://docs.continue.dev/reference/Model%20Providers/llamafile)",
             "### Mistral API\n\nTo get access to the Mistral API, obtain your API key from the [Mistral platform](https://docs.mistral.ai/)",
             "### DeepInfra\n\n> [Reference](https://docs.continue.dev/reference/Model%20Providers/deepinfra)",
-            "### PearAI Proxy\n\nPearAI Enterprise users can use the PearAI Proxy as a single point of access to models."
+            "### PearAI Proxy\n\nPearAI users can use the PearAI Proxy as a single point of access to models.",
+            "### PearAI Server\n\nPearAI Self-Hosted Server"
           ],
           "type": "string"
         },
@@ -326,20 +327,6 @@
           },
           "then": {
             "required": ["apiKey"]
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "provider": {
-                "enum": [
-                  "pearai-server"
-                ]
-              }
-            }
-          },
-          "then": {
-            "required": ["apiKey", "refreshToken"]
           }
         },
         {
