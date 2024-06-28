@@ -2,7 +2,7 @@
   "name": "pearai",
   "publisher": "pearai",
   "icon": "media/icon.png",
-  "version": "0.9.160",
+  "version": "0.9.159",
   "repository": {
     "type": "git",
     "url": "https://github.com/trypear/pearai-app"
@@ -52,6 +52,14 @@
   "main": "./out/extension.js",
   "browser": "./out/extension.js",
   "contributes": {
+    "uriHandler": {
+      "scheme": "pearai"
+    },
+    "handlers": {
+      "uris": [
+        "pearai"
+      ]
+    },
     "configuration": {
       "title": "PearAI",
       "properties": {
