@@ -652,7 +652,6 @@ export type EmbeddingsProviderName =
 export interface EmbedOptions {
   apiBase?: string;
   apiKey?: string;
-  refreshToken?: string;
   model?: string;
   requestOptions?: RequestOptions;
 }
