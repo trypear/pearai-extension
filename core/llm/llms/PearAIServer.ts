@@ -13,10 +13,7 @@ import { streamResponse, streamJSON } from "../stream.js";
 import { checkTokens } from "../../db/token.js";
 
 class PearAIServer extends BaseLLM {
-  getCredentials: () => Promise<PearAuth | undefined> = async () => {
-    return undefined;
-  };
-
+  getCredentials: (() => Promise<PearAuth | undefined>) | undefined = undefined;
   setCredentials: (auth: PearAuth) => Promise<void> = async () => {};
 
   static providerName: ModelProvider = "pearai-server";
@@ -126,23 +123,25 @@ class PearAIServer extends BaseLLM {
 
     let accessToken: string | undefined = this.apiKey;
     let refreshToken: string | undefined = this.refreshToken;
+
+    // Use the initialized functions to get credentials from IDE if available
+    console.log("do we get creds? ", this.getCredentials !== undefined);
+    if (this.getCredentials) {
+      const creds = await this.getCredentials();
+      // TODO: remove
+      console.log("we got creds:", creds);
+
+      if (creds && creds.accessToken && creds.refreshToken) {
+        this.apiKey = creds.accessToken;
+        this.refreshToken = creds.refreshToken;
+      }
+    }
+
     try {
       const tokens = await checkTokens(accessToken, refreshToken);
 
-      // Use the initialized functions to get credentials from IDE if available
-      if (this.getCredentials) {
-        const creds = await this.getCredentials();
-        // TODO: remove
-        console.log(creds);
-
-        if (creds && creds.accessToken && creds.refreshToken) {
-          this.apiKey = creds.accessToken;
-          this.refreshToken = creds.refreshToken;
-        }
-      }
-
       // TODO: If we use config.json as the source of truth, we need to update it with new keys
-      if (!this.apiKey && tokens.accessToken !== accessToken) {
+      if (tokens.accessToken !== accessToken) {
         this.apiKey = tokens.accessToken;
         console.log(
           "PearAI access token changed from:",
@@ -152,7 +151,7 @@ class PearAIServer extends BaseLLM {
         );
       }
 
-      if (!this.refreshToken && tokens.refreshToken !== refreshToken) {
+      if (tokens.refreshToken !== refreshToken) {
         this.refreshToken = tokens.refreshToken;
         console.log(
           "PearAI refresh token changed from:",
