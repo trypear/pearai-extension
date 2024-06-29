@@ -97,15 +97,15 @@
     },
     "commands": [
       {
-        "command": "pearai.debug",
+        "command": "pearai.debug2",
         "category": "PearAI",
         "title": "Debug",
         "group": "PearAI"
       },
       {
-        "command": "pearai.setAccessToken",
+        "command": "pearai.login",
         "category": "PearAI",
-        "title": "Set PearAI Token",
+        "title": "Login to PearAI",
         "group": "PearAI"
       },
       {

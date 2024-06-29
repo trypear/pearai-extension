@@ -4,6 +4,7 @@ import {
   IDE,
   IdeInfo,
   IndexTag,
+  PearAuth,
   Problem,
   Range,
   Thread,
@@ -12,6 +13,18 @@ import {
 import { getContinueGlobalPath } from "./paths.js";
 
 class FileSystemIde implements IDE {
+  getPearAuth(): Promise<PearAuth | undefined> {
+    return Promise.resolve(undefined);
+  }
+  
+  updatePearCredentials(auth: PearAuth): Promise<void> {
+    return Promise.resolve();
+  }
+  
+  authenticatePear(): Promise<void> {
+    return Promise.resolve();
+  }
+
   getRepoName(dir: string): Promise<string | undefined> {
     return Promise.resolve(undefined);
   }

@@ -5,6 +5,7 @@ import {
   IDE,
   IdeInfo,
   IndexTag,
+  PearAuth,
   Problem,
   Range,
   Thread,
@@ -27,6 +28,19 @@ class VsCodeIde implements IDE {
 
   constructor(private readonly diffManager: DiffManager) {
     this.ideUtils = new VsCodeIdeUtils();
+  }
+
+  async getPearAuth(): Promise<PearAuth | undefined> {
+    const creds = await this.ideUtils.getPearCredentials();
+    return creds;
+  }
+
+  async updatePearCredentials(auth: PearAuth): Promise<void> {
+    await this.ideUtils.updatePearCredentials(auth);
+  }
+
+  async authenticatePear(): Promise<void> {
+    this.ideUtils.executePearLogin();
   }
 
   async getRepoName(dir: string): Promise<string | undefined> {
@@ -69,8 +83,7 @@ class VsCodeIde implements IDE {
       version: vscode.version,
       remoteName: vscode.env.remoteName || "local",
       extensionVersion:
-        vscode.extensions.getExtension("pearai.pearai")?.packageJSON
-          .version,
+        vscode.extensions.getExtension("pearai.pearai")?.packageJSON.version,
     });
   }
   readRangeInFile(filepath: string, range: Range): Promise<string> {

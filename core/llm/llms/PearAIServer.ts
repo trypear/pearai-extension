@@ -1,13 +1,21 @@
 import { getHeaders } from "../../pearaiServer/stubs/headers.js";
-import { ChatMessage, CompletionOptions, LLMOptions,  ModelProvider } from "../../index.js";
+import {
+  ChatMessage,
+  CompletionOptions,
+  LLMOptions,
+  ModelProvider,
+  PearAuth,
+} from "../../index.js";
 import { SERVER_URL } from "../../util/parameters.js";
 import { Telemetry } from "../../util/posthog.js";
 import { BaseLLM } from "../index.js";
 import { streamResponse, streamJSON } from "../stream.js";
-import { checkTokens } from "../../db/token.js"
-
+import { checkTokens } from "../../db/token.js";
 
 class PearAIServer extends BaseLLM {
+  getCredentials: (() => Promise<PearAuth | undefined>) | undefined = undefined;
+  setCredentials: (auth: PearAuth) => Promise<void> = async () => {};
+
   static providerName: ModelProvider = "pearai-server";
   constructor(options: LLMOptions) {
     super(options);
@@ -15,11 +23,10 @@ class PearAIServer extends BaseLLM {
 
   static defaultOptions: Partial<LLMOptions> = {
     model: "gpt-4o",
-    title: "PearAI LLM"
+    title: "PearAI LLM",
   };
-  
+
   private async _getHeaders() {
-    
     return {
       uniqueId: this.uniqueId || "None",
       extensionVersion: Telemetry.extensionVersion ?? "Unknown",
@@ -114,24 +121,47 @@ class PearAIServer extends BaseLLM {
       true,
     );
 
-    
     let accessToken: string | undefined = this.apiKey;
-    let refreshToken: string | undefined= this.refreshToken;
+    let refreshToken: string | undefined = this.refreshToken;
+
+    // Use the initialized functions to get credentials from IDE if available
+    console.log("do we get creds? ", this.getCredentials !== undefined);
+    if (this.getCredentials) {
+      const creds = await this.getCredentials();
+      // TODO: remove
+      console.log("we got creds:", creds);
+
+      if (creds && creds.accessToken && creds.refreshToken) {
+        this.apiKey = creds.accessToken;
+        this.refreshToken = creds.refreshToken;
+      }
+    }
+
     try {
       const tokens = await checkTokens(accessToken, refreshToken);
 
       // TODO: If we use config.json as the source of truth, we need to update it with new keys
       if (tokens.accessToken !== accessToken) {
         this.apiKey = tokens.accessToken;
-        console.log('PearAI access token changed from:', accessToken, 'to:', tokens.accessToken);
+        console.log(
+          "PearAI access token changed from:",
+          accessToken,
+          "to:",
+          tokens.accessToken,
+        );
       }
 
       if (tokens.refreshToken !== refreshToken) {
         this.refreshToken = tokens.refreshToken;
-        console.log('PearAI refresh token changed from:', refreshToken, 'to:', tokens.refreshToken);
+        console.log(
+          "PearAI refresh token changed from:",
+          refreshToken,
+          "to:",
+          tokens.refreshToken,
+        );
       }
     } catch (error) {
-      console.error('Error checking token expiration:', error);
+      console.error("Error checking token expiration:", error);
       // Handle the error (e.g., redirect to login page)
     }
 
@@ -139,23 +169,23 @@ class PearAIServer extends BaseLLM {
       method: "POST",
       headers: {
         ...(await this._getHeaders()),
-        'Authorization': `Bearer ${accessToken}`
+        Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({
         messages: messages.map(this._convertMessage),
         ...args,
       }),
     });
-    
+
     let completion = "";
-    
+
     for await (const value of streamJSON(response)) {
       // Handle initial metadata if necessary
       if (value.metadata && Object.keys(value.metadata).length > 0) {
         // Do something with metadata if needed, currently just logging
         console.log("Metadata received:", value.metadata);
       }
-  
+
       if (value.content) {
         yield {
           role: "assistant",

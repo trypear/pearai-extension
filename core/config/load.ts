@@ -22,6 +22,7 @@ import {
   IDE,
   IdeType,
   ModelDescription,
+  PearAuth,
   Reranker,
   RerankerDescription,
   SerializedContinueConfig,
@@ -51,6 +52,7 @@ import {
   defaultSlashCommandsVscode,
 } from "./default.js";
 import { getPromptFiles, slashCommandFromPromptFile } from "./promptFile.js";
+import PearAIServer from "../llm/llms/PearAIServer.js";
 const { execSync } = require("child_process");
 
 function resolveSerializedConfig(filepath: string): SerializedContinueConfig {
@@ -205,6 +207,19 @@ async function intermediateToFinalConfig(
       );
       if (!llm) {
         continue;
+      }
+
+      // TODO: There is most definately a better way to do this
+      //       windows is bad so its hard to set this up locally - Ender
+      // inject callbacks to backend
+      if (llm instanceof PearAIServer) {
+        llm.getCredentials = async () => {
+          return await ide.getPearAuth();
+        };
+
+        llm.setCredentials = async (auth: PearAuth) => {
+          await ide.updatePearCredentials(auth);
+        };
       }
 
       if (llm.model === "AUTODETECT") {
