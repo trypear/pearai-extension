@@ -199,7 +199,7 @@ const commandsMap: (
       await vscode.env.openExternal(
         await vscode.env.asExternalUri(
           vscode.Uri.parse(
-            `https://localhost:3000/signin?redirect=${callbackUri.toString()}`,
+            `http://localhost:3000/signin?redirect=${callbackUri.toString()}`,
           ),
         ),
       );

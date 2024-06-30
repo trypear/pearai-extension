@@ -115,15 +115,15 @@ export class VsCodeExtension {
           console.log(uri);
           console.log("Received a custom URI!");
           if (uri.authority === "pearai.pearai") {
-            if (uri.path === "/hi") {
+            if (uri.path === "/ping") {
               vscode.window.showInformationMessage(
                 "PearAI received a custom URI!",
               );
             } else if (uri.path === "/auth") {
               const queryParams = new URLSearchParams(uri.query);
               const data = {
-                accessToken: queryParams.get("token"),
-                refreshToken: queryParams.get("refresh"),
+                accessToken: queryParams.get("accessToken"),
+                refreshToken: queryParams.get("refreshToken"),
               };
 
               vscode.commands.executeCommand("pearai.updateUserAuth", data);

@@ -124,12 +124,8 @@ class PearAIServer extends BaseLLM {
     let accessToken: string | undefined = this.apiKey;
     let refreshToken: string | undefined = this.refreshToken;
 
-    // Use the initialized functions to get credentials from IDE if available
-    console.log("do we get creds? ", this.getCredentials !== undefined);
     if (this.getCredentials) {
       const creds = await this.getCredentials();
-      // TODO: remove
-      console.log("we got creds:", creds);
 
       if (creds && creds.accessToken && creds.refreshToken) {
         this.apiKey = creds.accessToken;
