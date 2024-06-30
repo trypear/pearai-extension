@@ -12,6 +12,7 @@ import Anthropic from "./Anthropic.js";
 import Bedrock from "./Bedrock.js";
 import Cohere from "./Cohere.js";
 import DeepInfra from "./DeepInfra.js";
+import Claude from "./Claude.js";
 import Flowise from "./Flowise.js";
 import FreeTrial from "./FreeTrial.js";
 import Gemini from "./Gemini.js";
@@ -90,6 +91,7 @@ const LLMs = [
   HuggingFaceTGI,
   HuggingFaceInferenceAPI,
   LlamaCpp,
+  Claude,
   OpenAI,
   LMStudio,
   Mistral,

@@ -68,7 +68,7 @@ export abstract class BaseLLM implements ILLM {
   }
 
   supportsPrefill(): boolean {
-    return ["ollama", "anthropic"].includes(this.providerName);
+    return ["ollama", "anthropic", "claude"].includes(this.providerName);
   }
 
   uniqueId: string;
@@ -217,7 +217,11 @@ ${settings}
 ${prompt}`;
   }
 
-  private _logTokensGenerated(model: string, prompt: string, completion: string) {
+  private _logTokensGenerated(
+    model: string,
+    prompt: string,
+    completion: string,
+  ) {
     let promptTokens = this.countTokens(prompt);
     let generatedTokens = this.countTokens(completion);
     Telemetry.capture("tokens_generated", {
@@ -226,7 +230,12 @@ ${prompt}`;
       promptTokens: promptTokens,
       generatedTokens: generatedTokens,
     });
-    DevDataSqliteDb.logTokensGenerated(model, this.providerName, promptTokens, generatedTokens);
+    DevDataSqliteDb.logTokensGenerated(
+      model,
+      this.providerName,
+      promptTokens,
+      generatedTokens,
+    );
   }
 
   fetch(url: RequestInfo | URL, init?: RequestInit): Promise<Response> {
@@ -533,4 +542,3 @@ ${prompt}`;
     }
   }
 }
-

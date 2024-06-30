@@ -511,6 +511,7 @@ type ModelProvider =
   | "lmstudio"
   | "llamafile"
   | "gemini"
+  | "claude"
   | "mistral"
   | "bedrock"
   | "deepinfra"
