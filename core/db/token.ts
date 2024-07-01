@@ -1,11 +1,9 @@
 import { createClient, SupabaseClient, Session } from '@supabase/supabase-js';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 
-// const supabaseUrl: string = process.env.SUPABASE_URL || '';
-// const supabaseKey: string = process.env.SUPABASE_KEY || '';
-const supabaseUrl: string = 'https://wmqwxxjpjphbspkcxtjt.supabase.co';
-const supabaseKey: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndtcXd4eGpwanBoYnNwa2N4dGp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc5NzM2MzUsImV4cCI6MjAzMzU0OTYzNX0.wasgwu6xzGioGJ1MGNjtGBc0SNWEZq9yII4bioSF_f4';
-const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey);
+const supabasePublicUrl: string = 'https://wmqwxxjpjphbspkcxtjt.supabase.co';
+const supabasePublicKey: string = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndtcXd4eGpwanBoYnNwa2N4dGp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc5NzM2MzUsImV4cCI6MjAzMzU0OTYzNX0.wasgwu6xzGioGJ1MGNjtGBc0SNWEZq9yII4bioSF_f4';
+const supabase: SupabaseClient = createClient(supabasePublicUrl, supabasePublicKey);
 
 interface DecodedToken extends JwtPayload {
   exp: number;

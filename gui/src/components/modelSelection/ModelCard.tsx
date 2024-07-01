@@ -21,6 +21,7 @@ const Div = styled.div<{ color: string; disabled: boolean; hovered: boolean }>`
   position: relative;
   width: 100%;
   transition: all 0.5s;
+  text-align: center; /* Center the text */
 
   ${(props) =>
     props.disabled
@@ -126,7 +127,7 @@ function ModelCard(props: ModelCardProps) {
               }
         }
       >
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           {window.vscMediaUrl && props.icon && (
             <img
               src={`${window.vscMediaUrl}/logos/${props.icon}`}
@@ -252,3 +253,4 @@ function ModelCard(props: ModelCardProps) {
 }
 
 export default ModelCard;
+
