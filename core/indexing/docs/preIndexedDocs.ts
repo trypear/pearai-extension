@@ -143,8 +143,8 @@ const configs: SiteIndexingConfig[] = [
   },
   {
     title: "Continue",
-    startUrl: "https://docs.continue.dev/intro",
-    rootUrl: "https://docs.continue.dev",
+    startUrl: "https://trypear.ai/intro",
+    rootUrl: "https://trypear.ai",
   },
   {
     title: "jQuery",

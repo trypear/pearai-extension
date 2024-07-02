@@ -35,7 +35,7 @@ function FTCDialog() {
         using PearAI, you can either use your own API key, or use a local LLM.
         To read more about the options, see our{" "}
         <a
-          href="https://docs.continue.dev/customization/models"
+          href="https://trypear.ai/customization/models"
           target="_blank"
         >
           documentation
