@@ -73,7 +73,7 @@ function Models() {
           <li>a model (the LLM being run, e.g. GPT-4, CodeLlama).</li>
         </ul>
         To read more about the options, check out our{" "}
-        <a href="https://docs.continue.dev/model-setup/overview">overview</a> in
+        <a href="https://trypear.ai/model-setup/overview">overview</a> in
         the docs.
       </IntroDiv>
       {providersSelected ? (
@@ -84,7 +84,7 @@ function Models() {
               description={modelInfo.description}
               tags={modelInfo.tags}
               icon={modelInfo.icon}
-              refUrl={`https://docs.continue.dev/reference/Model%20Providers/${
+              refUrl={`https://trypear.ai/reference/Model%20Providers/${
                 modelInfo.refPage || modelInfo.provider.toLowerCase()
               }`}
               onClick={(e) => {

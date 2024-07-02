@@ -48,7 +48,7 @@ PearAI is quickly adding features, and we'd love to hear which are the most impo
 
 ## 📖 Updating / Improving Documentation
 
-PearAI is continuously improving, but a feature isn't complete until it is reflected in the documentation! If you see something out-of-date or missing, you can help by clicking "Edit this page" at the bottom of any page on [docs.continue.dev](https://docs.continue.dev).
+PearAI is continuously improving, but a feature isn't complete until it is reflected in the documentation! If you see something out-of-date or missing, you can help by clicking "Edit this page" at the bottom of any page on [trypear.ai](https://trypear.ai).
 
 ## 🧑‍💻 Contributing Code
 
