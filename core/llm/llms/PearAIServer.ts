@@ -124,37 +124,45 @@ class PearAIServer extends BaseLLM {
     let accessToken: string | undefined = this.apiKey;
     let refreshToken: string | undefined = this.refreshToken;
 
-    if (this.getCredentials) {
-      const creds = await this.getCredentials();
-
-      if (creds && creds.accessToken && creds.refreshToken) {
-        this.apiKey = creds.accessToken;
-        this.refreshToken = creds.refreshToken;
-      }
-    }
-
     try {
+      let creds = undefined;
+
+      if (this.getCredentials) {
+        creds = await this.getCredentials();
+  
+        if (creds && creds.accessToken && creds.refreshToken) {
+          this.apiKey = creds.accessToken;
+          this.refreshToken = creds.refreshToken;
+        }
+      }
+
       const tokens = await checkTokens(accessToken, refreshToken);
 
-      // TODO: If we use config.json as the source of truth, we need to update it with new keys
-      if (tokens.accessToken !== accessToken) {
-        this.apiKey = tokens.accessToken;
-        console.log(
-          "PearAI access token changed from:",
-          accessToken,
-          "to:",
-          tokens.accessToken,
-        );
-      }
-
-      if (tokens.refreshToken !== refreshToken) {
-        this.refreshToken = tokens.refreshToken;
-        console.log(
-          "PearAI refresh token changed from:",
-          refreshToken,
-          "to:",
-          tokens.refreshToken,
-        );
+      if (tokens.accessToken !== accessToken || tokens.refreshToken !== refreshToken) {
+        if (tokens.accessToken !== accessToken) {
+          this.apiKey = tokens.accessToken;
+          console.log(
+            "PearAI access token changed from:",
+            accessToken,
+            "to:",
+            tokens.accessToken,
+          );
+        }
+      
+        if (tokens.refreshToken !== refreshToken) {
+          this.refreshToken = tokens.refreshToken;
+          console.log(
+            "PearAI refresh token changed from:",
+            refreshToken,
+            "to:",
+            tokens.refreshToken,
+          );
+        }
+        if (creds) {
+          creds.accessToken = tokens.accessToken
+          creds.refreshToken = tokens.refreshToken
+          this.setCredentials(creds)
+        }
       }
     } catch (error) {
       console.error("Error checking token expiration:", error);
